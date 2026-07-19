@@ -12,11 +12,13 @@ from get_around import GetAround, get_credential
 
 from tminidb.exceptions import HTTPError
 from tminidb.movie_details import MovieDetails
+from tminidb.movie_watch_providers import MovieWatchProviders
 from tminidb.search_movie import SearchMovie
 from tminidb.search_tv import SearchTv
 from tminidb.tv_episode_details import TvEpisodeDetails
 from tminidb.tv_season_details import TvSeasonDetails
 from tminidb.tv_series_details import TvSeriesDetails
+from tminidb.tv_watch_providers import TvWatchProviders
 
 logger = getLogger(__name__)
 logger.addHandler(NullHandler())
@@ -54,9 +56,11 @@ class Tminidb:
         self.search_movie = SearchMovie(self)
         self.search_tv = SearchTv(self)
         self.movie_details = MovieDetails(self)
+        self.movie_watch_providers = MovieWatchProviders(self)
         self.tv_series_details = TvSeriesDetails(self)
         self.tv_season_details = TvSeasonDetails(self)
         self.tv_episode_details = TvEpisodeDetails(self)
+        self.tv_watch_providers = TvWatchProviders(self)
 
     @property
     def access_token(self) -> str:
