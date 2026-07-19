@@ -1,0 +1,79 @@
+# TODO: Validate
+"""Contains the TvSeasonDetails class."""
+
+from __future__ import annotations
+
+from logging import NullHandler, getLogger
+from typing import Any
+
+from tminidb.base_api_endpoint import BaseEndpoint
+from tminidb.tv_season_details.models import TvSeasonDetailsModel
+
+logger = getLogger(__name__)
+logger.addHandler(NullHandler())
+
+
+class TvSeasonDetails(BaseEndpoint[TvSeasonDetailsModel]):
+    """Manage the TV season details file.
+
+    Wraps ``GET /tv/{series_id}/season/{season_number}``:
+    https://developer.themoviedb.org/reference/tv-season-details
+    """
+
+    _response_model = TvSeasonDetailsModel
+
+    def get_log_id(
+        self,
+        series_id: int,
+        season_number: int,
+        *,
+        append_to_response: str | None = None,
+        language: str | None = None,
+    ) -> str:
+        """Build the log id for a download."""
+        return self.append_non_default_args(
+            f"{self.__class__.__name__} {series_id=} {season_number=}",
+            append_to_response=(append_to_response, None),
+            language=(language, None),
+        )
+
+    def download(
+        self,
+        series_id: int,
+        season_number: int,
+        *,
+        append_to_response: str | None = None,
+        language: str | None = None,
+    ) -> dict[str, Any]:
+        """Downloads the TV season details file."""
+        return self._client.download(
+            f"tv/{series_id}/season/{season_number}",
+            {
+                "append_to_response": append_to_response,
+                "language": language or self._client.language,
+            },
+            log_id=self.get_log_id(
+                series_id,
+                season_number,
+                append_to_response=append_to_response,
+                language=language,
+            ),
+        )
+
+    def download_and_parse(
+        self,
+        series_id: int,
+        season_number: int,
+        *,
+        append_to_response: str | None = None,
+        language: str | None = None,
+    ) -> TvSeasonDetailsModel:
+        """Downloads and parses the TV season details file."""
+        return self.parse(
+            self.download(
+                series_id,
+                season_number,
+                append_to_response=append_to_response,
+                language=language,
+            ),
+        )
