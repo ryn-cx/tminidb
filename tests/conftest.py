@@ -1,9 +1,9 @@
 # TODO: Validate
 import pytest
 
-from tminidb import Tminidb
+from tminidb import TMiniDB
 
 
 @pytest.fixture(scope="session")
-def client() -> Tminidb:
-    return Tminidb()
+def client() -> TMiniDB:
+    return TMiniDB()

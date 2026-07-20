@@ -1,4 +1,4 @@
-"""Removes redundant Tminidb files."""
+"""Removes redundant TMiniDB files."""
 
 import logging
 

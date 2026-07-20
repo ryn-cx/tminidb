@@ -9,7 +9,7 @@ from tests.utils import assert_error, download_and_save, parse_json_to_model
 from tminidb.exceptions import HTTPError
 
 if TYPE_CHECKING:
-    from tminidb import Tminidb
+    from tminidb import TMiniDB
     from tminidb.movie_watch_providers import MovieWatchProviders
 
 MOVIE_ID = 603
@@ -17,7 +17,7 @@ INVALID_MOVIE_ID = 999999999
 
 
 @pytest.fixture(scope="session")
-def endpoint(client: Tminidb) -> MovieWatchProviders:
+def endpoint(client: TMiniDB) -> MovieWatchProviders:
     return client.movie_watch_providers
 
 

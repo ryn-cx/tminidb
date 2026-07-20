@@ -10,7 +10,7 @@ from good_ass_pydantic_integrator import GAPIBaseModel, GAPIClient
 from tminidb.constants import FILES_PATH
 
 if TYPE_CHECKING:
-    from tminidb import Tminidb
+    from tminidb import TMiniDB
 
 
 class BaseEndpoint[T: GAPIBaseModel](GAPIClient[T]):
@@ -18,7 +18,7 @@ class BaseEndpoint[T: GAPIBaseModel](GAPIClient[T]):
 
     JSON_FILES_ROOT = FILES_PATH
 
-    def __init__(self, client: Tminidb) -> None:
+    def __init__(self, client: TMiniDB) -> None:
         """Initialize the endpoint."""
         self._client = client
 

@@ -1,5 +1,5 @@
 # TODO: Validate
-"""Contains the Tminidb class."""
+"""Contains the TMiniDB class."""
 
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ BASE_API_URL = f"https://{API_DOMAIN}/3"
 ACCESS_TOKEN_CREDENTIAL = "TMDB_ACCESS_TOKEN"  # noqa: S105
 
 
-class Tminidb:
+class TMiniDB:
     """The Movie Database (TMDB) API wrapper."""
 
     def __init__(
@@ -40,7 +40,7 @@ class Tminidb:
         language: str = "en-US",
         timeout: int = 30,
     ) -> None:
-        """Initialize the Tminidb client.
+        """Initialize the TMiniDB client.
 
         Args:
             access_token: TMDB API Read Access Token used as a bearer token. When

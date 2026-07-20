@@ -7,7 +7,7 @@ import pytest
 from tests.utils import download_and_save, parse_json_to_model
 
 if TYPE_CHECKING:
-    from tminidb import Tminidb
+    from tminidb import TMiniDB
     from tminidb.search_multi import SearchMulti
     from tminidb.search_multi.grouped import SearchMultiGrouped
 
@@ -39,12 +39,12 @@ QUERY = MOVIE_TEST_DATA[0].query
 
 
 @pytest.fixture(scope="session")
-def endpoint(client: Tminidb) -> SearchMulti:
+def endpoint(client: TMiniDB) -> SearchMulti:
     return client.search_multi
 
 
 @pytest.fixture(scope="session")
-def grouped_endpoint(client: Tminidb) -> SearchMultiGrouped:
+def grouped_endpoint(client: TMiniDB) -> SearchMultiGrouped:
     return client.search_multi_grouped
 
 
@@ -95,7 +95,7 @@ def test_grouped_invalid(grouped_endpoint: SearchMultiGrouped) -> None:
 
 
 @pytest.mark.parametrize("page", [1, 2])
-def test_log_id(endpoint: SearchMulti, client: Tminidb, page: int) -> None:
+def test_log_id(endpoint: SearchMulti, client: TMiniDB, page: int) -> None:
     expected = f"SearchMulti query={QUERY!r}"
     if page != 1:
         expected += f" page={page!r}"

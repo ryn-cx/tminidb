@@ -8,14 +8,14 @@ import pytest
 from tests.utils import download_and_save, parse_json_to_model
 
 if TYPE_CHECKING:
-    from tminidb import Tminidb
+    from tminidb import TMiniDB
     from tminidb.search_movie import SearchMovie
 
 QUERY = "The Matrix"
 
 
 @pytest.fixture(scope="session")
-def endpoint(client: Tminidb) -> SearchMovie:
+def endpoint(client: TMiniDB) -> SearchMovie:
     return client.search_movie
 
 

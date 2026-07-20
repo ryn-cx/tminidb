@@ -5,7 +5,7 @@ from __future__ import annotations
 
 
 class TminidbError(Exception):
-    """Base exception for Tminidb."""
+    """Base exception for TMiniDB."""
 
 
 class HTTPError(TminidbError):

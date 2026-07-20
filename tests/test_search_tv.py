@@ -8,14 +8,14 @@ import pytest
 from tests.utils import download_and_save, parse_json_to_model
 
 if TYPE_CHECKING:
-    from tminidb import Tminidb
+    from tminidb import TMiniDB
     from tminidb.search_tv import SearchTv
 
 QUERY = "Breaking Bad"
 
 
 @pytest.fixture(scope="session")
-def endpoint(client: Tminidb) -> SearchTv:
+def endpoint(client: TMiniDB) -> SearchTv:
     return client.search_tv
 
 

@@ -1,4 +1,4 @@
-"""Rebuilds Tminidb models."""
+"""Rebuilds TMiniDB models."""
 
 import logging
 
