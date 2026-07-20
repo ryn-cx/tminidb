@@ -16,7 +16,7 @@ logger.addHandler(NullHandler())
 class TvWatchProviders(BaseEndpoint[TvWatchProvidersModel]):
     """Manage the TV watch providers file.
 
-    Wraps ``GET /tv/{series_id}/watch/providers``:
+    Wraps `GET /tv/{series_id}/watch/providers`:
     https://developer.themoviedb.org/reference/tv-series-watch-providers
     """
 

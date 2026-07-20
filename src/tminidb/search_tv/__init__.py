@@ -16,7 +16,7 @@ logger.addHandler(NullHandler())
 class SearchTv(BaseEndpoint[SearchTvModel]):
     """Manage the search TV file.
 
-    Wraps ``GET /search/tv``:
+    Wraps `GET /search/tv`:
     https://developer.themoviedb.org/reference/search-tv
     """
 

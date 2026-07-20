@@ -1,3 +1,4 @@
+# TODO: Validate
 """Utils."""
 
 from __future__ import annotations
@@ -30,39 +31,34 @@ def get_json_path(
     return endpoint.json_files_folder() / f"{name}.json"
 
 
-def parse_json[T: GAPIBaseModel](endpoint: BaseEndpoint[T], name: str) -> T:
+def parse_json_to_model[T: GAPIBaseModel](endpoint: BaseEndpoint[T], name: str) -> T:
     json_path = get_json_path(endpoint, name)
     return endpoint.parse(json.loads(json_path.read_text()))
 
 
-# The loaders below produce each input shape that an ``extract`` helper accepts,
-# so extraction tests can parametrize over a single ``load`` callable.
-def single_dict(endpoint: BaseEndpoint[Any], name: str) -> dict[str, Any]:
-    """A single recorded page as a raw dict."""
+def parse_json_to_dict(endpoint: BaseEndpoint[Any], name: str) -> dict[str, Any]:
     return json.loads(get_json_path(endpoint, name).read_text())
 
 
-def page_dicts(
+def parse_json_to_list_of_dicts(
     endpoint: BaseEndpoint[Any],
     name: str,
     *,
     folder: str | None = None,
 ) -> list[dict[str, Any]]:
-    """Recorded page(s) as a list of raw dicts, wrapping a single page."""
     content: list[dict[str, Any]] | dict[str, Any] = json.loads(
         get_json_path(endpoint, name, folder=folder).read_text(),
     )
     return content if isinstance(content, list) else [content]
 
 
-def page_models[T: GAPIBaseModel](
+def parse_json_to_list_of_models[T: GAPIBaseModel](
     endpoint: BaseEndpoint[T],
     name: str,
     *,
     folder: str | None = None,
 ) -> list[T]:
-    """Recorded page(s) as a list of parsed models, wrapping a single page."""
-    return [endpoint.parse(page) for page in page_dicts(endpoint, name, folder=folder)]
+    return [endpoint.parse(page) for page in parse_json_to_list_of_dicts(endpoint, name, folder=folder)]
 
 
 def download_and_save(

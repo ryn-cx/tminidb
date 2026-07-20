@@ -16,7 +16,7 @@ logger.addHandler(NullHandler())
 class TvSeriesDetails(BaseEndpoint[TvSeriesDetailsModel]):
     """Manage the TV series details file.
 
-    Wraps ``GET /tv/{series_id}``:
+    Wraps `GET /tv/{series_id}`:
     https://developer.themoviedb.org/reference/tv-series-details
     """
 

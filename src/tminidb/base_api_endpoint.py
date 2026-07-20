@@ -27,7 +27,7 @@ class BaseEndpoint[T: GAPIBaseModel](GAPIClient[T]):
         log_id: str,
         **args: tuple[object, object],
     ) -> str:
-        """Append ``name=value`` for each arg whose value differs from its default."""
+        """Append `name=value` for each arg whose value differs from its default."""
         for name, (value, default) in args.items():
             if value != default:
                 log_id += f" {name}={value!r}"

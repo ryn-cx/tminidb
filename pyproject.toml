@@ -26,10 +26,10 @@ requires = ["uv_build>=0.9.18,<0.10.0"]
 build-backend = "uv_build"
 
 [tool.ty.src]
-exclude = ["**/models.py"]
+exclude = ["**/models.py", "**/grouped_models.py"]
 
 [[tool.mypy.overrides]]
-module = ["*.models", "models"]
+module = ["*.models", "models", "*.grouped_models"]
 ignore_errors = true
 
 [tool.ruff.lint]

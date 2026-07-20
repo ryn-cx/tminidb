@@ -16,7 +16,7 @@ logger.addHandler(NullHandler())
 class MovieDetails(BaseEndpoint[MovieDetailsModel]):
     """Manage the movie details file.
 
-    Wraps ``GET /movie/{movie_id}``:
+    Wraps `GET /movie/{movie_id}`:
     https://developer.themoviedb.org/reference/movie-details
     """
 

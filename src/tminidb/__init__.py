@@ -14,6 +14,8 @@ from tminidb.exceptions import HTTPError
 from tminidb.movie_details import MovieDetails
 from tminidb.movie_watch_providers import MovieWatchProviders
 from tminidb.search_movie import SearchMovie
+from tminidb.search_multi import SearchMulti
+from tminidb.search_multi.grouped import SearchMultiGrouped
 from tminidb.search_tv import SearchTv
 from tminidb.tv_episode_details import TvEpisodeDetails
 from tminidb.tv_season_details import TvSeasonDetails
@@ -42,10 +44,10 @@ class Tminidb:
 
         Args:
             access_token: TMDB API Read Access Token used as a bearer token. When
-                omitted, it is loaded lazily from the ``TMDB_ACCESS_TOKEN``
+                omitted, it is loaded lazily from the `TMDB_ACCESS_TOKEN`
                 credential the first time a request is made.
             get_around_client: HTTP client to use. Defaults to a direct client.
-            language: Default ``ISO 639-1`` language sent with every request.
+            language: Default `ISO 639-1` language sent with every request.
             timeout: Request timeout in seconds.
         """
         self._access_token_value = access_token
@@ -54,6 +56,8 @@ class Tminidb:
         self.timeout = timeout
 
         self.search_movie = SearchMovie(self)
+        self.search_multi = SearchMulti(self)
+        self.search_multi_grouped = SearchMultiGrouped(self)
         self.search_tv = SearchTv(self)
         self.movie_details = MovieDetails(self)
         self.movie_watch_providers = MovieWatchProviders(self)
@@ -78,7 +82,7 @@ class Tminidb:
     ) -> dict[str, Any]:
         """Downloads data from the API for a given endpoint.
 
-        Parameters whose value is ``None`` are dropped so optional filters are
+        Parameters whose value is `None` are dropped so optional filters are
         only sent when explicitly provided.
         """
         url = f"{BASE_API_URL}/{endpoint}"

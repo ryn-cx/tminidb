@@ -16,7 +16,7 @@ logger.addHandler(NullHandler())
 class MovieWatchProviders(BaseEndpoint[MovieWatchProvidersModel]):
     """Manage the movie watch providers file.
 
-    Wraps ``GET /movie/{movie_id}/watch/providers``:
+    Wraps `GET /movie/{movie_id}/watch/providers`:
     https://developer.themoviedb.org/reference/movie-watch-providers
     """
 

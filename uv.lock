@@ -212,7 +212,7 @@ dependencies = [
 [[package]]
 name = "good-ass-pydantic-integrator"
 version = "0.0.1"
-source = { git = "https://github.com/ryn-cx/good-ass-pydantic-integrator#c05b53fc7409c6f19655073748522fcaa96e2d60" }
+source = { git = "https://github.com/ryn-cx/good-ass-pydantic-integrator#f2801ba70c720bc9a07b392ed1cda72527b4d83c" }
 dependencies = [
     { name = "datamodel-code-generator" },
     { name = "degenson" },

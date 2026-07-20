@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import assert_error, download_and_save, parse_json
+from tests.utils import assert_error, download_and_save, parse_json_to_model
 from tminidb.exceptions import HTTPError
 
 if TYPE_CHECKING:
@@ -33,7 +33,7 @@ class TestTvSeasonDetails:
         )
 
     def test_parse(self, endpoint: TvSeasonDetails) -> None:
-        data = parse_json(endpoint, NAME)
+        data = parse_json_to_model(endpoint, NAME)
         assert data is not None
 
     def test_invalid_download(self, endpoint: TvSeasonDetails) -> None:

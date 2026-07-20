@@ -16,7 +16,7 @@ logger.addHandler(NullHandler())
 class SearchMovie(BaseEndpoint[SearchMovieModel]):
     """Manage the search movie file.
 
-    Wraps ``GET /search/movie``:
+    Wraps `GET /search/movie`:
     https://developer.themoviedb.org/reference/search-movie
     """
 
