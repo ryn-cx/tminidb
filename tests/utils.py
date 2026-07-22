@@ -58,7 +58,10 @@ def parse_json_to_list_of_models[T: GAPIBaseModel](
     *,
     folder: str | None = None,
 ) -> list[T]:
-    return [endpoint.parse(page) for page in parse_json_to_list_of_dicts(endpoint, name, folder=folder)]
+    return [
+        endpoint.parse(page)
+        for page in parse_json_to_list_of_dicts(endpoint, name, folder=folder)
+    ]
 
 
 def download_and_save(

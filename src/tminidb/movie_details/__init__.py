@@ -22,20 +22,6 @@ class MovieDetails(BaseEndpoint[MovieDetailsModel]):
 
     _response_model = MovieDetailsModel
 
-    def get_log_id(
-        self,
-        movie_id: int,
-        *,
-        append_to_response: str | None = None,
-        language: str | None = None,
-    ) -> str:
-        """Build the log id for a download."""
-        return self.append_non_default_args(
-            f"{self.__class__.__name__} {movie_id=}",
-            append_to_response=(append_to_response, None),
-            language=(language, None),
-        )
-
     def download(
         self,
         movie_id: int,
@@ -44,17 +30,14 @@ class MovieDetails(BaseEndpoint[MovieDetailsModel]):
         language: str | None = None,
     ) -> dict[str, Any]:
         """Downloads the movie details file."""
+        log_id = self.get_log_id(self.download, locals())
         return self._client.download(
             f"movie/{movie_id}",
             {
                 "append_to_response": append_to_response,
                 "language": language or self._client.language,
             },
-            log_id=self.get_log_id(
-                movie_id,
-                append_to_response=append_to_response,
-                language=language,
-            ),
+            log_id=log_id,
         )
 
     def download_and_parse(

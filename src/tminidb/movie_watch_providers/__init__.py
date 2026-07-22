@@ -22,16 +22,13 @@ class MovieWatchProviders(BaseEndpoint[MovieWatchProvidersModel]):
 
     _response_model = MovieWatchProvidersModel
 
-    def get_log_id(self, movie_id: int) -> str:
-        """Build the log id for a download."""
-        return f"{self.__class__.__name__} {movie_id=}"
-
     def download(self, movie_id: int) -> dict[str, Any]:
         """Downloads the movie watch providers file."""
+        log_id = self.get_log_id(self.download, locals())
         return self._client.download(
             f"movie/{movie_id}/watch/providers",
             {},
-            log_id=self.get_log_id(movie_id),
+            log_id=log_id,
         )
 
     def download_and_parse(self, movie_id: int) -> MovieWatchProvidersModel:

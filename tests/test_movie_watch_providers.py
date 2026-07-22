@@ -40,10 +40,3 @@ class TestMovieWatchProviders:
             lambda: endpoint.download(INVALID_MOVIE_ID),
             HTTPError,
         )
-
-
-def test_log_id(endpoint: MovieWatchProviders) -> None:
-    assert (
-        endpoint.get_log_id(MOVIE_ID)
-        == f"MovieWatchProviders movie_id={MOVIE_ID!r}"
-    )

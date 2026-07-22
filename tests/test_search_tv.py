@@ -26,11 +26,3 @@ class TestSearchTv:
     def test_parse(self, endpoint: SearchTv) -> None:
         data = parse_json_to_model(endpoint, QUERY)
         assert data is not None
-
-
-@pytest.mark.parametrize("page", [1, 2])
-def test_log_id(endpoint: SearchTv, page: int) -> None:
-    expected = f"SearchTv query={QUERY!r}"
-    if page != 1:
-        expected += f" page={page!r}"
-    assert endpoint.get_log_id(QUERY, page=page) == expected

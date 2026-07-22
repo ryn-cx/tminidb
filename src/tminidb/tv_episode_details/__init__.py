@@ -22,23 +22,6 @@ class TvEpisodeDetails(BaseEndpoint[TvEpisodeDetailsModel]):
 
     _response_model = TvEpisodeDetailsModel
 
-    def get_log_id(
-        self,
-        series_id: int,
-        season_number: int,
-        episode_number: int,
-        *,
-        append_to_response: str | None = None,
-        language: str | None = None,
-    ) -> str:
-        """Build the log id for a download."""
-        return self.append_non_default_args(
-            f"{self.__class__.__name__} {series_id=} {season_number=} "
-            f"{episode_number=}",
-            append_to_response=(append_to_response, None),
-            language=(language, None),
-        )
-
     def download(
         self,
         series_id: int,
@@ -49,19 +32,14 @@ class TvEpisodeDetails(BaseEndpoint[TvEpisodeDetailsModel]):
         language: str | None = None,
     ) -> dict[str, Any]:
         """Downloads the TV episode details file."""
+        log_id = self.get_log_id(self.download, locals())
         return self._client.download(
             f"tv/{series_id}/season/{season_number}/episode/{episode_number}",
             {
                 "append_to_response": append_to_response,
                 "language": language or self._client.language,
             },
-            log_id=self.get_log_id(
-                series_id,
-                season_number,
-                episode_number,
-                append_to_response=append_to_response,
-                language=language,
-            ),
+            log_id=log_id,
         )
 
     def download_and_parse(

@@ -15,7 +15,6 @@ from tminidb.movie_details import MovieDetails
 from tminidb.movie_watch_providers import MovieWatchProviders
 from tminidb.search_movie import SearchMovie
 from tminidb.search_multi import SearchMulti
-from tminidb.search_multi.grouped import SearchMultiGrouped
 from tminidb.search_tv import SearchTv
 from tminidb.tv_episode_details import TvEpisodeDetails
 from tminidb.tv_season_details import TvSeasonDetails
@@ -57,7 +56,6 @@ class TMiniDB:
 
         self.search_movie = SearchMovie(self)
         self.search_multi = SearchMulti(self)
-        self.search_multi_grouped = SearchMultiGrouped(self)
         self.search_tv = SearchTv(self)
         self.movie_details = MovieDetails(self)
         self.movie_watch_providers = MovieWatchProviders(self)

@@ -40,10 +40,3 @@ class TestTvWatchProviders:
             lambda: endpoint.download(INVALID_SERIES_ID),
             HTTPError,
         )
-
-
-def test_log_id(endpoint: TvWatchProviders) -> None:
-    assert (
-        endpoint.get_log_id(SERIES_ID)
-        == f"TvWatchProviders series_id={SERIES_ID!r}"
-    )

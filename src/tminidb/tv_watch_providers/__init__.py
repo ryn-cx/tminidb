@@ -22,16 +22,13 @@ class TvWatchProviders(BaseEndpoint[TvWatchProvidersModel]):
 
     _response_model = TvWatchProvidersModel
 
-    def get_log_id(self, series_id: int) -> str:
-        """Build the log id for a download."""
-        return f"{self.__class__.__name__} {series_id=}"
-
     def download(self, series_id: int) -> dict[str, Any]:
         """Downloads the TV watch providers file."""
+        log_id = self.get_log_id(self.download, locals())
         return self._client.download(
             f"tv/{series_id}/watch/providers",
             {},
-            log_id=self.get_log_id(series_id),
+            log_id=log_id,
         )
 
     def download_and_parse(self, series_id: int) -> TvWatchProvidersModel:

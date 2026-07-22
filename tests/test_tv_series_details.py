@@ -40,12 +40,3 @@ class TestTvSeriesDetails:
             lambda: endpoint.download(INVALID_SERIES_ID),
             HTTPError,
         )
-
-
-@pytest.mark.parametrize("language", [None, "fr-FR"])
-def test_log_id(endpoint: TvSeriesDetails, language: str | None) -> None:
-    kwargs: dict[str, str] = {} if language is None else {"language": language}
-    expected = f"TvSeriesDetails series_id={SERIES_ID!r}"
-    if language is not None:
-        expected += f" language={language!r}"
-    assert endpoint.get_log_id(SERIES_ID, **kwargs) == expected

@@ -22,28 +22,6 @@ class SearchMovie(BaseEndpoint[SearchMovieModel]):
 
     _response_model = SearchMovieModel
 
-    def get_log_id(  # noqa: PLR0913
-        self,
-        query: str,
-        *,
-        include_adult: bool = False,
-        language: str | None = None,
-        primary_release_year: str | None = None,
-        page: int = 1,
-        region: str | None = None,
-        year: str | None = None,
-    ) -> str:
-        """Build the log id for a download."""
-        return self.append_non_default_args(
-            f"{self.__class__.__name__} {query=}",
-            include_adult=(include_adult, False),
-            language=(language, None),
-            primary_release_year=(primary_release_year, None),
-            page=(page, 1),
-            region=(region, None),
-            year=(year, None),
-        )
-
     def download(  # noqa: PLR0913
         self,
         query: str,
@@ -56,6 +34,7 @@ class SearchMovie(BaseEndpoint[SearchMovieModel]):
         year: str | None = None,
     ) -> dict[str, Any]:
         """Downloads the search movie file."""
+        log_id = self.get_log_id(self.download, locals())
         return self._client.download(
             "search/movie",
             {
@@ -67,15 +46,7 @@ class SearchMovie(BaseEndpoint[SearchMovieModel]):
                 "region": region,
                 "year": year,
             },
-            log_id=self.get_log_id(
-                query,
-                include_adult=include_adult,
-                language=language,
-                primary_release_year=primary_release_year,
-                page=page,
-                region=region,
-                year=year,
-            ),
+            log_id=log_id,
         )
 
     def download_and_parse(  # noqa: PLR0913

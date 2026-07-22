@@ -22,26 +22,6 @@ class SearchTv(BaseEndpoint[SearchTvModel]):
 
     _response_model = SearchTvModel
 
-    def get_log_id(  # noqa: PLR0913
-        self,
-        query: str,
-        *,
-        first_air_date_year: int | None = None,
-        include_adult: bool = False,
-        language: str | None = None,
-        page: int = 1,
-        year: int | None = None,
-    ) -> str:
-        """Build the log id for a download."""
-        return self.append_non_default_args(
-            f"{self.__class__.__name__} {query=}",
-            first_air_date_year=(first_air_date_year, None),
-            include_adult=(include_adult, False),
-            language=(language, None),
-            page=(page, 1),
-            year=(year, None),
-        )
-
     def download(  # noqa: PLR0913
         self,
         query: str,
@@ -53,6 +33,7 @@ class SearchTv(BaseEndpoint[SearchTvModel]):
         year: int | None = None,
     ) -> dict[str, Any]:
         """Downloads the search TV file."""
+        log_id = self.get_log_id(self.download, locals())
         return self._client.download(
             "search/tv",
             {
@@ -63,14 +44,7 @@ class SearchTv(BaseEndpoint[SearchTvModel]):
                 "page": page,
                 "year": year,
             },
-            log_id=self.get_log_id(
-                query,
-                first_air_date_year=first_air_date_year,
-                include_adult=include_adult,
-                language=language,
-                page=page,
-                year=year,
-            ),
+            log_id=log_id,
         )
 
     def download_and_parse(  # noqa: PLR0913

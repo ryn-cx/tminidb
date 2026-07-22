@@ -9,7 +9,6 @@ from tests.utils import download_and_save, parse_json_to_model
 if TYPE_CHECKING:
     from tminidb import TMiniDB
     from tminidb.search_multi import SearchMulti
-    from tminidb.search_multi.grouped import SearchMultiGrouped
 
 
 class TestData(NamedTuple):
@@ -43,11 +42,6 @@ def endpoint(client: TMiniDB) -> SearchMulti:
     return client.search_multi
 
 
-@pytest.fixture(scope="session")
-def grouped_endpoint(client: TMiniDB) -> SearchMultiGrouped:
-    return client.search_multi_grouped
-
-
 @pytest.mark.parametrize("case", TEST_DATA, ids=lambda case: case.query)
 def test_download(endpoint: SearchMulti, case: TestData) -> None:
     download_and_save(endpoint, case.query, lambda: endpoint.download(case.query))
@@ -59,45 +53,9 @@ def test_parse_raw(endpoint: SearchMulti, case: TestData) -> None:
     assert case.expected_id in [item.id for item in model.results]
 
 
-@pytest.mark.parametrize("case", MOVIE_TEST_DATA, ids=lambda case: case.query)
-def test_grouped_movie(grouped_endpoint: SearchMultiGrouped, case: TestData) -> None:
-    model = parse_json_to_model(grouped_endpoint, case.query)
-    assert case.expected_id == model.results.movie[0].id
-
-
-@pytest.mark.parametrize("case", TV_TEST_DATA, ids=lambda case: case.query)
-def test_grouped_tv(grouped_endpoint: SearchMultiGrouped, case: TestData) -> None:
-    model = parse_json_to_model(grouped_endpoint, case.query)
-    assert case.expected_id == model.results.tv[0].id
-
-
-@pytest.mark.parametrize("case", PERSON_TEST_DATA, ids=lambda case: case.query)
-def test_grouped_person(grouped_endpoint: SearchMultiGrouped, case: TestData) -> None:
-    model = parse_json_to_model(grouped_endpoint, case.query)
-    # Equality cannot be used because there are multiple people with the same name so
-    # the first result is not the expected one.
-    assert case.expected_id in [item.id for item in model.results.person]
-
-
 def test_download_invalid(endpoint: SearchMulti) -> None:
     download_and_save(endpoint, INVALID_QUERY, lambda: endpoint.download(INVALID_QUERY))
 
 
 def test_parse_invalid(endpoint: SearchMulti) -> None:
     assert parse_json_to_model(endpoint, INVALID_QUERY).results == []
-
-
-def test_grouped_invalid(grouped_endpoint: SearchMultiGrouped) -> None:
-    model = parse_json_to_model(grouped_endpoint, INVALID_QUERY)
-    assert not model.results.movie
-    assert not model.results.tv
-    assert not model.results.person
-
-
-@pytest.mark.parametrize("page", [1, 2])
-def test_log_id(endpoint: SearchMulti, client: TMiniDB, page: int) -> None:
-    expected = f"SearchMulti query={QUERY!r}"
-    if page != 1:
-        expected += f" page={page!r}"
-    log_id = endpoint.get_log_id(QUERY, language=client.language, page=page)
-    assert log_id == expected
