@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from tminidb.base_api_endpoint import BaseEndpoint
 
 
-def get_json_path(
+def json_path(
     endpoint: GAPIClient[Any],
     name: str,
     *,
@@ -32,12 +32,12 @@ def get_json_path(
 
 
 def parse_json_to_model[T: GAPIBaseModel](endpoint: BaseEndpoint[T], name: str) -> T:
-    json_path = get_json_path(endpoint, name)
+    json_path = json_path(endpoint, name)
     return endpoint.parse(json.loads(json_path.read_text()))
 
 
 def parse_json_to_dict(endpoint: BaseEndpoint[Any], name: str) -> dict[str, Any]:
-    return json.loads(get_json_path(endpoint, name).read_text())
+    return json.loads(json_path(endpoint, name).read_text())
 
 
 def parse_json_to_list_of_dicts(
@@ -47,7 +47,7 @@ def parse_json_to_list_of_dicts(
     folder: str | None = None,
 ) -> list[dict[str, Any]]:
     content: list[dict[str, Any]] | dict[str, Any] = json.loads(
-        get_json_path(endpoint, name, folder=folder).read_text(),
+        json_path(endpoint, name, folder=folder).read_text(),
     )
     return content if isinstance(content, list) else [content]
 
@@ -71,7 +71,7 @@ def download_and_save(
     *,
     folder: str | None = None,
 ) -> Path:
-    json_path = get_json_path(endpoint, name, folder=folder)
+    json_path = json_path(endpoint, name, folder=folder)
     if json_path.exists():
         pytest.skip(f"File already recorded for {type(endpoint).__name__}/{name}")
     json_path.parent.mkdir(parents=True, exist_ok=True)
@@ -94,7 +94,7 @@ def assert_error(
 
 def get_error_path(endpoint: GAPIClient[Any], name: str) -> Path:
     folder = f"Errors/{endpoint.json_files_folder().name}"
-    return get_json_path(endpoint, name, folder=folder)
+    return json_path(endpoint, name, folder=folder)
 
 
 def record_error(

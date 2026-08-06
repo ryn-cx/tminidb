@@ -8,7 +8,7 @@ from http import HTTPStatus
 from logging import NullHandler, getLogger
 from typing import Any
 
-from get_around import GetAround, get_credential
+from get_around import GetAround
 
 from tminidb.exceptions import HTTPError
 from tminidb.movie_details import MovieDetails
@@ -26,7 +26,6 @@ logger.addHandler(NullHandler())
 
 API_DOMAIN = "api.themoviedb.org"
 BASE_API_URL = f"https://{API_DOMAIN}/3"
-ACCESS_TOKEN_CREDENTIAL = "TMDB_ACCESS_TOKEN"  # noqa: S105
 
 
 class TMiniDB:
@@ -34,25 +33,22 @@ class TMiniDB:
 
     def __init__(
         self,
-        access_token: str | None = None,
+        access_token: str,
         get_around_client: GetAround | None = None,
         language: str = "en-US",
-        timeout: int = 30,
     ) -> None:
         """Initialize the TMiniDB client.
 
         Args:
-            access_token: TMDB API Read Access Token used as a bearer token. When
-                omitted, it is loaded lazily from the `TMDB_ACCESS_TOKEN`
-                credential the first time a request is made.
+            access_token: TMDB API Read Access Token used as a bearer token.
+                Reading it from a credential store is the caller's job.
             get_around_client: HTTP client to use. Defaults to a direct client.
             language: Default `ISO 639-1` language sent with every request.
             timeout: Request timeout in seconds.
         """
-        self._access_token_value = access_token
+        self.access_token = access_token
         self.get_around_client = get_around_client or GetAround()
         self.language = language
-        self.timeout = timeout
 
         self.search_movie = SearchMovie(self)
         self.search_multi = SearchMulti(self)
@@ -63,13 +59,6 @@ class TMiniDB:
         self.tv_season_details = TvSeasonDetails(self)
         self.tv_episode_details = TvEpisodeDetails(self)
         self.tv_watch_providers = TvWatchProviders(self)
-
-    @property
-    def access_token(self) -> str:
-        """The bearer token, loaded from the credential store on first use."""
-        if not self._access_token_value:
-            self._access_token_value = get_credential(ACCESS_TOKEN_CREDENTIAL)
-        return self._access_token_value
 
     def download(
         self,
@@ -95,12 +84,10 @@ class TMiniDB:
             url,
             params={key: value for key, value in params.items() if value is not None},
             headers=headers,
-            timeout=self.timeout,
         )
 
         if response.status_code != HTTPStatus.OK:
-            msg = f"Unexpected response status code: {response.status_code}"
-            raise HTTPError(msg)
+            raise HTTPError(response.status_code, response.text)
 
         logger.debug("Downloaded %s (%.4f s)", log_id, time.monotonic() - start)
         return response.json()
