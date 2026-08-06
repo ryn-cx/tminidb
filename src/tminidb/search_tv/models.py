@@ -1,4 +1,3 @@
-# TODO: Validate
 from datetime import date
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict
@@ -14,7 +13,7 @@ class Result(GAPIBaseModel):
     original_name: str
     overview: str
     popularity: float
-    poster_path: str
+    poster_path: str | None
     first_air_date: date
     softcore: bool
     name: str

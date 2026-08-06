@@ -7,6 +7,7 @@ from logging import NullHandler, getLogger
 from typing import Any
 
 from tminidb.base_api_endpoint import BaseEndpoint
+from tminidb.exceptions import InvalidFileError
 from tminidb.tv_watch_providers.models import TvWatchProvidersModel
 
 logger = getLogger(__name__)
@@ -25,11 +26,14 @@ class TvWatchProviders(BaseEndpoint[TvWatchProvidersModel]):
     def download(self, series_id: int) -> dict[str, Any]:
         """Downloads the TV watch providers file."""
         log_id = self.get_log_id(self.download, locals())
-        return self._client.download(
+        data = self._client.download(
             f"tv/{series_id}/watch/providers",
             {},
             log_id=log_id,
         )
+        if data.get("id") != series_id:
+            raise InvalidFileError(field="series id", expected=series_id)
+        return data
 
     def download_and_parse(self, series_id: int) -> TvWatchProvidersModel:
         """Downloads and parses the TV watch providers file."""

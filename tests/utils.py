@@ -32,8 +32,8 @@ def json_path(
 
 
 def parse_json_to_model[T: GAPIBaseModel](endpoint: BaseEndpoint[T], name: str) -> T:
-    json_path = json_path(endpoint, name)
-    return endpoint.parse(json.loads(json_path.read_text()))
+    path = json_path(endpoint, name)
+    return endpoint.parse(json.loads(path.read_text()))
 
 
 def parse_json_to_dict(endpoint: BaseEndpoint[Any], name: str) -> dict[str, Any]:
@@ -71,12 +71,12 @@ def download_and_save(
     *,
     folder: str | None = None,
 ) -> Path:
-    json_path = json_path(endpoint, name, folder=folder)
-    if json_path.exists():
+    path = json_path(endpoint, name, folder=folder)
+    if path.exists():
         pytest.skip(f"File already recorded for {type(endpoint).__name__}/{name}")
-    json_path.parent.mkdir(parents=True, exist_ok=True)
-    json_path.write_text(json.dumps(get(), indent=2))
-    return json_path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(get(), indent=2))
+    return path
 
 
 def assert_error(
@@ -102,7 +102,7 @@ def record_error(
     name: str,
     data: dict[str, Any] | None = None,
 ) -> None:
-    json_path = get_error_path(endpoint, name)
-    json_path.parent.mkdir(parents=True, exist_ok=True)
+    path = get_error_path(endpoint, name)
+    path.parent.mkdir(parents=True, exist_ok=True)
     content = json.dumps(data, indent=2) if data is not None else ""
-    json_path.write_text(content)
+    path.write_text(content)

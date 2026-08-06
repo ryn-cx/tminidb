@@ -7,6 +7,7 @@ from logging import NullHandler, getLogger
 from typing import Any
 
 from tminidb.base_api_endpoint import BaseEndpoint
+from tminidb.exceptions import InvalidFileError
 from tminidb.search_tv.models import SearchTvModel
 
 logger = getLogger(__name__)
@@ -34,7 +35,7 @@ class SearchTv(BaseEndpoint[SearchTvModel]):
     ) -> dict[str, Any]:
         """Downloads the search TV file."""
         log_id = self.get_log_id(self.download, locals())
-        return self._client.download(
+        data = self._client.download(
             "search/tv",
             {
                 "query": query,
@@ -46,6 +47,11 @@ class SearchTv(BaseEndpoint[SearchTvModel]):
             },
             log_id=log_id,
         )
+        # Nothing but the page echoes the query, so that and the results
+        # are what get checked.
+        if data.get("page") != page or data.get("results") is None:
+            raise InvalidFileError(field="search page", expected=page)
+        return data
 
     def download_and_parse(  # noqa: PLR0913
         self,

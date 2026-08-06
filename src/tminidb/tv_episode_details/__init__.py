@@ -7,6 +7,7 @@ from logging import NullHandler, getLogger
 from typing import Any
 
 from tminidb.base_api_endpoint import BaseEndpoint
+from tminidb.exceptions import InvalidFileError
 from tminidb.tv_episode_details.models import TvEpisodeDetailsModel
 
 logger = getLogger(__name__)
@@ -33,7 +34,7 @@ class TvEpisodeDetails(BaseEndpoint[TvEpisodeDetailsModel]):
     ) -> dict[str, Any]:
         """Downloads the TV episode details file."""
         log_id = self.get_log_id(self.download, locals())
-        return self._client.download(
+        data = self._client.download(
             f"tv/{series_id}/season/{season_number}/episode/{episode_number}",
             {
                 "append_to_response": append_to_response,
@@ -41,6 +42,13 @@ class TvEpisodeDetails(BaseEndpoint[TvEpisodeDetailsModel]):
             },
             log_id=log_id,
         )
+        # `id` is the episode's own id, so the season and episode numbers are
+        # what identify the file as the one that was asked for.
+        if data.get("season_number") != season_number:
+            raise InvalidFileError(field="season number", expected=season_number)
+        if data.get("episode_number") != episode_number:
+            raise InvalidFileError(field="episode number", expected=episode_number)
+        return data
 
     def download_and_parse(
         self,

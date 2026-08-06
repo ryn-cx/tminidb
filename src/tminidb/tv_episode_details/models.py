@@ -1,4 +1,3 @@
-# TODO: Validate
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict
 from datetime import date
@@ -42,8 +41,8 @@ class TvEpisodeDetailsModel(GAPIBaseModel):
     overview: str
     id: int
     production_code: str
-    runtime: int
+    runtime: int | None
     season_number: int
-    still_path: str
+    still_path: str | None
     vote_average: float
     vote_count: int

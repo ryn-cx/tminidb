@@ -7,6 +7,7 @@ from logging import NullHandler, getLogger
 from typing import Any
 
 from tminidb.base_api_endpoint import BaseEndpoint
+from tminidb.exceptions import InvalidFileError
 from tminidb.search_multi.models import SearchMultiModel
 
 logger = getLogger(__name__)
@@ -41,7 +42,7 @@ class SearchMulti(BaseEndpoint[SearchMultiModel]):
         """
         log_id = self.get_log_id(self.download, locals())
         language = language or self._client.language
-        return self._client.download(
+        data = self._client.download(
             "search/multi",
             {
                 "query": query,
@@ -51,6 +52,11 @@ class SearchMulti(BaseEndpoint[SearchMultiModel]):
             },
             log_id=log_id,
         )
+        # Nothing but the page echoes the query, so that and the results
+        # are what get checked.
+        if data.get("page") != page or data.get("results") is None:
+            raise InvalidFileError(field="search page", expected=page)
+        return data
 
     def download_and_parse(
         self,

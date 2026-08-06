@@ -1,4 +1,3 @@
-# TODO: Validate
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict, Field
 from datetime import date
@@ -33,17 +32,17 @@ class GuestStar(GAPIBaseModel):
 
 class Episode(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
-    air_date: date
+    air_date: date | None
     episode_number: int
     episode_type: str
     id: int
     name: str
     overview: str
     production_code: str
-    runtime: int
+    runtime: int | None
     season_number: int
     show_id: int
-    still_path: str
+    still_path: str | None
     vote_average: float
     vote_count: int
     crew: list[CrewItem]
@@ -59,7 +58,7 @@ class Network(GAPIBaseModel):
 class TvSeasonDetailsModel(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
     field_id: str = Field(..., alias='_id')
-    air_date: date
+    air_date: date | None
     episodes: list[Episode]
     name: str
     networks: list[Network]

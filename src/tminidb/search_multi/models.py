@@ -1,4 +1,4 @@
-# TODO: Validate
+from pydantic import Field
 from datetime import date
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict
@@ -16,7 +16,7 @@ class KnownForItem(GAPIBaseModel):
     original_language: str
     genre_ids: list[int]
     popularity: float
-    release_date: str | date | None = None
+    release_date: date | str | None = Field(default=None, union_mode='left_to_right')
     softcore: bool
     video: bool | None = None
     vote_average: float

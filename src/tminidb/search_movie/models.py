@@ -1,4 +1,4 @@
-# TODO: Validate
+from pydantic import Field
 from datetime import date
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict
@@ -15,7 +15,7 @@ class Result(GAPIBaseModel):
     overview: str
     popularity: float
     poster_path: str | None
-    release_date: str | date
+    release_date: date | str = Field(union_mode='left_to_right')
     softcore: bool
     video: bool
     vote_average: float

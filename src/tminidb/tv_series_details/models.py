@@ -9,7 +9,7 @@ class CreatedByItem(GAPIBaseModel):
     name: str
     original_name: str
     gender: int
-    profile_path: str
+    profile_path: str | None
 
 class Genre(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -27,10 +27,26 @@ class LastEpisodeToAir(GAPIBaseModel):
     episode_number: int
     episode_type: str
     production_code: str
-    runtime: int
+    runtime: int | None
     season_number: int
     show_id: int
-    still_path: str
+    still_path: str | None
+
+class NextEpisodeToAir(GAPIBaseModel):
+    model_config = ConfigDict(extra='forbid')
+    id: int
+    name: str
+    overview: str
+    vote_average: float
+    vote_count: int
+    air_date: date
+    episode_number: int
+    episode_type: str
+    production_code: str
+    runtime: int | None
+    season_number: int
+    show_id: int
+    still_path: str | None
 
 class Network(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -53,12 +69,12 @@ class ProductionCountry(GAPIBaseModel):
 
 class Season(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
-    air_date: date
+    air_date: date | None
     episode_count: int
     id: int
     name: str
     overview: str
-    poster_path: str
+    poster_path: str | None
     season_number: int
     vote_average: float
 
@@ -83,7 +99,7 @@ class TvSeriesDetailsModel(GAPIBaseModel):
     last_air_date: date
     last_episode_to_air: LastEpisodeToAir
     name: str
-    next_episode_to_air: None
+    next_episode_to_air: NextEpisodeToAir | None
     networks: list[Network]
     number_of_episodes: int
     number_of_seasons: int
