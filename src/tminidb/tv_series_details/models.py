@@ -1,8 +1,6 @@
-# TODO: Validate
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict
 from datetime import date
-from typing import Any
 
 class CreatedByItem(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -75,7 +73,7 @@ class TvSeriesDetailsModel(GAPIBaseModel):
     adult: bool
     backdrop_path: str
     created_by: list[CreatedByItem]
-    episode_run_time: list[None]
+    episode_run_time: list[int]
     first_air_date: date
     genres: list[Genre]
     homepage: str
