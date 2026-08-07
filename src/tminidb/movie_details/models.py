@@ -1,3 +1,4 @@
+from pydantic import Field
 from good_ass_pydantic_integrator import GAPIBaseModel
 from pydantic import ConfigDict
 from datetime import date
@@ -35,13 +36,13 @@ class SpokenLanguage(GAPIBaseModel):
 class MovieDetailsModel(GAPIBaseModel):
     model_config = ConfigDict(extra='forbid')
     adult: bool
-    backdrop_path: str
-    belongs_to_collection: BelongsToCollection
+    backdrop_path: str | None
+    belongs_to_collection: BelongsToCollection | None
     budget: int
     genres: list[Genre]
     homepage: str
     id: int
-    imdb_id: str
+    imdb_id: str | None
     origin_country: list[str]
     original_language: str
     original_title: str
@@ -50,7 +51,7 @@ class MovieDetailsModel(GAPIBaseModel):
     poster_path: str
     production_companies: list[ProductionCompany]
     production_countries: list[ProductionCountry]
-    release_date: date
+    release_date: date | str = Field(union_mode='left_to_right')
     revenue: int
     runtime: int
     softcore: bool
