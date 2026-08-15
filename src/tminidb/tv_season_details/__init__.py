@@ -44,7 +44,11 @@ class TvSeasonDetails(BaseEndpoint[TvSeasonDetailsModel]):
         # `id` is the season's own id, so the season number is what identifies
         # the file as the one that was asked for.
         if data.get("season_number") != season_number:
-            raise InvalidFileError(field="season number", expected=season_number)
+            raise InvalidFileError(
+                field="season number",
+                expected=season_number,
+                response=data,
+            )
         return data
 
     def download_and_parse(

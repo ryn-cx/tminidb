@@ -52,7 +52,7 @@ class SearchMovie(BaseEndpoint[SearchMovieModel]):
         # Nothing but the page echoes the query, so that and the results
         # are what get checked.
         if data.get("page") != page or data.get("results") is None:
-            raise InvalidFileError(field="search page", expected=page)
+            raise InvalidFileError(field="search page", expected=page, response=data)
         return data
 
     def download_and_parse(  # noqa: PLR0913

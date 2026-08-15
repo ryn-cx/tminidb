@@ -32,7 +32,7 @@ class MovieWatchProviders(BaseEndpoint[MovieWatchProvidersModel]):
             log_id=log_id,
         )
         if data.get("id") != movie_id:
-            raise InvalidFileError(field="movie id", expected=movie_id)
+            raise InvalidFileError(field="movie id", expected=movie_id, response=data)
         return data
 
     def download_and_parse(self, movie_id: int) -> MovieWatchProvidersModel:

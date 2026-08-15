@@ -41,7 +41,7 @@ class TvEpisodeTranslations(BaseEndpoint[TvEpisodeTranslationsModel]):
         # the episode number, so there is nothing here that can be checked
         # against what was asked for, only that the id is present at all.
         if "id" not in data:
-            raise InvalidFileError(field="id")
+            raise InvalidFileError(field="id", response=data)
         return data
 
     def download_and_parse(

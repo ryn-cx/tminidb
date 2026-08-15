@@ -17,9 +17,11 @@ from tminidb.search_movie import SearchMovie
 from tminidb.search_multi import SearchMulti
 from tminidb.search_tv import SearchTv
 from tminidb.tv_episode_details import TvEpisodeDetails
+from tminidb.tv_episode_group_details import TvEpisodeGroupDetails
 from tminidb.tv_episode_translations import TvEpisodeTranslations
 from tminidb.tv_season_details import TvSeasonDetails
 from tminidb.tv_series_details import TvSeriesDetails
+from tminidb.tv_series_episode_groups import TvSeriesEpisodeGroups
 from tminidb.tv_watch_providers import TvWatchProviders
 
 logger = getLogger(__name__)
@@ -57,8 +59,10 @@ class TMiniDB:
         self.movie_details = MovieDetails(self)
         self.movie_watch_providers = MovieWatchProviders(self)
         self.tv_series_details = TvSeriesDetails(self)
+        self.tv_series_episode_groups = TvSeriesEpisodeGroups(self)
         self.tv_season_details = TvSeasonDetails(self)
         self.tv_episode_details = TvEpisodeDetails(self)
+        self.tv_episode_group_details = TvEpisodeGroupDetails(self)
         self.tv_episode_translations = TvEpisodeTranslations(self)
         self.tv_watch_providers = TvWatchProviders(self)
 

@@ -1,5 +1,5 @@
 # TODO: Validate
-"""Contains the TvWatchProviders class."""
+"""Contains the TvSeriesEpisodeGroups class."""
 
 from __future__ import annotations
 
@@ -8,26 +8,26 @@ from typing import Any
 
 from tminidb.base_api_endpoint import BaseEndpoint
 from tminidb.exceptions import InvalidFileError
-from tminidb.tv_watch_providers.models import TvWatchProvidersModel
+from tminidb.tv_series_episode_groups.models import TvSeriesEpisodeGroupsModel
 
 logger = getLogger(__name__)
 logger.addHandler(NullHandler())
 
 
-class TvWatchProviders(BaseEndpoint[TvWatchProvidersModel]):
-    """Manage the TV watch providers file.
+class TvSeriesEpisodeGroups(BaseEndpoint[TvSeriesEpisodeGroupsModel]):
+    """Manage the TV series episode groups file.
 
-    Wraps `GET /tv/{series_id}/watch/providers`:
-    https://developer.themoviedb.org/reference/tv-series-watch-providers
+    Wraps `GET /tv/{series_id}/episode_groups`:
+    https://developer.themoviedb.org/reference/tv-series-episode-groups
     """
 
-    _response_model = TvWatchProvidersModel
+    _response_model = TvSeriesEpisodeGroupsModel
 
     def download(self, series_id: int) -> dict[str, Any]:
-        """Downloads the TV watch providers file."""
+        """Downloads the TV series episode groups file."""
         log_id = self.get_log_id(self.download, locals())
         data = self._client.download(
-            f"tv/{series_id}/watch/providers",
+            f"tv/{series_id}/episode_groups",
             {},
             log_id=log_id,
         )
@@ -35,6 +35,6 @@ class TvWatchProviders(BaseEndpoint[TvWatchProvidersModel]):
             raise InvalidFileError(field="series id", expected=series_id, response=data)
         return data
 
-    def download_and_parse(self, series_id: int) -> TvWatchProvidersModel:
-        """Downloads and parses the TV watch providers file."""
+    def download_and_parse(self, series_id: int) -> TvSeriesEpisodeGroupsModel:
+        """Downloads and parses the TV series episode groups file."""
         return self.parse(self.download(series_id))

@@ -41,7 +41,7 @@ class TvSeriesDetails(BaseEndpoint[TvSeriesDetailsModel]):
             log_id=log_id,
         )
         if data.get("id") != series_id:
-            raise InvalidFileError(field="series id", expected=series_id)
+            raise InvalidFileError(field="series id", expected=series_id, response=data)
         return data
 
     def download_and_parse(
