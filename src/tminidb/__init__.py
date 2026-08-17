@@ -11,15 +11,19 @@ from typing import Any
 from get_around import GetAround
 
 from tminidb.exceptions import HTTPError
+from tminidb.movie_changes import MovieChanges
 from tminidb.movie_details import MovieDetails
 from tminidb.movie_watch_providers import MovieWatchProviders
 from tminidb.search_movie import SearchMovie
 from tminidb.search_multi import SearchMulti
 from tminidb.search_tv import SearchTv
+from tminidb.tv_episode_changes import TvEpisodeChanges
 from tminidb.tv_episode_details import TvEpisodeDetails
 from tminidb.tv_episode_group_details import TvEpisodeGroupDetails
 from tminidb.tv_episode_translations import TvEpisodeTranslations
+from tminidb.tv_season_changes import TvSeasonChanges
 from tminidb.tv_season_details import TvSeasonDetails
+from tminidb.tv_series_changes import TvSeriesChanges
 from tminidb.tv_series_details import TvSeriesDetails
 from tminidb.tv_series_episode_groups import TvSeriesEpisodeGroups
 from tminidb.tv_watch_providers import TvWatchProviders
@@ -34,6 +38,7 @@ BASE_API_URL = f"https://{API_DOMAIN}/3"
 class TMiniDB:
     """The Movie Database (TMDB) API wrapper."""
 
+    # TODO: Validate
     def __init__(
         self,
         access_token: str,
@@ -57,6 +62,7 @@ class TMiniDB:
         self.search_multi = SearchMulti(self)
         self.search_tv = SearchTv(self)
         self.movie_details = MovieDetails(self)
+        self.movie_changes = MovieChanges(self)
         self.movie_watch_providers = MovieWatchProviders(self)
         self.tv_series_details = TvSeriesDetails(self)
         self.tv_series_episode_groups = TvSeriesEpisodeGroups(self)
@@ -65,6 +71,9 @@ class TMiniDB:
         self.tv_episode_group_details = TvEpisodeGroupDetails(self)
         self.tv_episode_translations = TvEpisodeTranslations(self)
         self.tv_watch_providers = TvWatchProviders(self)
+        self.tv_series_changes = TvSeriesChanges(self)
+        self.tv_season_changes = TvSeasonChanges(self)
+        self.tv_episode_changes = TvEpisodeChanges(self)
 
     def download(
         self,
