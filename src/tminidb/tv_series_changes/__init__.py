@@ -4,11 +4,15 @@
 from __future__ import annotations
 
 from logging import NullHandler, getLogger
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
+from tminidb._changes import download_chunks
 from tminidb.base_api_endpoint import BaseEndpoint
 from tminidb.exceptions import InvalidFileError
 from tminidb.tv_series_changes.models import TvSeriesChangesModel
+
+if TYPE_CHECKING:
+    from datetime import date
 
 logger = getLogger(__name__)
 logger.addHandler(NullHandler())
@@ -81,6 +85,57 @@ class TvSeriesChanges(BaseEndpoint[TvSeriesChangesModel]):
             self.download(
                 series_id,
                 start_date=start_date,
+                end_date=end_date,
+                page=page,
+            ),
+        )
+
+    # TODO: Validate
+    def download_since(
+        self,
+        series_id: int,
+        start_date: date,
+        *,
+        end_date: date | None = None,
+        page: int = 1,
+    ) -> dict[str, Any]:
+        """Downloads every TV series change since a date, 14 days at a time.
+
+        A window cannot be wider than 14 days, so a longer one is asked for a
+        chunk at a time and the chunks are merged into a single response of the
+        same shape a single window comes back in.
+
+        Args:
+            series_id: The TV series to read the changes of.
+            start_date: Oldest change to return.
+            end_date: Newest change to return. Defaults to today.
+            page: Page of changes to return from each window.
+        """
+        return download_chunks(
+            start_date,
+            end_date,
+            lambda chunk_start, chunk_end: self.download(
+                series_id,
+                start_date=chunk_start,
+                end_date=chunk_end,
+                page=page,
+            ),
+        )
+
+    # TODO: Validate
+    def download_and_parse_since(
+        self,
+        series_id: int,
+        start_date: date,
+        *,
+        end_date: date | None = None,
+        page: int = 1,
+    ) -> TvSeriesChangesModel:
+        """Downloads and parses every TV series change since a date."""
+        return self.parse(
+            self.download_since(
+                series_id,
+                start_date,
                 end_date=end_date,
                 page=page,
             ),
