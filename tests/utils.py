@@ -1,108 +1,143 @@
-# TODO: Validate
-"""Utils."""
-
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, Protocol, Self
 
 import pytest
 
-from tminidb.constants import FILES_PATH
+from tests.current_test import CURRENT_TEST
 
 if TYPE_CHECKING:
     from collections.abc import Callable
-    from pathlib import Path
-    from typing import Any
-
-    from good_ass_pydantic_integrator import GAPIBaseModel, GAPIClient
-
-    from tminidb.base_api_endpoint import BaseEndpoint
 
 
-def json_path(
-    endpoint: GAPIClient[Any],
+# TODO: Validate
+def _recording_path(folder: str, endpoint: type, name: str) -> Path:
+    """Returns the path a recording of `name` is kept at."""
+    root = Path(__file__).parent / folder / endpoint.__name__
+    return root / CURRENT_TEST.get() / f"{name}.json"
+
+
+# TODO: Validate
+class ResponseModel(Protocol):
+    """A model that is read from an API response.
+
+    Every endpoint reads its response into its own model, and what they have in
+    common is only that they are read from one, so that is what is asked for
+    here rather than a shared base class.
+    """
+
+    # TODO: Validate
+    @classmethod
+    def from_response(cls, data: dict[str, Any]) -> Self:
+        """Returns the model the response is read into."""
+        ...
+
+    # TODO: Validate
+    @classmethod
+    def model_validate_json(cls, json_data: str) -> Self:
+        """Returns the model read back from its recorded dump."""
+        ...
+
+    # TODO: Validate
+    def model_dump(self, *, mode: str) -> dict[str, Any]:
+        """Returns the model as the data it is recorded as."""
+        ...
+
+
+def recorded_file_path(endpoint: type, name: str) -> Path:
+    """Returns the path of the recorded file."""
+    return _recording_path("_files", endpoint, name)
+
+
+def recorded_content(endpoint: type, name: str) -> dict[str, Any]:
+    """Returns the content of the recorded file."""
+    path = recorded_file_path(endpoint, name)
+    if not path.exists():
+        pytest.skip(f"No recorded response for {name}")
+    content: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
+    return content
+
+
+# TODO: Validate
+def new_file_path(endpoint: type, name: str) -> Path:
+    """Returns the path a response that does not match its recording is put."""
+    return _recording_path("_new_files", endpoint, name)
+
+
+# TODO: Validate
+def record_test(
+    endpoint: type,
     name: str,
-    *,
-    folder: str | None = None,
-) -> Path:
-    if folder is not None:
-        return FILES_PATH / folder / f"{name}.json"
-    return endpoint.json_files_folder() / f"{name}.json"
-
-
-def parse_json_to_model[T: GAPIBaseModel](endpoint: BaseEndpoint[T], name: str) -> T:
-    path = json_path(endpoint, name)
-    return endpoint.parse(json.loads(path.read_text()))
-
-
-def parse_json_to_dict(endpoint: BaseEndpoint[Any], name: str) -> dict[str, Any]:
-    return json.loads(json_path(endpoint, name).read_text())
-
-
-def parse_json_to_list_of_dicts(
-    endpoint: BaseEndpoint[Any],
-    name: str,
-    *,
-    folder: str | None = None,
-) -> list[dict[str, Any]]:
-    content: list[dict[str, Any]] | dict[str, Any] = json.loads(
-        json_path(endpoint, name, folder=folder).read_text(),
-    )
-    return content if isinstance(content, list) else [content]
-
-
-def parse_json_to_list_of_models[T: GAPIBaseModel](
-    endpoint: BaseEndpoint[T],
-    name: str,
-    *,
-    folder: str | None = None,
-) -> list[T]:
-    return [
-        endpoint.parse(page)
-        for page in parse_json_to_list_of_dicts(endpoint, name, folder=folder)
-    ]
-
-
-def download_and_save(
-    endpoint: GAPIClient[Any],
-    name: str,
-    get: Callable[[], dict[str, Any] | list[dict[str, Any]]],
-    *,
-    folder: str | None = None,
-) -> Path:
-    path = json_path(endpoint, name, folder=folder)
-    if path.exists():
-        pytest.skip(f"File already recorded for {type(endpoint).__name__}/{name}")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(get(), indent=2))
-    return path
-
-
-def assert_error(
-    endpoint: GAPIClient[Any],
-    name: str,
-    download: Callable[[], object],
-    error: type[Exception],
+    download: Callable[[], dict[str, Any]],
 ) -> None:
-    if get_error_path(endpoint, name).exists():
-        pytest.skip(f"File already recorded for {type(endpoint).__name__}/{name}")
-    with pytest.raises(error) as excinfo:
-        download()
-    record_error(endpoint, name, getattr(excinfo.value, "response", None))
+    """Downloads a response and checks it against what was recorded.
+
+    Writing a recording fails the test rather than skipping it, because what was
+    just written is only whatever the API happened to answer: it has to be read
+    before it can stand in for correct.
+
+    A response that does not match its recording is written to `_new_files` and
+    the test fails. The recording is left alone, so the two can be diffed and
+    the new one moved over the old one once it has been looked at.
+    """
+    path = recorded_file_path(endpoint, name)
+    downloaded = download()
+
+    if not path.exists():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(downloaded, indent=2), encoding="utf-8")
+        pytest.fail(f"No recorded response for {name}, so it was recorded now")
+
+    new_path = new_file_path(endpoint, name)
+    if downloaded != json.loads(path.read_text(encoding="utf-8")):
+        new_path.parent.mkdir(parents=True, exist_ok=True)
+        new_path.write_text(json.dumps(downloaded, indent=2), encoding="utf-8")
+        pytest.fail(f"Response for {name} is not what was recorded, see {new_path}")
+
+    # What is in `_new_files` is whatever last failed to match, so a response
+    # that matches again clears it rather than leaving a stale mismatch behind.
+    new_path.unlink(missing_ok=True)
 
 
-def get_error_path(endpoint: GAPIClient[Any], name: str) -> Path:
-    folder = f"Errors/{endpoint.json_files_folder().name}"
-    return json_path(endpoint, name, folder=folder)
+# TODO: Validate
+def recorded_model_path(endpoint: type, name: str) -> Path:
+    """Returns the path of the recorded model dump."""
+    return _recording_path("_models", endpoint, name)
 
 
-def record_error(
-    endpoint: GAPIClient[Any],
+# TODO: Validate
+def recorded_model[ModelT: ResponseModel](
+    endpoint: type,
     name: str,
-    data: dict[str, Any] | None = None,
-) -> None:
-    path = get_error_path(endpoint, name)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    content = json.dumps(data, indent=2) if data is not None else ""
-    path.write_text(content)
+    model: ModelT,
+) -> ModelT:
+    """Returns `model` as it was recorded, writing the recording the first time.
+
+    A parse test compares what it read against this rather than against a model
+    it builds from the same response, because a model built from the response
+    mirrors whatever the reading does and cannot disagree with it.
+
+    Writing a recording fails the test rather than skipping it, because what was
+    just written is only whatever the reading currently produces: it is the
+    thing being checked and has to be read before it can stand in for correct.
+    """
+    path = recorded_model_path(endpoint, name)
+    if not path.exists():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            json.dumps(model.model_dump(mode="json"), indent=2),
+            encoding="utf-8",
+        )
+        pytest.fail(f"No recorded model for {name}, so it was recorded now")
+    return type(model).model_validate_json(path.read_text(encoding="utf-8"))
+
+
+# TODO: Validate
+def parse_test(endpoint: type, name: str, model: type[ResponseModel]) -> None:
+    """Reads a recorded response and checks it against the recorded model."""
+    data = recorded_content(endpoint, name)
+    parsed = model.from_response(data)
+
+    assert parsed == recorded_model(endpoint, name, parsed)

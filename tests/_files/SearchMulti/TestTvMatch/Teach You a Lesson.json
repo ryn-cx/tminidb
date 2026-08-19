@@ -1,0 +1,49 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/vyG93jhmPL7tBIhRtCLa5mdBKob.jpg",
+      "id": 276161,
+      "name": "Teach You a Lesson",
+      "original_name": "\ucc38\uad50\uc721",
+      "overview": "An inspector from the Educational Rights Protection Bureau (ERPB) who is authorized by the government to use physical intervention and unconventional methods to discipline delinquent students and reform the educational system.",
+      "poster_path": "/fMECSPrTmRClSViMsXFYmiYIcWP.jpg",
+      "media_type": "tv",
+      "original_language": "ko",
+      "genre_ids": [
+        10759,
+        18,
+        35
+      ],
+      "popularity": 67.8419,
+      "first_air_date": "2026-06-05",
+      "softcore": false,
+      "vote_average": 9.42,
+      "vote_count": 809,
+      "origin_country": [
+        "KR"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "id": 896977,
+      "title": "Teach You a Lesson",
+      "original_title": "Teach You a Lesson",
+      "overview": "In this alarming early short from Gregory King a 13-year-old boy's shoplifting escapade is narrated brilliantly by actress Madeleine Sami who performs the teenage boy incarnation of the Adult Man whose account of domestic abuse this is, while adult actors play the kids in the remembered story. What starts out as teen shenanigans (a porn stash is accrued with the five-finger discount) turns unsettling as a beating is doled out by Dad as punishment. The contrast between the naive voice and what is seen on screen - shot in hand-held close ups - is something unforgettable.",
+      "poster_path": null,
+      "media_type": "movie",
+      "original_language": "en",
+      "genre_ids": [],
+      "popularity": 0.7069,
+      "release_date": "2000-07-01",
+      "softcore": false,
+      "video": true,
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 2
+}

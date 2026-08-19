@@ -1,0 +1,1023 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "id": 5256874,
+      "name": "Anoushka",
+      "original_name": "Anoushka",
+      "media_type": "person",
+      "popularity": 0.0745,
+      "gender": 0,
+      "known_for_department": "Directing",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/h54hvX8Ea4uFzpA5KrHmokBuHF0.jpg",
+          "id": 1323809,
+          "title": "Donuts",
+          "original_title": "Donuts",
+          "overview": "two kids plan to shoot out their school independently, show up at the same and end up debating on how to go on with the situation.",
+          "poster_path": "/qn9Wofgnk9ezOuEgFk92gcpBNY2.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            18,
+            35,
+            80
+          ],
+          "popularity": 0.9805,
+          "release_date": "2024-07-29",
+          "softcore": false,
+          "video": false,
+          "vote_average": 7.0,
+          "vote_count": 1
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/cGf27QFuXoBsy5ZA87n8pu0lfvO.jpg",
+          "id": 1436801,
+          "title": "The Taste of It",
+          "original_title": "The Taste of It",
+          "overview": "Stirring the pot of solitude, a widow experiences a journey of rediscovery afterher only daughter moves out, navigating eviction and finding new beginnings when most chapters have closed.",
+          "poster_path": "/6GuV5jDgzMcz7wVeqo5Uav4vaci.jpg",
+          "media_type": "movie",
+          "original_language": "hi",
+          "genre_ids": [
+            18
+          ],
+          "popularity": 0.5442,
+          "release_date": "2024-09-21",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/3QtvPaoDmu5tbh0pvLtfxyRivZj.jpg",
+          "id": 1491496,
+          "title": "Oyster",
+          "original_title": "Oyster",
+          "overview": "An argument between an unhappy couple, triggered by the consumption of a bad bunch of oysters, escalates into a heated fight, due to the wife's desire for a child that in reality serves as a metaphor for her unfulfilled need for freedom her unhappy marriage.",
+          "poster_path": "/EnYMhmEZ96lbI5rQAuYZTwHUKR.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            18
+          ],
+          "popularity": 0.8488,
+          "release_date": "2023-07-22",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 2454088,
+      "name": "Anoushka",
+      "original_name": "Anoushka",
+      "media_type": "person",
+      "popularity": 0.2864,
+      "gender": 1,
+      "known_for_department": "Acting",
+      "profile_path": "/uyuqM2GX4ip0KpYTmRqkG8oRmH.jpg",
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/kmNQe4Hw0P6GJYEFl9GIbVysZcc.jpg",
+          "id": 395815,
+          "title": "Hepta: The Last Lecture",
+          "original_title": "\u0647\u064a\u0628\u062a\u0627: \u0627\u0644\u0645\u062d\u0627\u0636\u0631\u0629 \u0627\u0644\u0623\u062e\u064a\u0631\u0629",
+          "overview": "Based on the  best-selling novel of the same title.  Dr. Shukri Mokhtar is a renowned social psychology specialist, best known for his ability to answer the simplest questions, who decides to give one last lecture about the very simple question: \"how do we love?\"  He gives a full description of the different stages of love by recounting four different love stories going through curves and various crises.",
+          "poster_path": "/sKAfFMWmZpQgvul25JMQcdTeruR.jpg",
+          "media_type": "movie",
+          "original_language": "ar",
+          "genre_ids": [
+            10749,
+            18
+          ],
+          "popularity": 0.7116,
+          "release_date": "2016-04-20",
+          "softcore": false,
+          "video": false,
+          "vote_average": 7.689,
+          "vote_count": 37
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/ikJpPwOA6I7LDyzaxAvY3PUxzmI.jpg",
+          "id": 71688,
+          "name": "Grand Hotel",
+          "original_name": "\u062c\u0631\u0627\u0646\u062f \u0627\u0648\u062a\u064a\u0644",
+          "overview": "In the 1950s, Ali, a young man, arrives at the Grand Hotel in the beautiful city of Aswan to investigate the disappearance of his younger sister. He gets a job as a waiter and falls in love with the daughter of the owner \"Nazly\". Nazly starts to help him to discover the truth about his sister's disappearance. Then the story takes a different twist to discover all the secrets and mysteries hidden in the wonderful Grand Hotel.",
+          "poster_path": "/gXKdgR3WhYa6ay9TEaU4fnL6bJq.jpg",
+          "media_type": "tv",
+          "original_language": "ar",
+          "genre_ids": [
+            18,
+            9648
+          ],
+          "popularity": 4.5949,
+          "first_air_date": "2016-05-01",
+          "softcore": false,
+          "vote_average": 7.3,
+          "vote_count": 20,
+          "origin_country": [
+            "EG"
+          ]
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/yl1HCvy8nng3hfVQhlhhf2kk7BK.jpg",
+          "id": 1146759,
+          "title": "Face to Face",
+          "original_title": "\u0648\u0634 \u0641\u064a \u0648\u0634",
+          "overview": "Marital problems happen every day where one day the couple decided to involve others in their problems . During the clash of the parties , the metal door lock breaks down and everyone gets locked inside the apartment , at this moment the problem escalated into a disaster.",
+          "poster_path": "/dArWOecbhfPlp86rS448npv7xZn.jpg",
+          "media_type": "movie",
+          "original_language": "ar",
+          "genre_ids": [
+            18,
+            35
+          ],
+          "popularity": 0.669,
+          "release_date": "2023-08-16",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.429,
+          "vote_count": 14
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 1266861,
+      "name": "Anoushka Rava",
+      "original_name": "Anoushka Rava",
+      "media_type": "person",
+      "popularity": 0.2362,
+      "gender": 1,
+      "known_for_department": "Acting",
+      "profile_path": "/Ae0TZcmC8hrtnORhQwGsz8rHh6F.jpg",
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/z8xSqfnq4TYfD95vfqdDxbxp2FH.jpg",
+          "id": 37710,
+          "title": "The Tourist",
+          "original_title": "The Tourist",
+          "overview": "American tourist Frank meets mysterious British woman Elise on the train to Venice. Romance seems to bud, but there's more to her than meets the eye.",
+          "poster_path": "/qwfUH9gnvaXwvVRsgbL4L2jpLUz.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            28,
+            53,
+            10749
+          ],
+          "popularity": 5.9141,
+          "release_date": "2010-12-08",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.184,
+          "vote_count": 5816
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/5T81akDLRbEBpqNSr61EuxSCfMK.jpg",
+          "id": 53457,
+          "title": "Sarah's Key",
+          "original_title": "Elle s'appelait Sarah",
+          "overview": "On the night of 16 July 1942, ten year old Sarah and her parents are being arrested and transported to the Velodrome d'Hiver in Paris where thousands of other jews are being sent to get deported. Sarah however managed to lock her little brother in a closet just before the police entered their apartment. Sixty years later, Julia Jarmond, an American journalist in Paris, gets the assignment to write an article about this raid, a black page in the history of France. She starts digging archives and through Sarah's file discovers a well kept secret about her own in-laws.",
+          "poster_path": "/peGUaf6HrX7jSi1HifX64QJb7pm.jpg",
+          "media_type": "movie",
+          "original_language": "fr",
+          "genre_ids": [
+            18,
+            10752
+          ],
+          "popularity": 2.7035,
+          "release_date": "2010-09-16",
+          "softcore": false,
+          "video": false,
+          "vote_average": 7.281,
+          "vote_count": 722
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/zShD1f71gC3lkU0OWSjgUGKNCpe.jpg",
+          "id": 231629,
+          "title": "Fifty Pence",
+          "original_title": "Fifty Pence",
+          "overview": "Darren, a keen gambler, finds himself having to escort an unknown woman on the other side of Paris for a Mafioso. Struggling with the implications of his involvement in the affair, Darren is forced to reconsider his values.",
+          "poster_path": "/9N5KejUB4CU0QKNoDiORC21lAxv.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            18
+          ],
+          "popularity": 1.1374,
+          "release_date": "2012-01-07",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.0,
+          "vote_count": 1
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 3918787,
+      "name": "Anoushka Lucas",
+      "original_name": "Anoushka Lucas",
+      "media_type": "person",
+      "popularity": 0.1862,
+      "gender": 1,
+      "known_for_department": "Acting",
+      "profile_path": "/petPd6CqzHHw9b7f4pNY4OM9mOa.jpg",
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/IQyEvPTYvrzsa7qstRj6VLQupr.jpg",
+          "id": 392044,
+          "title": "Murder on the Orient Express",
+          "original_title": "Murder on the Orient Express",
+          "overview": "Genius Belgian detective Hercule Poirot investigates the murder of an American tycoon aboard the Orient Express train.",
+          "poster_path": "/7GtdJU6iAg6fjQu3E3zta3bIAQh.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            9648,
+            18,
+            80
+          ],
+          "popularity": 9.3057,
+          "release_date": "2017-11-03",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.706,
+          "vote_count": 10671
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1086119,
+          "title": "Bubbly",
+          "original_title": "Bubbly",
+          "overview": "Manager Ray is about to make it big with singer Cas as she prepares for a breakout gig. But with dreams of fame flowing like cheap champagne, their relationship is tested to its limit and Ray does everything to hold on to his one shot.",
+          "poster_path": "/1znsiZ8Eg88LmW8Qy4fQcjwNOT5.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            18
+          ],
+          "popularity": 0.4138,
+          "release_date": "2023-02-12",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/eyK46OLdf9Ma7wMnpS14tygEHUj.jpg",
+          "id": 1188350,
+          "title": "National Theatre Live: After Life",
+          "original_title": "National Theatre Live: After Life",
+          "overview": "A group of strangers grapple with this impossible question as they find themselves in a bureaucratic waiting room between life and death. Encouraged by enigmatic officials, they must sift through their past lives to choose their forever. Adapted from Hirokazu Kore-eda's award-winning film, After Life is a surreal and powerfully human look at the way we view our lives, and a haunting meditation on what it is to live \u2013 and to die.",
+          "poster_path": "/kIbOlWklpuG5KatF0GjotBzCdpn.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            18
+          ],
+          "popularity": 0.8955,
+          "release_date": "2021-11-25",
+          "softcore": false,
+          "video": true,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 3920576,
+      "name": "Anoushka",
+      "original_name": "Anoushka",
+      "media_type": "person",
+      "popularity": 0.2109,
+      "gender": 0,
+      "known_for_department": "Directing",
+      "profile_path": null,
+      "known_for": []
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fBO13dJUslQVkw4omXD0hQ7gAnM.jpg",
+      "id": 1213396,
+      "title": "Anoushka Shankar: Traveller",
+      "original_title": "Anoushka Shankar: Traveller",
+      "overview": "",
+      "poster_path": "/hXER249Xg25WIX6E0gnl9pmfsV5.jpg",
+      "media_type": "movie",
+      "original_language": "fr",
+      "genre_ids": [
+        10402
+      ],
+      "popularity": 0.2855,
+      "release_date": "2012-07-13",
+      "softcore": false,
+      "video": false,
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "adult": false,
+      "id": 3132801,
+      "name": "Anoushka Chadha",
+      "original_name": "Anoushka Chadha",
+      "media_type": "person",
+      "popularity": 0.4745,
+      "gender": 1,
+      "known_for_department": "Acting",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/8JqwRue6rKwj2j8Ous9zifmtwvW.jpg",
+          "id": 1204892,
+          "title": "Picture This",
+          "original_title": "Picture This",
+          "overview": "Single and without a man on the horizon, Pia runs a failing photography studio in London with her best friend Jay. As her sister Sonal prepares for marriage and her mother Laxmi urges her to partner up, a spiritual guru predicts Pia will meet the love of her life among her next five dates. With her family intervening, Pia embarks on a hilarious yet heartfelt quest for love.",
+          "poster_path": "/qnUN0QoLE4Afay6iPa5f3tv8Wug.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            10749,
+            35
+          ],
+          "popularity": 4.9627,
+          "release_date": "2025-03-05",
+          "softcore": false,
+          "video": false,
+          "vote_average": 5.994,
+          "vote_count": 173
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/gzOIymABxmetAECXtazEYCpMmfb.jpg",
+          "id": 78191,
+          "name": "You",
+          "original_name": "You",
+          "overview": "A dangerously charming, obsessive man goes to extreme measures to insert himself into the lives of women who fascinate him.",
+          "poster_path": "/oANi0vEE92nuijiZQgPZ88FSxqQ.jpg",
+          "media_type": "tv",
+          "original_language": "en",
+          "genre_ids": [
+            9648,
+            80,
+            18
+          ],
+          "popularity": 51.5331,
+          "first_air_date": "2018-09-09",
+          "softcore": false,
+          "vote_average": 8.006,
+          "vote_count": 4048,
+          "origin_country": [
+            "US"
+          ]
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/jFLhBues4pdhj2zEIkwDxhGdkcb.jpg",
+          "id": 194567,
+          "name": "The Lazarus Project",
+          "original_name": "The Lazarus Project",
+          "overview": "George wakes up to find himself several months in the past before being recruited for the Lazarus Project \u2013 a secret organization that turns back time when the world is at threat of extinction.",
+          "poster_path": "/xw7GkWtmPQDU8qzfKshFEN038sj.jpg",
+          "media_type": "tv",
+          "original_language": "en",
+          "genre_ids": [
+            10765,
+            18,
+            10759
+          ],
+          "popularity": 6.675,
+          "first_air_date": "2022-06-16",
+          "softcore": false,
+          "vote_average": 7.105,
+          "vote_count": 233,
+          "origin_country": [
+            "GB"
+          ]
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 4798170,
+      "name": "Anoushka Pandey",
+      "original_name": "Anoushka Pandey",
+      "media_type": "person",
+      "popularity": 0.2301,
+      "gender": 0,
+      "known_for_department": "Acting",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/nS83J1nJuQ8clHUk8sfRYerT6Wv.jpg",
+          "id": 1136814,
+          "title": "Marionettes (and the virtue of a lotus flower)",
+          "original_title": "Marionettes (and the virtue of a lotus flower)",
+          "overview": "Unaware of the strings of suffering that manipulate her world, a young girl seeks to understand why her mother is the way she is.",
+          "poster_path": "/xJjTJFtFlGKIYVSqK84728XhutD.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            16
+          ],
+          "popularity": 0.2322,
+          "release_date": "2023-06-17",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 1186351,
+      "name": "Anoushka Klaus",
+      "original_name": "Anoushka Klaus",
+      "media_type": "person",
+      "popularity": 0.4769,
+      "gender": 0,
+      "known_for_department": "Production",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 203952,
+          "title": "Jake",
+          "original_title": "Jake",
+          "overview": "The story of Jacob, a man whose life is stolen when he is inexplicably recast by a shadowy agency. When the actor who takes his place rekindles a long lost love, Jacob will do whatever it takes to fight for the role of his life.",
+          "poster_path": null,
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            35,
+            18
+          ],
+          "popularity": 0.9312,
+          "release_date": "2013-06-28",
+          "softcore": false,
+          "video": false,
+          "vote_average": 7.5,
+          "vote_count": 1
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 4902297,
+      "name": "Anoushka Maskey",
+      "original_name": "Anoushka Maskey",
+      "media_type": "person",
+      "popularity": 0.2555,
+      "gender": 0,
+      "known_for_department": "Acting",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/o8XSR1SONnjcsv84NRu6Mwsl5io.jpg",
+          "id": 801688,
+          "title": "Kalki 2898-AD",
+          "original_title": "\u0c15\u0c32\u0c4d\u0c15\u0c3f 2898-\u0c0e.\u0c21\u0c3f",
+          "overview": "In the year 2898 AD, around 6000 years after Kurukshetra war, Ashwatthama gears up for his final battle of redemption at the sign of hope in a dystopian world and Bhairava, a wisecracking and self-interested bounty hunter, tired of the perilous life becomes the hurdle in the process.",
+          "poster_path": "/rstcAnBeCkxNQjNp3YXrF6IP1tW.jpg",
+          "media_type": "movie",
+          "original_language": "te",
+          "genre_ids": [
+            18,
+            28,
+            14,
+            878
+          ],
+          "popularity": 4.0342,
+          "release_date": "2024-06-26",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.418,
+          "vote_count": 190
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/gw7NInCijR7eA1mTllrtxB7shBJ.jpg",
+          "id": 113457,
+          "name": "Mismatched",
+          "original_name": "Mismatched",
+          "overview": "After a disastrous set-up by their families, two teens strike up a tentative friendship at their summer program - but deeper feelings aren't far behind.",
+          "poster_path": "/l65kfL6qhTWd858OqGTr3RWwAUj.jpg",
+          "media_type": "tv",
+          "original_language": "hi",
+          "genre_ids": [
+            35,
+            18
+          ],
+          "popularity": 5.4769,
+          "first_air_date": "2020-11-20",
+          "softcore": false,
+          "vote_average": 6.241,
+          "vote_count": 29,
+          "origin_country": [
+            "IN"
+          ]
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 3567354,
+      "name": "Anoushka Turner",
+      "original_name": "Anoushka Turner",
+      "media_type": "person",
+      "popularity": 0.1955,
+      "gender": 0,
+      "known_for_department": "Crew",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/xcUf6yIheo78btFqihlRLftdR3M.jpg",
+          "id": 448119,
+          "title": "Dolittle",
+          "original_title": "Dolittle",
+          "overview": "After losing his wife seven years earlier, the eccentric Dr. John Dolittle, famed doctor and veterinarian of Queen Victoria\u2019s England, hermits himself away behind the high walls of Dolittle Manor with only his menagerie of exotic animals for company. But when the young queen falls gravely ill, a reluctant Dolittle is forced to set sail on an epic adventure to a mythical island in search of a cure, regaining his wit and courage as he crosses old adversaries and discovers wondrous creatures.",
+          "poster_path": "/3Nt3v1uzUgfSuVARD1AnI9g9Zl9.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            10751,
+            35,
+            14,
+            12
+          ],
+          "popularity": 9.5537,
+          "release_date": "2020-01-02",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.575,
+          "vote_count": 3930
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 4799814,
+      "name": "Anoushka Deshmukh",
+      "original_name": "Anoushka Deshmukh",
+      "media_type": "person",
+      "popularity": 0.3054,
+      "gender": 0,
+      "known_for_department": "Acting",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1294242,
+          "title": "Teething Problems",
+          "original_title": "Teething Problems",
+          "overview": "After losing his wife, a grieving man turns to a strange company promising to resurrect her, only to discover the terrifying consequences of meddling with the afterlife.",
+          "poster_path": "/9I0llg8N7tRpIdt0aGP7NTpzkMm.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            27,
+            35,
+            18,
+            14,
+            9648
+          ],
+          "popularity": 0.4869,
+          "release_date": "2024-07-19",
+          "softcore": false,
+          "video": false,
+          "vote_average": 10.0,
+          "vote_count": 1
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1310173,
+          "title": "Sanspective",
+          "original_title": "Sanspective",
+          "overview": "Look to the skies - and to the entwined concepts of neurodivergent identities and alien replacement conspiracies, as you embark on a journey through notions of folklore and sci-fi in our debut immersive show- but be aware, you never know how close a changeling could be.",
+          "poster_path": "/6cIihKrNaCfuV2O8Mdy6R8lABYK.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            14,
+            878,
+            53
+          ],
+          "popularity": 0.4699,
+          "release_date": "2024-06-28",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 100212,
+      "name": "Anoushka Shankar",
+      "original_name": "Anoushka Shankar",
+      "media_type": "person",
+      "popularity": 0.3151,
+      "gender": 1,
+      "known_for_department": "Acting",
+      "profile_path": "/pj0YrikaOtxgy6d7nG8jr9wqYif.jpg",
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/lTTOed6NeyEaMzgItVWnNrF2yFN.jpg",
+          "id": 28236,
+          "title": "Concert for George",
+          "original_title": "Concert for George",
+          "overview": "As a memorial to George Harrison on the first anniversary of his passing, The Concert for George was held at the Royal Albert Hall in London on 29 November 2002 . Organized by Harrison's widow, Olivia, and son, Dhani, and arranged under the musical direction of Eric Clapton and Jeff Lynne. A benefit for Harrison's Material World Charitable Foundation, the all-star concert took place on the day of the first anniversary of his death. Proceeds from the film also went to the Material World Charitable Foundation. The film was shot using discreet cameras from over twelve locations.",
+          "poster_path": "/mpz7cVFuwC9QnNMb2SjZOqzCJUx.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            10402,
+            99
+          ],
+          "popularity": 1.4079,
+          "release_date": "2003-10-03",
+          "softcore": false,
+          "video": false,
+          "vote_average": 8.07,
+          "vote_count": 64
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/obPdXvGF5WfCAryMpiID8NSfGPo.jpg",
+          "id": 1637538,
+          "title": "Gorillaz Present: The Mountain, The Moon Cave and The Sad God",
+          "original_title": "Gorillaz Present: The Mountain, The Moon Cave and The Sad God",
+          "overview": "Three music videos by the English virtual band Gorillaz, from their latest album. To screen before specially curated films at Alamo Drafthouse locations.",
+          "poster_path": "/rofIMaxIbmdNb8kibCx98O6ke8G.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            10402,
+            16,
+            14,
+            12,
+            35
+          ],
+          "popularity": 1.3059,
+          "release_date": "2026-02-26",
+          "softcore": false,
+          "video": true,
+          "vote_average": 8.333,
+          "vote_count": 6
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/kDPkgqEUiaN8eiJNfIa3RltEFNY.jpg",
+          "id": 334407,
+          "title": "Ravi Shankar: Between Two Worlds",
+          "original_title": "Ravi Shankar: Between Two Worlds",
+          "overview": "Filmed over two years in India and the USA, Mark Kidel's award-winning documentary brings together archive footage spanning seven decades of Ravi Shankar's performing life, and provides a definitive account of the late sitar maestro's unique musical career.",
+          "poster_path": "/cZnOoP2qF7IwBW5G2ZAh4Mo4kNu.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            99,
+            10402
+          ],
+          "popularity": 0.3591,
+          "release_date": "2001-08-31",
+          "softcore": false,
+          "video": false,
+          "vote_average": 8.0,
+          "vote_count": 2
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 3203874,
+      "name": "Anoushka Fooks",
+      "original_name": "Anoushka Fooks",
+      "media_type": "person",
+      "popularity": 0.167,
+      "gender": 0,
+      "known_for_department": "Acting",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/4YfMzsgqWIGVQoVKPzqAReWVEqz.jpg",
+          "id": 37345,
+          "title": "Princess Caraboo",
+          "original_title": "Princess Caraboo",
+          "overview": "Bristol, England, early 19th century. A beautiful young stranger who speaks a weird language is tried for the crime of begging. But when a man claims that he can translate her dialect, it is understood that the woman is a princess from a far away land. She is then welcomed by a family of haughty aristocrats that only wants to heighten their prestige. However, the local reporter is not at all convinced she is what she claims to be and investigates. Is Caraboo really a princess?",
+          "poster_path": "/a3Fw33tSGdO2eV8SULQigOITzH4.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [
+            35,
+            18,
+            36,
+            9648
+          ],
+          "popularity": 2.4329,
+          "release_date": "1994-09-16",
+          "softcore": false,
+          "video": false,
+          "vote_average": 5.531,
+          "vote_count": 32
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 4145391,
+      "name": "Anoushka Berkley",
+      "original_name": "Anoushka Berkley",
+      "media_type": "person",
+      "popularity": 0.1753,
+      "gender": 0,
+      "known_for_department": "Crew",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1147562,
+          "title": "Knickers",
+          "original_title": "Knickers",
+          "overview": "",
+          "poster_path": null,
+          "media_type": "movie",
+          "original_language": "fr",
+          "genre_ids": [],
+          "popularity": 0.3485,
+          "release_date": "2007-01-01",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 4611909,
+      "name": "Anoushka Songaonkar",
+      "original_name": "Anoushka Songaonkar",
+      "media_type": "person",
+      "popularity": 0.1848,
+      "gender": 0,
+      "known_for_department": "Costume & Make-Up",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/vcc6NDwsMwNrwHgVuI9lGdWJLB8.jpg",
+          "id": 784651,
+          "title": "Fighter",
+          "original_title": "\u092b\u093e\u0907\u091f\u0930",
+          "overview": "As India faces a militant attack in Kashmir, the country\u2019s best combat aviators join forces under a reckless yet brilliant squadron leader to form 'Air Dragons', faces mortal dangers and their inner demons.",
+          "poster_path": "/zqFuriKJ6pYDvf72kXNLONnuE8k.jpg",
+          "media_type": "movie",
+          "original_language": "hi",
+          "genre_ids": [
+            28,
+            18
+          ],
+          "popularity": 3.8547,
+          "release_date": "2024-01-24",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.185,
+          "vote_count": 162
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 2321877,
+      "name": "Anoushka Veljee",
+      "original_name": "Anoushka Veljee",
+      "media_type": "person",
+      "popularity": 0.1586,
+      "gender": 0,
+      "known_for_department": "Costume & Make-Up",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/jM8C4mURyEkQorqyGF5wPFp4M5J.jpg",
+          "id": 85985,
+          "title": "Ek Tha Tiger",
+          "original_title": "\u090f\u0915 \u0925\u093e \u091f\u093e\u0907\u0917\u0930",
+          "overview": "A top Indian agent is sent to observe the actions of a scientist but the mission complicates when he falls in love with the scientist's Pakistani caretaker.",
+          "poster_path": "/9qmIOiKLdlIRmdvPV6UmbUx9WFn.jpg",
+          "media_type": "movie",
+          "original_language": "hi",
+          "genre_ids": [
+            28,
+            53,
+            10749
+          ],
+          "popularity": 4.2932,
+          "release_date": "2012-08-15",
+          "softcore": false,
+          "video": false,
+          "vote_average": 6.158,
+          "vote_count": 224
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 3904554,
+      "name": "Anoushka Sharma",
+      "original_name": "Anoushka Sharma",
+      "media_type": "person",
+      "popularity": 0.1984,
+      "gender": 0,
+      "known_for_department": "Directing",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": "/AdIVRNP9V5dAcqgihyDbtvO0wE9.jpg",
+          "id": 1081988,
+          "title": "Fursat",
+          "original_title": "\u092b\u093c\u0941\u0930\u094d\u0938\u0924",
+          "overview": "A young man unearths an ancient relic that lets him peek into the future. In his obsession to control what lies ahead, he risks losing all that matters most in the present.",
+          "poster_path": "/8OSgJgck1gHYbWvAepFqPbbqKRW.jpg",
+          "media_type": "movie",
+          "original_language": "hi",
+          "genre_ids": [
+            10749,
+            10402,
+            878
+          ],
+          "popularity": 0.4776,
+          "release_date": "2023-02-03",
+          "softcore": false,
+          "video": false,
+          "vote_average": 5.143,
+          "vote_count": 7
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 1608739,
+      "name": "Anoushka Medina",
+      "original_name": "Anoushka Medina",
+      "media_type": "person",
+      "popularity": 0.5935,
+      "gender": 0,
+      "known_for_department": "Acting",
+      "profile_path": "/xyrqTZfGKQyn7DgLXjaEMYYI5Lm.jpg",
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 225555,
+          "title": "Por amor en el caser\u00edo",
+          "original_title": "Por amor en el caser\u00edo",
+          "overview": "A story inspired by the legacy of William Shakespare and the classic Romeo and Juliet. Cristal and \u00c1ngelo fall in love amid a life full of violence, drugs, and social deterioration. Their families lead opposing drug gangs within the community where they live. Can Cristal's and \u00c1ngelo's love overcome the negative environment around them?",
+          "poster_path": "/lDWkcedu9BmKTPab1aRdxNFi8hL.jpg",
+          "media_type": "movie",
+          "original_language": "es",
+          "genre_ids": [
+            10749,
+            18,
+            28
+          ],
+          "popularity": 0.4016,
+          "release_date": "2013-11-26",
+          "softcore": false,
+          "video": false,
+          "vote_average": 7.0,
+          "vote_count": 1
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 397500,
+          "title": "Sue\u00f1o vagabundo",
+          "original_title": "Sue\u00f1o vagabundo",
+          "overview": "Coping with his recent unemployment, a man battles with depression, facing the fact that he is not being able to provide for his family. In an act of desperation, he turns to his talents as a last resort... all the while he risks losing everything he was fighting for, trying to make his dreams come true.",
+          "poster_path": null,
+          "media_type": "movie",
+          "original_language": "es",
+          "genre_ids": [
+            18
+          ],
+          "popularity": 6.1575,
+          "release_date": "2015-01-31",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1031532,
+          "title": "Las Camelias",
+          "original_title": "Las Camelias",
+          "overview": "A movie based on the famous novel \"Las Camelias\"",
+          "poster_path": "/i4ev42buqnMx7AeXJsycvstdOXE.jpg",
+          "media_type": "movie",
+          "original_language": "es",
+          "genre_ids": [
+            35
+          ],
+          "popularity": 0.4077,
+          "release_date": "2022-10-27",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    },
+    {
+      "adult": false,
+      "id": 4090105,
+      "name": "Anoushka Marien",
+      "original_name": "Anoushka Marien",
+      "media_type": "person",
+      "popularity": 0.2179,
+      "gender": 0,
+      "known_for_department": "Sound",
+      "profile_path": null,
+      "known_for": [
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1134333,
+          "title": "Collectors",
+          "original_title": "Cobradores",
+          "overview": "Two insurance collectors still anchored in the traditional visits that were in the past, visit unusual clients who will make them reflect on life and their 30 years together.",
+          "poster_path": "/nKY5S3U9GuFuhwobbIC72oHhrE2.jpg",
+          "media_type": "movie",
+          "original_language": "es",
+          "genre_ids": [
+            35,
+            18
+          ],
+          "popularity": 1.2145,
+          "release_date": "2022-09-14",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": null,
+          "id": 1436540,
+          "title": "I bleed",
+          "original_title": "I bleed",
+          "overview": "In this personal documentary, Leah goes on a journey of exploration, and healing, her first period left an emotional scar that hasn\u2019t healed in twenty years. Her objective is to create a new narrative around periods for her daughter, which she knows she can only accomplish by freeing herself. Her insistence of digging beneath the surface and her refusal to be limited by patriarchy\u2019s negative views on periods lead her to look into her own family story and explore the concept of trans generational trauma.",
+          "poster_path": "/keBG96lnjNsXwZe1EvlIdXMmUQA.jpg",
+          "media_type": "movie",
+          "original_language": "en",
+          "genre_ids": [],
+          "popularity": 1.0408,
+          "release_date": "",
+          "softcore": false,
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ]
+    }
+  ],
+  "total_pages": 3,
+  "total_results": 49
+}

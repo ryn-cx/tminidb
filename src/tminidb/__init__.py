@@ -1,6 +1,3 @@
-# TODO: Validate
-"""Contains the TMiniDB class."""
-
 from __future__ import annotations
 
 import time
@@ -11,70 +8,47 @@ from typing import Any
 from get_around import GetAround
 
 from tminidb.exceptions import HTTPError
-from tminidb.movie_changes import MovieChanges
-from tminidb.movie_details import MovieDetails
-from tminidb.movie_watch_providers import MovieWatchProviders
-from tminidb.search_movie import SearchMovie
-from tminidb.search_multi import SearchMulti
-from tminidb.search_tv import SearchTv
-from tminidb.tv_episode_changes import TvEpisodeChanges
-from tminidb.tv_episode_details import TvEpisodeDetails
-from tminidb.tv_episode_group_details import TvEpisodeGroupDetails
-from tminidb.tv_episode_translations import TvEpisodeTranslations
-from tminidb.tv_season_changes import TvSeasonChanges
-from tminidb.tv_season_details import TvSeasonDetails
-from tminidb.tv_series_changes import TvSeriesChanges
-from tminidb.tv_series_details import TvSeriesDetails
-from tminidb.tv_series_episode_groups import TvSeriesEpisodeGroups
-from tminidb.tv_watch_providers import TvWatchProviders
+from tminidb.movies import MovieEndpoints
+from tminidb.search import SearchEndpoints
+from tminidb.tv_episode_groups import TvEpisodeGroupEndpoints
+from tminidb.tv_episodes import TvEpisodeEndpoints
+from tminidb.tv_seasons import TvSeasonEndpoints
+from tminidb.tv_series import TvSeriesEndpoints
 
 logger = getLogger(__name__)
 logger.addHandler(NullHandler())
 
-API_DOMAIN = "api.themoviedb.org"
-BASE_API_URL = f"https://{API_DOMAIN}/3"
-
 
 class TMiniDB:
-    """The Movie Database (TMDB) API wrapper."""
+    """The mini The Movie Database (TMDB) API."""
 
-    # TODO: Validate
     def __init__(
         self,
         access_token: str,
-        get_around_client: GetAround | None = None,
         language: str = "en-US",
+        get_around_client: GetAround | None = None,
     ) -> None:
         """Initialize the TMiniDB client.
 
         Args:
-            access_token: TMDB API Read Access Token used as a bearer token.
-                Reading it from a credential store is the caller's job.
-            get_around_client: HTTP client to use. Defaults to a direct client.
-            language: Default `ISO 639-1` language sent with every request.
-            timeout: Request timeout in seconds.
+            access_token: TMDB API Read Access Token. Available at
+                https://www.themoviedb.org/settings/api
+            language: Default `ISO 639-1` language sent with every request. More
+                information at https://developer.themoviedb.org/docs/languages
+            get_around_client: Get Around client to be used for requests.
         """
         self.access_token = access_token
-        self.get_around_client = get_around_client or GetAround()
         self.language = language
+        self.get_around_client = get_around_client or GetAround()
 
-        self.search_movie = SearchMovie(self)
-        self.search_multi = SearchMulti(self)
-        self.search_tv = SearchTv(self)
-        self.movie_details = MovieDetails(self)
-        self.movie_changes = MovieChanges(self)
-        self.movie_watch_providers = MovieWatchProviders(self)
-        self.tv_series_details = TvSeriesDetails(self)
-        self.tv_series_episode_groups = TvSeriesEpisodeGroups(self)
-        self.tv_season_details = TvSeasonDetails(self)
-        self.tv_episode_details = TvEpisodeDetails(self)
-        self.tv_episode_group_details = TvEpisodeGroupDetails(self)
-        self.tv_episode_translations = TvEpisodeTranslations(self)
-        self.tv_watch_providers = TvWatchProviders(self)
-        self.tv_series_changes = TvSeriesChanges(self)
-        self.tv_season_changes = TvSeasonChanges(self)
-        self.tv_episode_changes = TvEpisodeChanges(self)
+        self.search = SearchEndpoints(self)
+        self.movies = MovieEndpoints(self)
+        self.tv_series = TvSeriesEndpoints(self)
+        self.tv_seasons = TvSeasonEndpoints(self)
+        self.tv_episodes = TvEpisodeEndpoints(self)
+        self.tv_episode_groups = TvEpisodeGroupEndpoints(self)
 
+    # TODO: Validate
     def download(
         self,
         endpoint: str,
@@ -82,27 +56,30 @@ class TMiniDB:
         *,
         log_id: str,
     ) -> dict[str, Any]:
-        """Downloads data from the API for a given endpoint.
+        """Downloads data from the API.
 
-        Parameters whose value is `None` are dropped so optional filters are
-        only sent when explicitly provided.
+        Args:
+            endpoint: The API endpoint to download data from.
+            params: The query parameters to send with the request.
+            log_id: A unique identifier for the request.
+
+        Raises:
+            HTTPError: If the request is answered with anything but a 200.
         """
-        url = f"{BASE_API_URL}/{endpoint}"
+        url = f"https://api.themoviedb.org/3/{endpoint}"
+        params = {key: value for key, value in params.items() if value is not None}
         headers = {
             "accept": "application/json",
             "Authorization": f"Bearer {self.access_token}",
         }
 
-        logger.debug("Downloading: %s", log_id)
         start = time.monotonic()
-        response = self.get_around_client.get(
-            url,
-            params={key: value for key, value in params.items() if value is not None},
-            headers=headers,
-        )
+        response = self.get_around_client.get(url, params=params, headers=headers)
+        duration = time.monotonic() - start
 
         if response.status_code != HTTPStatus.OK:
-            raise HTTPError(response.status_code, response.text)
+            raise HTTPError(response)
 
-        logger.debug("Downloaded %s (%.4f s)", log_id, time.monotonic() - start)
-        return response.json()
+        logger.debug("Downloaded: %s - Completed in %.4f seconds", log_id, duration)
+        output: dict[str, Any] = response.json()
+        return output

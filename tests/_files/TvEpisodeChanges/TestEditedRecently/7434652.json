@@ -1,0 +1,139 @@
+{
+  "changes": [
+    {
+      "key": "guest_stars",
+      "items": [
+        {
+          "id": "6a80fdfaa955860d2c72b2ae",
+          "action": "deleted",
+          "time": "2026-08-16 00:02:02 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "original_value": {
+            "person_id": 53818,
+            "character": "Lady Masterman",
+            "order": 500,
+            "credit_id": "6a427ada8f81f4deeeb4c009"
+          }
+        },
+        {
+          "id": "6a80fdfbdc06175a11b33626",
+          "action": "deleted",
+          "time": "2026-08-16 00:02:03 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "original_value": {
+            "person_id": 185933,
+            "character": "Norman Swithin",
+            "order": 500,
+            "credit_id": "6a427ae38f81f4deeeb4c00d"
+          }
+        },
+        {
+          "id": "6a80fef3f09617424bdc40f4",
+          "action": "added",
+          "time": "2026-08-16 00:06:11 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 53818,
+            "character": "Lady Masterman",
+            "order": 500,
+            "credit_id": "6a80fef2f09617424bdc40f2"
+          }
+        },
+        {
+          "id": "6a80ff050fa4eb12ae891267",
+          "action": "added",
+          "time": "2026-08-16 00:06:29 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 30421,
+            "character": "B.J. Skipwith",
+            "order": 501,
+            "credit_id": "6a80ff050fa4eb12ae891265"
+          }
+        },
+        {
+          "id": "6a80ff118d11ca93a4c93dd9",
+          "action": "added",
+          "time": "2026-08-16 00:06:41 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 11131,
+            "character": "Lionel Sparrow",
+            "order": 502,
+            "credit_id": "6a80ff118d11ca93a4c93dd7"
+          }
+        },
+        {
+          "id": "6a80ff2082da90aaf3e82c3f",
+          "action": "added",
+          "time": "2026-08-16 00:06:56 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 123906,
+            "character": "Lord Humperleigh",
+            "order": 503,
+            "credit_id": "6a80ff2082da90aaf3e82c3d"
+          }
+        },
+        {
+          "id": "6a80ff2ef0ecc270e82b0fb0",
+          "action": "added",
+          "time": "2026-08-16 00:07:10 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 185933,
+            "character": "Norman Swithin",
+            "order": 504,
+            "credit_id": "6a80ff2ef0ecc270e82b0fae"
+          }
+        },
+        {
+          "id": "6a80ff37506656aeb7f7fb58",
+          "action": "added",
+          "time": "2026-08-16 00:07:19 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 151035,
+            "character": "Lord Henn",
+            "order": 505,
+            "credit_id": "6a80ff37506656aeb7f7fb56"
+          }
+        },
+        {
+          "id": "6a80ff40be11fa40b32b10c2",
+          "action": "added",
+          "time": "2026-08-16 00:07:28 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 1211423,
+            "character": "Conchita",
+            "order": 506,
+            "credit_id": "6a80ff3fbe11fa40b32b10c0"
+          }
+        },
+        {
+          "id": "6a80ff49acadfe41ce63b77a",
+          "action": "added",
+          "time": "2026-08-16 00:07:37 UTC",
+          "iso_639_1": "",
+          "iso_3166_1": "",
+          "value": {
+            "person_id": 2276,
+            "character": "Waitress",
+            "order": 507,
+            "credit_id": "6a80ff49acadfe41ce63b778"
+          }
+        }
+      ]
+    }
+  ]
+}

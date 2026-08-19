@@ -1,81 +1,109 @@
-# TODO: Validate
 from __future__ import annotations
 
+from datetime import date
 from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import download_and_save, parse_json_to_dict, parse_json_to_model
+from tests.utils import parse_test, record_test, recorded_content
+from tminidb.exceptions import HTTPError
+from tminidb.tv_series.changes import TvSeriesChanges
+from tminidb.tv_series.changes.models import TvSeriesChangeLog
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
-    from tminidb.tv_series_changes import TvSeriesChanges
 
-# A TV series that had been edited when the file was recorded. The window is the
-# last 24 hours, so a TV series that is quiet answers with nothing and would
-# record a file with no changes in it to build a model from.
+# Most popular TV series at the time of writing this test
+# https://www.themoviedb.org/tv/108978-reacher
 SERIES_ID = 108978
-NAME = str(SERIES_ID)
-# An id that belongs to no TV series. It is answered with an empty list rather
-# than with an error, which is why there is no recorded error file here.
-UNKNOWN_SERIES_ID = 999999999
-UNKNOWN_NAME = f"unknown_{UNKNOWN_SERIES_ID}"
 
 
-# TODO: Validate
-@pytest.fixture(scope="session")
-def endpoint(client: TMiniDB) -> TvSeriesChanges:
-    return client.tv_series_changes
+class TestResponseWithChanges:
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            TvSeriesChanges,
+            str(SERIES_ID),
+            lambda: (
+                client.tv_series.changes(
+                    SERIES_ID,
+                    start_date=date(2026, 8, 18),
+                ).raw
+            ),
+        )
+
+    def test_parse(self) -> None:
+        parse_test(TvSeriesChanges, str(SERIES_ID), TvSeriesChangeLog)
 
 
-# TODO: Validate
-class TestTvSeriesChanges:
+class TestMergedResponseWithChanges:
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            TvSeriesChanges,
+            str(SERIES_ID),
+            lambda: (
+                client.tv_series.changes(
+                    SERIES_ID,
+                    start_date=date(2026, 7, 22),
+                    end_date=date(2026, 8, 18),
+                ).raw
+            ),
+        )
+
+    def test_parse(self) -> None:
+        parse_test(TvSeriesChanges, str(SERIES_ID), TvSeriesChangeLog)
+
+
+class TestResponseWithoutChanges:
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            TvSeriesChanges,
+            str(SERIES_ID),
+            lambda: (
+                client.tv_series.changes(
+                    SERIES_ID,
+                    start_date=date(2026, 1, 1),
+                    end_date=date(2026, 1, 1),
+                ).raw
+            ),
+        )
+
+    def test_parse(self) -> None:
+        data = recorded_content(TvSeriesChanges, str(SERIES_ID))
+
+        assert TvSeriesChangeLog.from_response(data) == TvSeriesChangeLog(
+            changes=(),
+            raw=data,
+        )
+
+
+class TestInvalidSeriesID:
+    """Values between -2147483648 and 0 return a 404 error."""
+    SERIES_ID = 0
+
+    def test_download(self, client: TMiniDB) -> None:
+        with pytest.raises(HTTPError) as error:
+            client.tv_series.changes(self.SERIES_ID)
+
+        assert error.value.status_code == 404  # noqa: PLR2004
+        assert error.value.response["success"] is False
+
+
+class TestUnusedSeriesID:
+    SERIES_ID = 2147483647
+
     # TODO: Validate
-    def test_download(self, endpoint: TvSeriesChanges) -> None:
-        download_and_save(endpoint, NAME, lambda: endpoint.download(SERIES_ID))
-
-    # TODO: Validate
-    def test_download_unknown(self, endpoint: TvSeriesChanges) -> None:
-        download_and_save(
-            endpoint,
-            UNKNOWN_NAME,
-            lambda: endpoint.download(UNKNOWN_SERIES_ID),
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            TvSeriesChanges,
+            str(self.SERIES_ID),
+            lambda: client.tv_series.changes(self.SERIES_ID).raw,
         )
 
     # TODO: Validate
-    def test_parse(self, endpoint: TvSeriesChanges) -> None:
-        data = parse_json_to_model(endpoint, NAME)
-        assert data.changes
+    def test_parse(self) -> None:
+        data = recorded_content(TvSeriesChanges, str(self.SERIES_ID))
 
-    # TODO: Validate
-    def test_parse_groups_are_keyed_and_hold_items(
-        self,
-        endpoint: TvSeriesChanges,
-    ) -> None:
-        data = parse_json_to_model(endpoint, NAME)
-        # A change only means anything alongside the field it happened to, so a
-        # group without a key would leave its items unreadable.
-        assert all(group.key for group in data.changes)
-        assert all(group.items for group in data.changes)
-
-    # TODO: Validate
-    def test_parse_items_are_dated_edits(self, endpoint: TvSeriesChanges) -> None:
-        items = [
-            item
-            for group in parse_json_to_model(endpoint, NAME).changes
-            for item in group.items
-        ]
-        assert items
-        # Every edit says what it did and when, which is what makes the changes
-        # usable as a feed rather than as a snapshot.
-        assert all(item.action for item in items)
-        assert all(item.time for item in items)
-
-    # TODO: Validate
-    def test_parse_unknown_is_empty_rather_than_an_error(
-        self,
-        endpoint: TvSeriesChanges,
-    ) -> None:
-        # An id that names nothing is not rejected, so an empty result says
-        # nothing about whether the id was good.
-        assert parse_json_to_dict(endpoint, UNKNOWN_NAME) == {"changes": []}
+        assert TvSeriesChangeLog.from_response(data) == TvSeriesChangeLog(
+            changes=(),
+            raw=data,
+        )

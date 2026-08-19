@@ -1,0 +1,182 @@
+{
+  "results": [
+    {
+      "description": "Order of episodes according to TVDB.",
+      "episode_count": 1218,
+      "group_count": 24,
+      "id": "62f98314175051007c594bdf",
+      "name": "TVDB Order",
+      "network": {
+        "id": 1,
+        "logo_path": "/4x4GsmRmSLLL0RVNKsoqAVH43tz.png",
+        "name": "Fuji TV",
+        "origin_country": "JP"
+      },
+      "type": 1
+    },
+    {
+      "description": "As Defined by Wikipedia's Lists of One Piece Episodes.",
+      "episode_count": 1204,
+      "group_count": 23,
+      "id": "6510dd9d344a8e096e6d7987",
+      "name": "Wikipedia Seasons",
+      "network": null,
+      "type": 1
+    },
+    {
+      "description": "One Piece episodes organized by which opening they use (with the exception of episode 1000)",
+      "episode_count": 1168,
+      "group_count": 33,
+      "id": "66dc7c1de3fd0a602ae4127e",
+      "name": "Openings Order",
+      "network": null,
+      "type": 1
+    },
+    {
+      "description": "All episodes (excluding specials) in absolute order.",
+      "episode_count": 1181,
+      "group_count": 1,
+      "id": "5ad0f096c3a36825a300e78b",
+      "name": "Absolute (No Specials)",
+      "network": null,
+      "type": 2
+    },
+    {
+      "description": "Absolute ordering places all episodes in a single ordered season. This is generally used for anime.",
+      "episode_count": 1220,
+      "group_count": 2,
+      "id": "5f1573a33852020036d50619",
+      "name": "Absolute (With Specials)",
+      "network": null,
+      "type": 2
+    },
+    {
+      "description": "German Kaze/Crunchyroll DVD/Bluray Release Order",
+      "episode_count": 1047,
+      "group_count": 36,
+      "id": "5cf6582b9251416aebbbbc38",
+      "name": "German DVD Release",
+      "network": null,
+      "type": 3
+    },
+    {
+      "description": "Group based on the Funimation english dubbed release of One Piece.",
+      "episode_count": 767,
+      "group_count": 12,
+      "id": "608f58fe38469a0059bddbdf",
+      "name": "Funimation Release",
+      "network": {
+        "id": 728,
+        "logo_path": "/5nMMYuNuqsCc2exMh9xyufKbmbG.png",
+        "name": "Funimation",
+        "origin_country": "US"
+      },
+      "type": 4
+    },
+    {
+      "description": "Episodes grouped by Seasons on Netflix. Special are listed separately from the anime on the Netflix website but they have been added to a Specials season in this group.",
+      "episode_count": 974,
+      "group_count": 38,
+      "id": "60671140ebb99d002ad9e426",
+      "name": "Netflix Seasons",
+      "network": {
+        "id": 213,
+        "logo_path": "/wwemzKWzjKYJFfCeiB57q3r4Bcm.png",
+        "name": "Netflix",
+        "origin_country": ""
+      },
+      "type": 4
+    },
+    {
+      "description": "",
+      "episode_count": 1159,
+      "group_count": 16,
+      "id": "656d41730859b400ff7609b7",
+      "name": "Crunchyroll on Prime Video (US)",
+      "network": null,
+      "type": 4
+    },
+    {
+      "description": "",
+      "episode_count": 1196,
+      "group_count": 19,
+      "id": "656d4f0e88055100e3704732",
+      "name": "Crunchyroll",
+      "network": null,
+      "type": 4
+    },
+    {
+      "description": "Hulu lists \"History's Strongest Collaboration vs. Glutton of the Sea\" as both a special and part of season 10. As episodes can't be listed twice in the same episode group, the episode is listed in this group as part of season 10 instead of as a special.",
+      "episode_count": 891,
+      "group_count": 11,
+      "id": "6717069a7dc7c6f27d51109d",
+      "name": "Hulu",
+      "network": null,
+      "type": 4
+    },
+    {
+      "description": "",
+      "episode_count": 1088,
+      "group_count": 10,
+      "id": "684de5c5d1d0dbe543b0de56",
+      "name": "BBC iPlayer",
+      "network": null,
+      "type": 4
+    },
+    {
+      "description": "",
+      "episode_count": 1170,
+      "group_count": 21,
+      "id": "69c8f0ec2105099db6528f2e",
+      "name": "Crunchyroll (Apple TV Channel)",
+      "network": null,
+      "type": 4
+    },
+    {
+      "description": "All episodes sorted into the smaller story arcs (including anime exclusive ones). Not to be confused with the Saga order.",
+      "episode_count": 1202,
+      "group_count": 55,
+      "id": "5ad0df1cc3a36825ac00c087",
+      "name": "Story Arc",
+      "network": null,
+      "type": 5
+    },
+    {
+      "description": "All episodes sorted into their sagas. Not to be confused with the detailed story arcs.",
+      "episode_count": 1202,
+      "group_count": 12,
+      "id": "5ae1bc83c3a36876a700ce68",
+      "name": "Sagas",
+      "network": null,
+      "type": 5
+    },
+    {
+      "description": "Season, Arc & Saga Combos",
+      "episode_count": 1194,
+      "group_count": 13,
+      "id": "64eab6c2c613ce00c9f2756f",
+      "name": "Season, Arc & Saga Combos",
+      "network": null,
+      "type": 5
+    },
+    {
+      "description": "The arcs and the episodes that belong to them according to the official website as of 2026-05-18.",
+      "episode_count": 1116,
+      "group_count": 21,
+      "id": "6a0ba6db72b02f968033a9d1",
+      "name": "Arcs (Official)",
+      "network": null,
+      "type": 5
+    },
+    {
+      "description": "Aired order",
+      "episode_count": 1202,
+      "group_count": 25,
+      "id": "5f1573c81c6aa700377f841f",
+      "name": "Seasons",
+      "network": null,
+      "type": 6
+    }
+  ],
+  "id": 37854
+}

@@ -1,0 +1,28 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/iCML6fBe3X0y06P33bM7dyYXPKZ.jpg",
+      "id": 1632181,
+      "title": "Accidental Partners",
+      "original_title": "Socias por accidente",
+      "overview": "Two women discover they were both scammed by the same man (who also got them pregnant). They form an alliance to take revenge.",
+      "poster_path": "/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
+      "media_type": "movie",
+      "original_language": "es",
+      "genre_ids": [
+        35,
+        10749
+      ],
+      "popularity": 24.8184,
+      "release_date": "2026-03-12",
+      "softcore": false,
+      "video": false,
+      "vote_average": 8.9,
+      "vote_count": 354
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 1
+}

@@ -1,0 +1,37 @@
+{
+  "adult": false,
+  "backdrop_path": null,
+  "belongs_to_collection": null,
+  "budget": 0,
+  "genres": [],
+  "homepage": "",
+  "id": 1466882,
+  "imdb_id": null,
+  "origin_country": [
+    "US"
+  ],
+  "original_language": "en",
+  "original_title": "Gintama Shogun Assassination Arc",
+  "overview": "Shige Shige finds himself a target for assassination from Nobu Nobu and his allies, the Kiheitai and the Harusame. To protect him, Matsudaira forms a plan to secretly smuggle him to Kyou, with the help of the Oniwabanshuu, Shinsengumi and the Yorozuya. They must contend with enemy ninja, one of the strongest terrorist groups, and one of the strongest Amanto races to save the Shogun. But will that be enough? Plus the long-awaited battle between Gintoki and Takasugi happens here.",
+  "popularity": 0.2258,
+  "poster_path": "/6zu4By1FQgfhMVN3GO4R8KUoNQ2.jpg",
+  "production_companies": [],
+  "production_countries": [],
+  "release_date": "",
+  "revenue": 0,
+  "runtime": 180,
+  "softcore": false,
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "\u65e5\u672c\u8a9e"
+    }
+  ],
+  "status": "Released",
+  "tagline": "",
+  "title": "Gintama Shogun Assassination Arc",
+  "video": true,
+  "vote_average": 0.0,
+  "vote_count": 0
+}

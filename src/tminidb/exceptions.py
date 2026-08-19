@@ -4,9 +4,13 @@
 from __future__ import annotations
 
 from json import JSONDecodeError, loads
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    import httpx
 
 
+# TODO: Validate
 class TminidbError(Exception):
     """Base exception for TMiniDB.
 
@@ -21,24 +25,41 @@ class TminidbError(Exception):
     """The original data that caused the error, or `None` if there was none."""
 
 
+# TODO: Validate
 class HTTPError(TminidbError):
     """Raised when HTTP request fails with unexpected status code."""
 
-    def __init__(self, status_code: int, body: str) -> None:
-        """Initialize the HTTPError with the status code and response body.
+    # TODO: Validate
+    def __init__(self, response: httpx.Response) -> None:
+        """Initialize the HTTPError with the response that caused it.
 
         An error response is not guaranteed to be JSON, so `response` falls back
         to the raw text when it cannot be parsed.
         """
-        self.status_code = status_code
-        self.body = body
-        self.response = _parsed_or_raw(body)
-        super().__init__(f"Unexpected response status code: {status_code}\n{body}")
+        self.http_response = response
+        self.response = _parsed_or_raw(response.text)
+        super().__init__(
+            f"Unexpected response status code: {response.status_code}\n{response.text}",
+        )
+
+    # TODO: Validate
+    @property
+    def status_code(self) -> int:
+        """The status code of the response that caused the error."""
+        return self.http_response.status_code
+
+    # TODO: Validate
+    @property
+    def body(self) -> str:
+        """The raw text of the response that caused the error."""
+        return self.http_response.text
 
 
+# TODO: Validate
 class InvalidFileError(TminidbError):
     """Raised when a downloaded file does not match what was requested."""
 
+    # TODO: Validate
     def __init__(
         self,
         field: str,
@@ -61,6 +82,7 @@ class InvalidFileError(TminidbError):
             super().__init__(f"Downloaded file is not for {field} {expected!r}")
 
 
+# TODO: Validate
 def _parsed_or_raw(body: str) -> Any:  # noqa: ANN401 - A response body can be any JSON value.
     """Return `body` parsed as JSON, or the raw text if it is not JSON."""
     try:

@@ -1,81 +1,108 @@
-# TODO: Validate
 from __future__ import annotations
 
+from datetime import date
 from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import download_and_save, parse_json_to_dict, parse_json_to_model
+from tests.utils import parse_test, record_test, recorded_content
+from tminidb.exceptions import HTTPError
+from tminidb.movies.changes import MovieChanges
+from tminidb.movies.changes.models import MovieChangeLog
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
-    from tminidb.movie_changes import MovieChanges
 
-# A movie that had been edited when the file was recorded. The window is the
-# last 24 hours, so a movie that is quiet answers with nothing and would
-# record a file with no changes in it to build a model from.
-MOVIE_ID = 1750375
-NAME = str(MOVIE_ID)
-# An id that belongs to no movie. It is answered with an empty list rather
-# than with an error, which is why there is no recorded error file here.
-UNKNOWN_MOVIE_ID = 999999999
-UNKNOWN_NAME = f"unknown_{UNKNOWN_MOVIE_ID}"
+# Most popular movie at the time of writing this test
+# https://www.themoviedb.org/movie/969681-spider-man-brand-new-day
+MOVIE_ID = 969681
 
 
 # TODO: Validate
-@pytest.fixture(scope="session")
-def endpoint(client: TMiniDB) -> MovieChanges:
-    return client.movie_changes
-
-
-# TODO: Validate
-class TestMovieChanges:
-    # TODO: Validate
-    def test_download(self, endpoint: MovieChanges) -> None:
-        download_and_save(endpoint, NAME, lambda: endpoint.download(MOVIE_ID))
-
-    # TODO: Validate
-    def test_download_unknown(self, endpoint: MovieChanges) -> None:
-        download_and_save(
-            endpoint,
-            UNKNOWN_NAME,
-            lambda: endpoint.download(UNKNOWN_MOVIE_ID),
+class TestResponseWithChanges:
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            MovieChanges,
+            str(MOVIE_ID),
+            lambda: (
+                client.movies.changes(
+                    MOVIE_ID,
+                    start_date=date(2026, 8, 18),
+                ).raw
+            ),
         )
 
-    # TODO: Validate
-    def test_parse(self, endpoint: MovieChanges) -> None:
-        data = parse_json_to_model(endpoint, NAME)
-        assert data.changes
+    def test_parse(self) -> None:
+        parse_test(MovieChanges, str(MOVIE_ID), MovieChangeLog)
 
-    # TODO: Validate
-    def test_parse_groups_are_keyed_and_hold_items(
-        self,
-        endpoint: MovieChanges,
-    ) -> None:
-        data = parse_json_to_model(endpoint, NAME)
-        # A change only means anything alongside the field it happened to, so a
-        # group without a key would leave its items unreadable.
-        assert all(group.key for group in data.changes)
-        assert all(group.items for group in data.changes)
 
-    # TODO: Validate
-    def test_parse_items_are_dated_edits(self, endpoint: MovieChanges) -> None:
-        items = [
-            item
-            for group in parse_json_to_model(endpoint, NAME).changes
-            for item in group.items
-        ]
-        assert items
-        # Every edit says what it did and when, which is what makes the changes
-        # usable as a feed rather than as a snapshot.
-        assert all(item.action for item in items)
-        assert all(item.time for item in items)
+class TestMergedResponseWithChanges:
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            MovieChanges,
+            str(MOVIE_ID),
+            lambda: (
+                client.movies.changes(
+                    MOVIE_ID,
+                    start_date=date(2026, 7, 22),
+                    end_date=date(2026, 8, 18),
+                ).raw
+            ),
+        )
 
-    # TODO: Validate
-    def test_parse_unknown_is_empty_rather_than_an_error(
-        self,
-        endpoint: MovieChanges,
-    ) -> None:
-        # An id that names nothing is not rejected, so an empty result says
-        # nothing about whether the id was good.
-        assert parse_json_to_dict(endpoint, UNKNOWN_NAME) == {"changes": []}
+    def test_parse(self) -> None:
+        parse_test(MovieChanges, str(MOVIE_ID), MovieChangeLog)
+
+
+class TestResponseWithoutChanges:
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            MovieChanges,
+            str(MOVIE_ID),
+            lambda: (
+                client.movies.changes(
+                    MOVIE_ID,
+                    start_date=date(2026, 1, 1),
+                    end_date=date(2026, 1, 1),
+                ).raw
+            ),
+        )
+
+    def test_parse(self) -> None:
+        data = recorded_content(MovieChanges, str(MOVIE_ID))
+
+        assert MovieChangeLog.from_response(data) == MovieChangeLog(
+            changes=(),
+            raw=data,
+        )
+
+
+class TestInvalidMovieID:
+    """Values between -2147483648 and 0 return a 404 error."""
+    MOVIE_ID = 0
+
+    def test_download(self, client: TMiniDB) -> None:
+        with pytest.raises(HTTPError) as error:
+            client.movies.changes(self.MOVIE_ID)
+
+        assert error.value.status_code == 404  # noqa: PLR2004
+        assert error.value.response["success"] is False
+
+
+class TestUnusedMovieID:
+    MOVIE_ID = 2147483647
+
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            MovieChanges,
+            str(self.MOVIE_ID),
+            lambda: client.movies.changes(self.MOVIE_ID).raw,
+        )
+
+    def test_parse(self) -> None:
+        data = recorded_content(MovieChanges, str(self.MOVIE_ID))
+
+        assert MovieChangeLog.from_response(data) == MovieChangeLog(
+            changes=(),
+            raw=data,
+        )

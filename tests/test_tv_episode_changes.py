@@ -1,81 +1,93 @@
 # TODO: Validate
 from __future__ import annotations
 
+from datetime import date
 from typing import TYPE_CHECKING
 
-import pytest
-
-from tests.utils import download_and_save, parse_json_to_dict, parse_json_to_model
+from tests.utils import record_test, recorded_content
+from tminidb.tv_episodes.changes import TvEpisodeChanges
+from tminidb.tv_episodes.changes.models import Item, Change, TvEpisodeChangeLog
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
-    from tminidb.tv_episode_changes import TvEpisodeChanges
 
-# A TV episode that had been edited when the file was recorded. The window is the
-# last 24 hours, so a TV episode that is quiet answers with nothing and would
-# record a file with no changes in it to build a model from.
-EPISODE_ID = 7434652
-NAME = str(EPISODE_ID)
-# An id that belongs to no TV episode. It is answered with an empty list rather
-# than with an error, which is why there is no recorded error file here.
-UNKNOWN_EPISODE_ID = 999999999
-UNKNOWN_NAME = f"unknown_{UNKNOWN_EPISODE_ID}"
+# The window is asked for by name rather than left to default to the last 24
+# hours, so re-recording a fixture years from now asks for the same days and
+# gets the same answer instead of whatever happened yesterday.
+START_DATE = date(2026, 8, 10)
+END_DATE = date(2026, 8, 18)
 
 
 # TODO: Validate
-@pytest.fixture(scope="session")
-def endpoint(client: TMiniDB) -> TvEpisodeChanges:
-    return client.tv_episode_changes
-
-
-# TODO: Validate
-class TestTvEpisodeChanges:
-    # TODO: Validate
-    def test_download(self, endpoint: TvEpisodeChanges) -> None:
-        download_and_save(endpoint, NAME, lambda: endpoint.download(EPISODE_ID))
+class TestEditedRecently:
+    # A episode that had been edited inside the window.
+    EPISODE_ID = 7434652
+    NAME = "7434652"
 
     # TODO: Validate
-    def test_download_unknown(self, endpoint: TvEpisodeChanges) -> None:
-        download_and_save(
-            endpoint,
-            UNKNOWN_NAME,
-            lambda: endpoint.download(UNKNOWN_EPISODE_ID),
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            TvEpisodeChanges,
+            self.NAME,
+            lambda: (
+                client.tv_episodes.changes(
+                    self.EPISODE_ID,
+                    start_date=START_DATE,
+                    end_date=END_DATE,
+                ).raw
+            ),
         )
 
     # TODO: Validate
-    def test_parse(self, endpoint: TvEpisodeChanges) -> None:
-        data = parse_json_to_model(endpoint, NAME)
-        assert data.changes
+    def test_parse(self) -> None:
+        # The whole of what the response is read into, in one comparison. Which
+        # fields were edited and how many times is whatever the editors did
+        # that fortnight, so the rows are read back from the response: what is
+        # checked is that every group and every edit inside it is carried over,
+        # in order, and that an edit keeps the id, action and time that make it
+        # readable.
+        data = recorded_content(TvEpisodeChanges, self.NAME)
+
+        assert TvEpisodeChangeLog.from_response(data) == TvEpisodeChangeLog(
+            changes=tuple(
+                Change(
+                    key=group["key"],
+                    items=tuple(Item(**item) for item in group["items"]),
+                )
+                for group in data["changes"]
+            ),
+            raw=data,
+        )
+        assert TvEpisodeChangeLog.from_response(data).changes
+
+
+# TODO: Validate
+class TestUnknownEpisode:
+    # An id that belongs to no episode. It is answered with an empty list
+    # rather than with an error, which is the same answer a episode nobody
+    # touched gives, so an empty log says nothing about whether the id was good.
+    EPISODE_ID = 999999999
+    NAME = "unknown_999999999"
 
     # TODO: Validate
-    def test_parse_groups_are_keyed_and_hold_items(
-        self,
-        endpoint: TvEpisodeChanges,
-    ) -> None:
-        data = parse_json_to_model(endpoint, NAME)
-        # A change only means anything alongside the field it happened to, so a
-        # group without a key would leave its items unreadable.
-        assert all(group.key for group in data.changes)
-        assert all(group.items for group in data.changes)
+    def test_download(self, client: TMiniDB) -> None:
+        record_test(
+            TvEpisodeChanges,
+            self.NAME,
+            lambda: (
+                client.tv_episodes.changes(
+                    self.EPISODE_ID,
+                    start_date=START_DATE,
+                    end_date=END_DATE,
+                ).raw
+            ),
+        )
 
     # TODO: Validate
-    def test_parse_items_are_dated_edits(self, endpoint: TvEpisodeChanges) -> None:
-        items = [
-            item
-            for group in parse_json_to_model(endpoint, NAME).changes
-            for item in group.items
-        ]
-        assert items
-        # Every edit says what it did and when, which is what makes the changes
-        # usable as a feed rather than as a snapshot.
-        assert all(item.action for item in items)
-        assert all(item.time for item in items)
+    def test_parse(self) -> None:
+        data = recorded_content(TvEpisodeChanges, self.NAME)
 
-    # TODO: Validate
-    def test_parse_unknown_is_empty_rather_than_an_error(
-        self,
-        endpoint: TvEpisodeChanges,
-    ) -> None:
-        # An id that names nothing is not rejected, so an empty result says
-        # nothing about whether the id was good.
-        assert parse_json_to_dict(endpoint, UNKNOWN_NAME) == {"changes": []}
+        assert TvEpisodeChangeLog.from_response(data) == TvEpisodeChangeLog(
+            changes=(),
+            raw=data,
+        )
