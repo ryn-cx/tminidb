@@ -35,7 +35,7 @@ class TMiniDB:
                 https://www.themoviedb.org/settings/api
             language: Default `ISO 639-1` language sent with every request. More
                 information at https://developer.themoviedb.org/docs/languages
-            get_around_client: Get Around client to be used for requests.
+            get_around_client: Get Around client to route requests through.
         """
         self.access_token = access_token
         self.language = language
