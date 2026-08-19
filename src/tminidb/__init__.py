@@ -20,7 +20,7 @@ logger.addHandler(NullHandler())
 
 
 class TMiniDB:
-    """The mini The Movie Database (TMDB) API."""
+    """Mini The Movie Database (TMDB) API. Wrapper"""
 
     def __init__(
         self,

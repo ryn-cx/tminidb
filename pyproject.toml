@@ -1,7 +1,7 @@
 [project]
 name = "tminidb"
 version = "0.1.0"
-description = "The mini The Movie Database (TMDB) API."
+description = "Mini The Movie Database (TMDB) API Wrapper."
 readme = "README.md"
 requires-python = ">=3.14"
 authors = [

@@ -1,3 +1,3 @@
 # tminidb
 
-Mini The Movie Database (TMDB) API.
+Mini The Movie Database (TMDB) API Wrapper.
