@@ -56,7 +56,7 @@ class TMiniDB:
         *,
         log_id: str,
     ) -> dict[str, Any]:
-        """Downloads data from the API.
+        """Downloads data from TMDB's API.
 
         Args:
             endpoint: The API endpoint to download data from.
