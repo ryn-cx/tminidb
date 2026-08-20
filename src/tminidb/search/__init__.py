@@ -1,28 +1,165 @@
 # TODO: Validate
-"""Contains the SearchEndpoints class."""
+"""Contains the SearchEndpoints class.
+
+Every endpoint the API's docs file under Search is a method here, reached the
+way the API reaches it: `client.search.movie("Fight Club")` is `search/movie`
+and is the whole of it, because the method both downloads and reads.
+
+[Official Documentation](https://developer.themoviedb.org/reference/search-movie)
+"""
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from logging import NullHandler, getLogger
+from typing import Any
 
-from tminidb.search.movie import SearchMovie
-from tminidb.search.multi import SearchMulti
-from tminidb.search.tv import SearchTv
+from tminidb.base_endpoint import BaseEndpoint
+from tminidb.exceptions import InvalidFileError
+from tminidb.search.models.movie import MovieSearchResults
+from tminidb.search.models.multi import MultiSearchResults
+from tminidb.search.models.tv import TvSearchResults
 
-if TYPE_CHECKING:
-    from tminidb import TMiniDB
+logger = getLogger(__name__)
+logger.addHandler(NullHandler())
 
 
 # TODO: Validate
-class SearchEndpoints:
+class SearchEndpoints(BaseEndpoint):
     """The endpoints the API's docs file under Search.
 
     [Official Documentation](https://developer.themoviedb.org/reference/search-movie)
     """
 
     # TODO: Validate
-    def __init__(self, client: TMiniDB) -> None:
-        """Build every endpoint in the group against the same client."""
-        self.movie = SearchMovie(client)
-        self.multi = SearchMulti(client)
-        self.tv = SearchTv(client)
+    def movie(  # noqa: PLR0913 - Each parameter maps to an API parameter.
+        self,
+        query: str,
+        *,
+        include_adult: bool = False,
+        language: str | None = None,
+        primary_release_year: str | None = None,
+        region: str | None = None,
+        year: str | None = None,
+        page: int = 1,
+    ) -> MovieSearchResults:
+        """Download one page of movie search results and read it.
+
+        Search for movies by their original, translated and alternative titles.
+
+        [Official Documentation](https://developer.themoviedb.org/reference/search-movie)
+
+        Raises:
+            InvalidFileError: If the response is not the page that was asked
+                for.
+        """
+        log_id = self.get_log_id(self.movie, locals())
+        data = self._client.download(
+            "search/movie",
+            {
+                "query": query,
+                "include_adult": include_adult,
+                "language": language or self._client.language,
+                "primary_release_year": primary_release_year,
+                "region": region,
+                "year": year,
+                "page": page,
+            },
+            log_id=log_id,
+        )
+        # Nothing but the page echoes the query, so that and the results are
+        # what get checked.
+        if data.get("page") != page or data.get("results") is None:
+            raise InvalidFileError(field="search page", expected=page, response=data)
+        return self.load_movie(data)
+
+    # TODO: Validate
+    def load_movie(self, data: dict[str, Any]) -> MovieSearchResults:
+        """Read a page the movie search endpoint answered with."""
+        return MovieSearchResults.from_response(data)
+
+    # TODO: Validate
+    def multi(
+        self,
+        query: str,
+        *,
+        include_adult: bool = False,
+        language: str | None = None,
+        page: int = 1,
+    ) -> MultiSearchResults:
+        """Download one page of mixed search results and read it.
+
+        Use multi search when you want to search for movies, TV shows and people
+        in a single request.
+
+        [Official Documentation](https://developer.themoviedb.org/reference/search-multi)
+
+        Raises:
+            InvalidFileError: If the response is not the page that was asked
+                for.
+        """
+        log_id = self.get_log_id(self.multi, locals())
+        data = self._client.download(
+            "search/multi",
+            {
+                "query": query,
+                "include_adult": include_adult,
+                "language": language,
+                "page": page,
+            },
+            log_id=log_id,
+        )
+        # Nothing but the page echoes the query, so that and the results are
+        # what get checked.
+        if data.get("page") != page or data.get("results") is None:
+            raise InvalidFileError(field="search page", expected=page, response=data)
+        return self.load_multi(data)
+
+    # TODO: Validate
+    def load_multi(self, data: dict[str, Any]) -> MultiSearchResults:
+        """Read a page the multi search endpoint answered with."""
+        return MultiSearchResults.from_response(data)
+
+    # TODO: Validate
+    def tv(  # noqa: PLR0913 - Each parameter maps to an API parameter.
+        self,
+        query: str,
+        *,
+        first_air_date_year: int | None = None,
+        include_adult: bool = False,
+        language: str | None = None,
+        year: int | None = None,
+        page: int = 1,
+    ) -> TvSearchResults:
+        """Download one page of TV search results and read it.
+
+        Search for TV shows by their original, translated and also known as names.
+
+        [Official Documentation](https://developer.themoviedb.org/reference/search-tv)
+
+        Raises:
+            InvalidFileError: If the response is not the page that was asked
+                for.
+        """
+        log_id = self.get_log_id(self.tv, locals())
+        data = self._client.download(
+            "search/tv",
+            {
+                "query": query,
+                "first_air_date_year": first_air_date_year,
+                "include_adult": include_adult,
+                "language": language or self._client.language,
+                "year": year,
+                "page": page,
+            },
+            log_id=log_id,
+        )
+        # Nothing but the page echoes the query, so that and the results are
+        # what get checked.
+        if data.get("page") != page or data.get("results") is None:
+            raise InvalidFileError(field="search page", expected=page, response=data)
+        return self.load_tv(data)
+
+    # TODO: Validate
+    def load_tv(self, data: dict[str, Any]) -> TvSearchResults:
+        """Read a page the TV search endpoint answered with."""
+        return TvSearchResults.from_response(data)

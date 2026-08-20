@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Any, Self
+from typing import Any, Self, override
 
 from pydantic import BaseModel, ConfigDict, Field, SkipValidation
+
+from tminidb.base_response_model import BaseResponseModel
 
 
 # TODO: Validate
@@ -174,7 +176,7 @@ class Results(BaseModel):
 
 
 # TODO: Validate
-class WatchProviders(BaseModel):
+class WatchProviders(BaseResponseModel):
     model_config = ConfigDict(frozen=True)
 
     id: int
@@ -183,5 +185,6 @@ class WatchProviders(BaseModel):
 
     # TODO: Validate
     @classmethod
+    @override
     def from_response(cls, data: dict[str, Any]) -> Self:
         return cls.model_validate({**data, "raw": data})

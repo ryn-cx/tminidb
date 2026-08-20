@@ -20,8 +20,9 @@ logger.addHandler(NullHandler())
 
 
 class TMiniDB:
-    """Mini The Movie Database (TMDB) API Wrapper."""
+    """Mini The Movie Database (TMDB) API wrapper."""
 
+    # TODO: Validate
     def __init__(
         self,
         access_token: str,
@@ -36,7 +37,18 @@ class TMiniDB:
             language: Default `ISO 639-1` language sent with every request. More
                 information at https://developer.themoviedb.org/docs/languages
             get_around_client: Get Around client to route requests through.
+
+        Raises:
+            ValueError: If no access token is given. It is refused here rather
+                than sent, because an empty one makes the header it goes out in
+                `Bearer ` and a header ending in a space is not one that can be
+                sent at all: the request would fail somewhere below this with
+                nothing to say the token was what was missing.
         """
+        if not access_token.strip():
+            msg = "An access token is required."
+            raise ValueError(msg)
+
         self.access_token = access_token
         self.language = language
         self.get_around_client = get_around_client or GetAround()
@@ -53,10 +65,9 @@ class TMiniDB:
         self,
         endpoint: str,
         params: dict[str, Any],
-        *,
         log_id: str,
     ) -> dict[str, Any]:
-        """Downloads data from TMDB's API.
+        """Download the response from TMDB.
 
         Args:
             endpoint: The API endpoint to download data from.
@@ -66,20 +77,20 @@ class TMiniDB:
         Raises:
             HTTPError: If the request is answered with anything but a 200.
         """
-        url = f"https://api.themoviedb.org/3/{endpoint}"
-        params = {key: value for key, value in params.items() if value is not None}
-        headers = {
-            "accept": "application/json",
-            "Authorization": f"Bearer {self.access_token}",
-        }
-
         start = time.monotonic()
-        response = self.get_around_client.get(url, params=params, headers=headers)
-        duration = time.monotonic() - start
+        response = self.get_around_client.get(
+            f"https://api.themoviedb.org/3/{endpoint}",
+            params={key: value for key, value in params.items() if value is not None},
+            headers={
+                "accept": "application/json",
+                "Authorization": f"Bearer {self.access_token}",
+            },
+        )
 
         if response.status_code != HTTPStatus.OK:
             raise HTTPError(response)
 
+        duration = time.monotonic() - start
         logger.debug("Downloaded: %s - Completed in %.4f seconds", log_id, duration)
-        output: dict[str, Any] = response.json()
-        return output
+
+        return response.json()

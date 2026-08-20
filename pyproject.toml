@@ -1,7 +1,7 @@
 [project]
 name = "tminidb"
 version = "0.1.0"
-description = "Mini The Movie Database (TMDB) API Wrapper."
+description = "Mini The Movie Database (TMDB) API wrapper."
 readme = "README.md"
 requires-python = ">=3.14"
 authors = [
@@ -38,6 +38,12 @@ ignore = [
   "FIX002",  # TODO comments are allowed.
   "TD002",  # TODO comments do not need an author.
   "TD003",  # TODO comments do not need an issue link.
+]
+
+extend-select = [
+  "D400",  # Checks for docstrings in which the first line does not end in a period.
+  "D401",  # Checks for docstring first lines that are not in an imperative mood.
+  "D404",  # Checks for function docstrings that include the function's signature in the summary line.
 ]
 
 [tool.ruff.lint.per-file-ignores]

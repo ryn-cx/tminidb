@@ -25,12 +25,13 @@ def date_chunks(start_date: date, end_date: date) -> Iterator[tuple[date, date]]
         chunk_start = chunk_end + day
 
 
+# TODO: Validate
 def download_changes(
     start_date: date | None,
     end_date: date | None,
     download: Callable[[str | None, str | None], dict[str, Any]],
 ) -> dict[str, Any]:
-    """Downloads changes with automatic date chunking."""
+    """Download changes with automatic date chunking."""
     if start_date is None or end_date is None:
         return download(
             start_date.isoformat() if start_date else None,

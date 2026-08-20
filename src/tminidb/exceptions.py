@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-from json import JSONDecodeError, loads
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
@@ -14,11 +13,11 @@ if TYPE_CHECKING:
 class TminidbError(Exception):
     """Base exception for TMiniDB.
 
-    Every error carries the data that caused it in `response`, so a caller that
-    catches one can still inspect what came back instead of only reading the
-    message. What `response` holds depends on the error, but it is always the
-    original, unmodified value: the parsed body for an error raised from a
-    response, and the raw text when the body could not be parsed as JSON.
+    Every error carries what caused it in `response`, so a caller that catches
+    one can still inspect it instead of only reading the message. What
+    `response` holds depends on the error, but it is always the original,
+    unmodified value: the whole response for an error raised from one, and the
+    data that failed the check for the rest.
     """
 
     response: Any = None
@@ -29,15 +28,17 @@ class TminidbError(Exception):
 class HTTPError(TminidbError):
     """Raised when HTTP request fails with unexpected status code."""
 
+    response: httpx.Response
+    """The response that caused the error, request included."""
+
     # TODO: Validate
     def __init__(self, response: httpx.Response) -> None:
         """Initialize the HTTPError with the response that caused it.
 
-        An error response is not guaranteed to be JSON, so `response` falls back
-        to the raw text when it cannot be parsed.
+        The response is kept whole rather than as its parsed body, so what was
+        asked for is still reachable through `response.request`.
         """
-        self.http_response = response
-        self.response = _parsed_or_raw(response.text)
+        self.response = response
         super().__init__(
             f"Unexpected response status code: {response.status_code}\n{response.text}",
         )
@@ -46,13 +47,13 @@ class HTTPError(TminidbError):
     @property
     def status_code(self) -> int:
         """The status code of the response that caused the error."""
-        return self.http_response.status_code
+        return self.response.status_code
 
     # TODO: Validate
     @property
     def body(self) -> str:
         """The raw text of the response that caused the error."""
-        return self.http_response.text
+        return self.response.text
 
 
 # TODO: Validate
@@ -80,12 +81,3 @@ class InvalidFileError(TminidbError):
             super().__init__(f"Downloaded file has no {field}")
         else:
             super().__init__(f"Downloaded file is not for {field} {expected!r}")
-
-
-# TODO: Validate
-def _parsed_or_raw(body: str) -> Any:  # noqa: ANN401 - A response body can be any JSON value.
-    """Return `body` parsed as JSON, or the raw text if it is not JSON."""
-    try:
-        return loads(body)
-    except JSONDecodeError:
-        return body

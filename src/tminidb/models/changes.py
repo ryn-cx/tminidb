@@ -1,8 +1,10 @@
 from __future__ import annotations
 
-from typing import Any, Self
+from typing import Any, Self, override
 
 from pydantic import BaseModel, ConfigDict, Field, SkipValidation
+
+from tminidb.base_response_model import BaseResponseModel
 
 
 class Item(BaseModel):
@@ -25,12 +27,14 @@ class Change(BaseModel):
     items: tuple[Item, ...]
 
 
-class Changes(BaseModel):
+class Changes(BaseResponseModel):
     model_config = ConfigDict(frozen=True)
 
     changes: tuple[Change, ...]
     raw: SkipValidation[dict[str, Any]] = Field(repr=False)
 
+    # TODO: Validate
     @classmethod
+    @override
     def from_response(cls, data: dict[str, Any]) -> Self:
         return cls.model_validate({**data, "raw": data})
