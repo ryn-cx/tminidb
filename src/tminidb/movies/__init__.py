@@ -67,14 +67,9 @@ class MovieEndpoints(BaseEndpoint):
                 log_id,
             )
 
-        return self.load_changes(
+        return MovieChangeLog.from_response(
             download_changes(start_date, end_date, _download),
         )
-
-    # TODO: Validate
-    def load_changes(self, data: dict[str, Any]) -> MovieChangeLog:
-        """Read a response the changes endpoint answered with."""
-        return MovieChangeLog.from_response(data)
 
     # TODO: Validate
     def details(
@@ -107,11 +102,6 @@ class MovieEndpoints(BaseEndpoint):
         )
         if data.get("id") != movie_id:
             raise InvalidFileError(field="movie id", expected=movie_id, response=data)
-        return self.load_details(data)
-
-    # TODO: Validate
-    def load_details(self, data: dict[str, Any]) -> Movie:
-        """Read a response the details endpoint answered with."""
         return Movie.from_response(data)
 
     # TODO: Validate
@@ -147,9 +137,4 @@ class MovieEndpoints(BaseEndpoint):
         )
         if data.get("id") != movie_id:
             raise InvalidFileError(field="movie id", expected=movie_id, response=data)
-        return self.load_watch_providers(data)
-
-    # TODO: Validate
-    def load_watch_providers(self, data: dict[str, Any]) -> MovieProviders:
-        """Read a response the watch providers endpoint answered with."""
         return MovieProviders.from_response(data)

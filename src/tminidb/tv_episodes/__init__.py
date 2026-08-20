@@ -63,14 +63,9 @@ class TvEpisodeEndpoints(BaseEndpoint):
                 log_id=log_id,
             )
 
-        return self.load_changes(
+        return TvEpisodeChangeLog.from_response(
             download_changes(start_date, end_date, _download),
         )
-
-    # TODO: Validate
-    def load_changes(self, data: dict[str, Any]) -> TvEpisodeChangeLog:
-        """Read a response the changes endpoint answered with."""
-        return TvEpisodeChangeLog.from_response(data)
 
     # TODO: Validate
     def details(
@@ -115,11 +110,6 @@ class TvEpisodeEndpoints(BaseEndpoint):
                 expected=episode_number,
                 response=data,
             )
-        return self.load_details(data)
-
-    # TODO: Validate
-    def load_details(self, data: dict[str, Any]) -> Details:
-        """Read a response the details endpoint answered with."""
         return Details.from_response(data)
 
     # TODO: Validate
@@ -144,9 +134,4 @@ class TvEpisodeEndpoints(BaseEndpoint):
             {},
             log_id=log_id,
         )
-        return self.load_translations(data)
-
-    # TODO: Validate
-    def load_translations(self, data: dict[str, Any]) -> Translations:
-        """Read a response the translations endpoint answered with."""
         return Translations.from_response(data)

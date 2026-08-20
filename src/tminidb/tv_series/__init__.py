@@ -80,14 +80,9 @@ class TvSeriesEndpoints(BaseEndpoint):
                 log_id=log_id,
             )
 
-        return self.load_changes(
+        return TvSeriesChangeLog.from_response(
             download_changes(start_date, end_date, _download),
         )
-
-    # TODO: Validate
-    def load_changes(self, data: dict[str, Any]) -> TvSeriesChangeLog:
-        """Read a response the changes endpoint answered with."""
-        return TvSeriesChangeLog.from_response(data)
 
     # TODO: Validate
     def details(
@@ -120,11 +115,6 @@ class TvSeriesEndpoints(BaseEndpoint):
         )
         if data.get("id") != series_id:
             raise InvalidFileError(field="series id", expected=series_id, response=data)
-        return self.load_details(data)
-
-    # TODO: Validate
-    def load_details(self, data: dict[str, Any]) -> TvSeries:
-        """Read a response the details endpoint answered with."""
         return TvSeries.from_response(data)
 
     # TODO: Validate
@@ -146,11 +136,6 @@ class TvSeriesEndpoints(BaseEndpoint):
         )
         if data.get("id") != series_id:
             raise InvalidFileError(field="series id", expected=series_id, response=data)
-        return self.load_episode_groups(data)
-
-    # TODO: Validate
-    def load_episode_groups(self, data: dict[str, Any]) -> EpisodeGroups:
-        """Read a response the episode groups endpoint answered with."""
         return EpisodeGroups.from_response(data)
 
     # TODO: Validate
@@ -186,9 +171,4 @@ class TvSeriesEndpoints(BaseEndpoint):
         )
         if data.get("id") != series_id:
             raise InvalidFileError(field="series id", expected=series_id, response=data)
-        return self.load_watch_providers(data)
-
-    # TODO: Validate
-    def load_watch_providers(self, data: dict[str, Any]) -> TvProviders:
-        """Read a response the watch providers endpoint answered with."""
         return TvProviders.from_response(data)

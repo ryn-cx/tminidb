@@ -11,6 +11,7 @@ import pytest
 from tests.utils import RecordedEndpoint
 from tminidb.exceptions import HTTPError
 from tminidb.movies import MovieEndpoints
+from tminidb.movies.models.changes import MovieChangeLog
 from tminidb.movies.models.details import (
     Collection,
     Genre,
@@ -58,8 +59,8 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(TestChanges.MOVIE_ID, client.movies.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(TestChanges.MOVIE_ID, MovieChangeLog)
 
     # TODO: Validate
     class TestMergedResponseWithChanges(MovieTest):
@@ -77,8 +78,8 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(TestChanges.MOVIE_ID, client.movies.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(TestChanges.MOVIE_ID, MovieChangeLog)
 
     # TODO: Validate
     class TestResponseWithoutChanges(MovieTest):
@@ -96,8 +97,8 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(TestChanges.MOVIE_ID, client.movies.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(TestChanges.MOVIE_ID, MovieChangeLog)
 
     class TestInvalidMovieID:
         """Values between -2147483648 and 0 return a 404 error."""
@@ -123,8 +124,8 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.MOVIE_ID, client.movies.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(self.MOVIE_ID, MovieChangeLog)
 
 
 # TODO: Validate
@@ -147,14 +148,14 @@ class TestDetails:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, written out rather than
             # picked at, so anything that changes about it is a failure rather than
             # something no assertion happened to look at. `raw` being the response
             # it was read from is what says it still gives back what it was given.
             data = self.recorded_content(self.MOVIE_ID)
 
-            assert client.movies.load_details(data) == Movie(
+            assert Movie.from_response(data) == Movie(
                 adult=False,
                 backdrop_path=data["backdrop_path"],
                 belongs_to_collection=Collection(**data["belongs_to_collection"]),
@@ -211,10 +212,10 @@ class TestDetails:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             data = self.recorded_content(self.MOVIE_ID)
 
-            assert client.movies.load_details(data) == Movie(
+            assert Movie.from_response(data) == Movie(
                 adult=data["adult"],
                 backdrop_path=None,
                 belongs_to_collection=None,
@@ -300,7 +301,7 @@ class TestWatchProviders:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, in one comparison. A
             # popular movie is on offer in a hundred-odd countries and which
             # service carries it where changes week to week, so the rows are read
@@ -309,7 +310,7 @@ class TestWatchProviders:
             # for it kept apart and none of them dropped.
             data = self.recorded_content(self.MOVIE_ID)
 
-            assert client.movies.load_watch_providers(data) == MovieProviders(
+            assert MovieProviders.from_response(data) == MovieProviders(
                 id=self.MOVIE_ID,
                 results=_expected_results(data),
                 raw=data,

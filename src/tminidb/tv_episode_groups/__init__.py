@@ -13,7 +13,6 @@ method both downloads and reads.
 from __future__ import annotations
 
 from logging import NullHandler, getLogger
-from typing import Any
 
 from tminidb.base_endpoint import BaseEndpoint
 from tminidb.exceptions import InvalidFileError
@@ -63,9 +62,4 @@ class TvEpisodeGroupEndpoints(BaseEndpoint):
                 expected=tv_episode_group_id,
                 response=data,
             )
-        return self.load_details(data)
-
-    # TODO: Validate
-    def load_details(self, data: dict[str, Any]) -> EpisodeGroup:
-        """Read a response the details endpoint answered with."""
         return EpisodeGroup.from_response(data)

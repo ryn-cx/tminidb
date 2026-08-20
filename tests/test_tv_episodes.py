@@ -54,7 +54,7 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, in one comparison. Which
             # fields were edited and how many times is whatever the editors did
             # that fortnight, so the rows are read back from the response: what is
@@ -63,7 +63,7 @@ class TestChanges:
             # readable.
             data = self.recorded_content(self.NAME)
 
-            assert client.tv_episodes.load_changes(data) == TvEpisodeChangeLog(
+            assert TvEpisodeChangeLog.from_response(data) == TvEpisodeChangeLog(
                 changes=tuple(
                     Change(
                         key=group["key"],
@@ -73,7 +73,7 @@ class TestChanges:
                 ),
                 raw=data,
             )
-            assert client.tv_episodes.load_changes(data).changes
+            assert TvEpisodeChangeLog.from_response(data).changes
 
     # TODO: Validate
     class TestUnknownEpisode(TvEpisodeTest):
@@ -97,8 +97,8 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.NAME, client.tv_episodes.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(self.NAME, TvEpisodeChangeLog)
 
 
 # TODO: Validate
@@ -129,13 +129,13 @@ class TestDetails:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, written out rather than
             # picked at, so anything that changes about it is a failure rather than
             # something no assertion happened to look at.
             data = self.recorded_content(self.NAME)
 
-            assert client.tv_episodes.load_details(data) == Details(
+            assert Details.from_response(data) == Details(
                 air_date=self.AIR_DATE,
                 # Who is credited on an episode is added to as people go through
                 # it, so the two lists of people are read back from the response.
@@ -221,7 +221,7 @@ class TestTranslations:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, in one comparison. Which
             # languages an episode has been written in grows as people add them, so
             # the rows are read back from the response: what is checked is that
@@ -229,7 +229,7 @@ class TestTranslations:
             # title and summary in the nested `data` object.
             data = self.recorded_content(self.NAME)
 
-            assert client.tv_episodes.load_translations(data) == Translations(
+            assert Translations.from_response(data) == Translations(
                 id=self.EPISODE_ID,
                 translations=tuple(
                     Translation(

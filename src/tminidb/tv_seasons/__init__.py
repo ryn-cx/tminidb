@@ -79,14 +79,9 @@ class TvSeasonEndpoints(BaseEndpoint):
                 log_id=log_id,
             )
 
-        return self.load_changes(
+        return TvSeasonChangeLog.from_response(
             download_changes(start_date, end_date, _download),
         )
-
-    # TODO: Validate
-    def load_changes(self, data: dict[str, Any]) -> TvSeasonChangeLog:
-        """Read a response the changes endpoint answered with."""
-        return TvSeasonChangeLog.from_response(data)
 
     # TODO: Validate
     def details(
@@ -124,9 +119,4 @@ class TvSeasonEndpoints(BaseEndpoint):
                 expected=season_number,
                 response=data,
             )
-        return self.load_details(data)
-
-    # TODO: Validate
-    def load_details(self, data: dict[str, Any]) -> TvSeason:
-        """Read a response the details endpoint answered with."""
         return TvSeason.from_response(data)

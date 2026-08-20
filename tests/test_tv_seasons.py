@@ -53,7 +53,7 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, in one comparison. Which
             # fields were edited and how many times is whatever the editors did
             # that fortnight, so the rows are read back from the response: what is
@@ -62,7 +62,7 @@ class TestChanges:
             # readable.
             data = self.recorded_content(self.NAME)
 
-            assert client.tv_seasons.load_changes(data) == TvSeasonChangeLog(
+            assert TvSeasonChangeLog.from_response(data) == TvSeasonChangeLog(
                 changes=tuple(
                     Change(
                         key=group["key"],
@@ -72,7 +72,7 @@ class TestChanges:
                 ),
                 raw=data,
             )
-            assert client.tv_seasons.load_changes(data).changes
+            assert TvSeasonChangeLog.from_response(data).changes
 
     # TODO: Validate
     class TestUnknownSeason(TvSeasonTest):
@@ -96,8 +96,8 @@ class TestChanges:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.NAME, client.tv_seasons.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(self.NAME, TvSeasonChangeLog)
 
 
 # TODO: Validate
@@ -125,14 +125,14 @@ class TestDetails:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, in one comparison. The
             # season's own identity is written out; the episode rows are read back
             # from the response, since their summaries and runtimes are edited on
             # TMDB long after the season finished airing.
             data = self.recorded_content(self.NAME)
 
-            assert client.tv_seasons.load_details(data) == TvSeason(
+            assert TvSeason.from_response(data) == TvSeason(
                 object_id=data["_id"],
                 air_date=self.AIR_DATE,
                 episodes=tuple(Episode(**episode) for episode in data["episodes"]),

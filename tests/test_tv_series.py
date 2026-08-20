@@ -11,6 +11,10 @@ import pytest
 from tests.utils import RecordedEndpoint
 from tminidb.exceptions import HTTPError
 from tminidb.tv_series import TvSeriesEndpoints
+from tminidb.tv_series.models.changes import TvSeriesChangeLog
+from tminidb.tv_series.models.details import TvSeries
+from tminidb.tv_series.models.episode_groups import EpisodeGroups
+from tminidb.tv_series.models.watch_providers import TvProviders
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
@@ -39,8 +43,8 @@ class TestChanges:
         """Most popular TV series at the time of writing this test
         https://www.themoviedb.org/tv/108978-reacher"""
 
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.SERIES_ID, client.tv_series.load_changes)
+        def test_parse(self) -> None:
+            self.parse_test(self.SERIES_ID, TvSeriesChangeLog)
 
     class TestResponseWithChanges(BaseChangesTest):
         def test_download(self, client: TMiniDB) -> None:
@@ -114,8 +118,8 @@ class TestDetails:
                 lambda: client.tv_series.details(self.SERIES_ID).raw,
             )
 
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.SERIES_ID, client.tv_series.load_details)
+        def test_parse(self) -> None:
+            self.parse_test(self.SERIES_ID, TvSeries)
 
     class TestFinishedSeries(BaseDetailsTest):
         SERIES_ID = 1
@@ -144,9 +148,8 @@ class TestEpisodeGroups:
                 lambda: client.tv_series.episode_groups(self.SERIES_ID).raw,
             )
 
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.SERIES_ID, client.tv_series.load_episode_groups)
-
+        def test_parse(self) -> None:
+            self.parse_test(self.SERIES_ID, EpisodeGroups)
 
     # TODO: Validate
     class TestInvalidSeriesID:
@@ -179,8 +182,8 @@ class TestWatchProviders:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
-            self.parse_test(self.SERIES_ID, client.tv_series.load_watch_providers)
+        def test_parse(self) -> None:
+            self.parse_test(self.SERIES_ID, TvProviders)
 
     # TODO: Validate
     class TestInvalidSeriesID:

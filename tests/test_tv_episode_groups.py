@@ -77,10 +77,10 @@ class TestDetails:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             data = self.recorded_content(self.GROUP_ID)
 
-            assert client.tv_episode_groups.load_details(data) == _expected(data)
+            assert EpisodeGroup.from_response(data) == _expected(data)
 
     # TODO: Validate
     class TestGroupWithNetwork(TvEpisodeGroupTest):
@@ -96,10 +96,10 @@ class TestDetails:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             data = self.recorded_content(self.GROUP_ID)
 
-            assert client.tv_episode_groups.load_details(data) == _expected(data)
+            assert EpisodeGroup.from_response(data) == _expected(data)
 
     # TODO: Validate
     class TestUnknownGroup:

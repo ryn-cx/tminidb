@@ -39,7 +39,7 @@ class TestMovie:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, written out rather than
             # picked at, so anything that changes about it is a failure rather than
             # something no assertion happened to look at. A page holds twenty
@@ -48,7 +48,7 @@ class TestMovie:
             # exact title that was searched for, is written out.
             data = self.recorded_content(self.QUERY)
 
-            assert client.search.load_movie(data) == MovieSearchResults(
+            assert MovieSearchResults.from_response(data) == MovieSearchResults(
                 page=data["page"],
                 total_pages=data["total_pages"],
                 total_results=data["total_results"],
@@ -86,12 +86,12 @@ class TestMovie:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # A search nothing matches is a page rather than an error, so an empty
             # result says only that nothing matched.
             data = self.recorded_content(self.QUERY)
 
-            assert client.search.load_movie(data) == MovieSearchResults(
+            assert MovieSearchResults.from_response(data) == MovieSearchResults(
                 page=1,
                 # A page count of one rather than zero: the API answers an empty
                 # search with one empty page rather than with no pages at all.
@@ -122,10 +122,10 @@ class TestMulti:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             data = self.recorded_content(self.QUERY)
 
-            results = client.search.load_multi(data)
+            results = MultiSearchResults.from_response(data)
 
             assert results == MultiSearchResults(
                 page=1,
@@ -158,10 +158,10 @@ class TestMulti:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             data = self.recorded_content(self.QUERY)
 
-            results = client.search.load_multi(data)
+            results = MultiSearchResults.from_response(data)
 
             assert results == MultiSearchResults(
                 page=1,
@@ -193,10 +193,10 @@ class TestMulti:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             data = self.recorded_content(self.QUERY)
 
-            results = client.search.load_multi(data)
+            results = MultiSearchResults.from_response(data)
 
             assert results == MultiSearchResults(
                 page=data["page"],
@@ -227,12 +227,12 @@ class TestMulti:
             )
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # A search nothing matches is a page rather than an error, so an empty
             # result says only that nothing matched.
             data = self.recorded_content(self.QUERY)
 
-            assert client.search.load_multi(data) == MultiSearchResults(
+            assert MultiSearchResults.from_response(data) == MultiSearchResults(
                 page=1,
                 # A page count of one rather than zero: the API answers an empty
                 # search with one empty page rather than with no pages at all.
@@ -259,14 +259,14 @@ class TestTv:
             self.record_test(self.QUERY, lambda: client.search.tv(self.QUERY).raw)
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # The whole of what the response is read into, written out rather than
             # picked at. Which of the twenty rows come back moves as the API
             # reranks, so they are read from the response and only the first, which
             # is the exact name that was searched for, is written out.
             data = self.recorded_content(self.QUERY)
 
-            assert client.search.load_tv(data) == TvSearchResults(
+            assert TvSearchResults.from_response(data) == TvSearchResults(
                 page=data["page"],
                 total_pages=data["total_pages"],
                 total_results=data["total_results"],
@@ -301,12 +301,12 @@ class TestTv:
             self.record_test(self.QUERY, lambda: client.search.tv(self.QUERY).raw)
 
         # TODO: Validate
-        def test_parse(self, client: TMiniDB) -> None:
+        def test_parse(self) -> None:
             # A search nothing matches is a page rather than an error, so an empty
             # result says only that nothing matched.
             data = self.recorded_content(self.QUERY)
 
-            assert client.search.load_tv(data) == TvSearchResults(
+            assert TvSearchResults.from_response(data) == TvSearchResults(
                 page=1,
                 # A page count of one rather than zero: the API answers an empty
                 # search with one empty page rather than with no pages at all.

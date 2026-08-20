@@ -147,23 +147,18 @@ class RecordedEndpoint:
 
     # TODO: Validate
     @classmethod
-    def parse_test(
-        cls,
-        name: str | int,
-        load: Callable[[dict[str, Any]], BaseResponseModel],
-    ) -> None:
+    def parse_test(cls, name: str | int, model: type[BaseResponseModel]) -> None:
         """Read a recorded response and check it against the recorded model.
 
-        The reading is the endpoint's own `load_` method rather than the model's
-        `from_response`, so what the test exercises is the same call a download
-        ends in.
+        The reading is the model's own `from_response`, which is what a download
+        ends in too, so the test exercises the same call.
 
         What the two sides are compared as is what each is written out to rather
         than as models, so what is checked is every value as it is recorded
         rather than two models that agree only because reading the recording
         back undid whatever the parsing did to it.
         """
-        parsed = load(cls.recorded_content(name))
+        parsed = model.from_response(cls.recorded_content(name))
         recorded = cls.recorded_model_content(name, parsed)
 
         assert parsed.model_dump(mode="json") == recorded

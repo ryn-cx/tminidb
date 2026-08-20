@@ -11,7 +11,6 @@ and is the whole of it, because the method both downloads and reads.
 from __future__ import annotations
 
 from logging import NullHandler, getLogger
-from typing import Any
 
 from tminidb.base_endpoint import BaseEndpoint
 from tminidb.exceptions import InvalidFileError
@@ -70,11 +69,6 @@ class SearchEndpoints(BaseEndpoint):
         # what get checked.
         if data.get("page") != page or data.get("results") is None:
             raise InvalidFileError(field="search page", expected=page, response=data)
-        return self.load_movie(data)
-
-    # TODO: Validate
-    def load_movie(self, data: dict[str, Any]) -> MovieSearchResults:
-        """Read a page the movie search endpoint answered with."""
         return MovieSearchResults.from_response(data)
 
     # TODO: Validate
@@ -112,11 +106,6 @@ class SearchEndpoints(BaseEndpoint):
         # what get checked.
         if data.get("page") != page or data.get("results") is None:
             raise InvalidFileError(field="search page", expected=page, response=data)
-        return self.load_multi(data)
-
-    # TODO: Validate
-    def load_multi(self, data: dict[str, Any]) -> MultiSearchResults:
-        """Read a page the multi search endpoint answered with."""
         return MultiSearchResults.from_response(data)
 
     # TODO: Validate
@@ -157,9 +146,4 @@ class SearchEndpoints(BaseEndpoint):
         # what get checked.
         if data.get("page") != page or data.get("results") is None:
             raise InvalidFileError(field="search page", expected=page, response=data)
-        return self.load_tv(data)
-
-    # TODO: Validate
-    def load_tv(self, data: dict[str, Any]) -> TvSearchResults:
-        """Read a page the TV search endpoint answered with."""
         return TvSearchResults.from_response(data)
