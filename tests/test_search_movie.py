@@ -1,0 +1,47 @@
+# TODO: Validate
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+import pytest
+
+from tests.utils import RecordedEndpoint
+from tminidb.search.movie.models import SearchMovieModel
+
+if TYPE_CHECKING:
+    from tminidb import TMiniDB
+
+NO_MATCHES_QUERY = "1234567890qwertyuiopasdfghjklzxcvbnm"
+"""A query nothing matches, which the API answers with one empty page."""
+
+QUERIES = [
+    pytest.param("The Matrix", id="the matrix"),
+    pytest.param(NO_MATCHES_QUERY, id="query nothing matches"),
+]
+
+
+# TODO: Validate
+class SearchMovieTest(RecordedEndpoint):
+    MODEL = SearchMovieModel
+
+
+# TODO: Validate
+@pytest.mark.parametrize("query", QUERIES)
+def test_download(client: TMiniDB, query: str) -> None:
+    SearchMovieTest.download_test(query, lambda: client.search_movie.download(query))
+
+
+# TODO: Validate
+@pytest.mark.parametrize("query", QUERIES)
+def test_parse(client: TMiniDB, query: str) -> None:
+    results = client.search_movie.load(SearchMovieTest.recorded_content(query))
+    assert results.page == 1
+
+
+# TODO: Validate
+def test_parse_no_matches(client: TMiniDB) -> None:
+    results = client.search_movie.load(
+        SearchMovieTest.recorded_content(NO_MATCHES_QUERY),
+    )
+    assert results.total_results == 0
+    assert results.results == []

@@ -1,0 +1,49 @@
+# TODO: Validate
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+import pytest
+
+from tests.utils import RecordedEndpoint
+from tminidb.search.multi.models import SearchMultiModel
+
+if TYPE_CHECKING:
+    from tminidb import TMiniDB
+
+NO_MATCHES_QUERY = "1234567890qwertyuiopasdfghjklzxcvbnm"
+"""A query nothing matches, which the API answers with one empty page."""
+
+QUERIES = [
+    pytest.param("Accidental Partners", id="a movie and nothing else"),
+    pytest.param("Teach You a Lesson", id="a series and a movie sharing a name"),
+    pytest.param("Anoushka", id="a person"),
+    pytest.param(NO_MATCHES_QUERY, id="query nothing matches"),
+]
+
+
+# TODO: Validate
+class SearchMultiTest(RecordedEndpoint):
+    MODEL = SearchMultiModel
+
+
+# TODO: Validate
+@pytest.mark.parametrize("query", QUERIES)
+def test_download(client: TMiniDB, query: str) -> None:
+    SearchMultiTest.download_test(query, lambda: client.search_multi.download(query))
+
+
+# TODO: Validate
+@pytest.mark.parametrize("query", QUERIES)
+def test_parse(client: TMiniDB, query: str) -> None:
+    results = client.search_multi.load(SearchMultiTest.recorded_content(query))
+    assert results.page == 1
+
+
+# TODO: Validate
+def test_parse_no_matches(client: TMiniDB) -> None:
+    results = client.search_multi.load(
+        SearchMultiTest.recorded_content(NO_MATCHES_QUERY),
+    )
+    assert results.total_results == 0
+    assert results.results == []
