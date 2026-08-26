@@ -1,5 +1,6 @@
 from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import Field
 from datetime import date
 from pydantic import BaseModel
 
@@ -13,8 +14,8 @@ class Result(BaseModel):
     original_name: str
     overview: str
     popularity: float
-    poster_path: str
-    first_air_date: date
+    poster_path: str | None
+    first_air_date: date | str = Field(union_mode='left_to_right')
     softcore: bool
     name: str
     vote_average: float

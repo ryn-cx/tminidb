@@ -18,6 +18,7 @@ QUERIES = [
     pytest.param("Accidental Partners", id="a movie and nothing else"),
     pytest.param("Teach You a Lesson", id="a series and a movie sharing a name"),
     pytest.param("Anoushka", id="a person"),
+    pytest.param("Astro Boy", id="a series with no announced air date"),
     pytest.param(NO_MATCHES_QUERY, id="query nothing matches"),
 ]
 

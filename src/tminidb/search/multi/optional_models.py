@@ -51,7 +51,7 @@ class Result(BaseModel):
     known_for_department: str | None = None
     profile_path: str | None = None
     known_for: list[KnownForItem] | None = None
-    first_air_date: date | None = None
+    first_air_date: date | str | None = Field(default=None, union_mode='left_to_right')
     origin_country: list[str] | None = None
 
 class SearchMultiModel(BaseModel):

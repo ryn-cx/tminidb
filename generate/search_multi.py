@@ -17,9 +17,14 @@ QUERIES = [
     "Teach You a Lesson",
     "Anoushka",
     "GI Joe",
+    "Astro Boy",
     "1234567890qwertyuiopasdfghjklzxcvbnm",
 ]
-"""The queries the model is built from. Nothing matches the last one."""
+"""The queries the model is built from. Nothing matches the last one.
+
+Astro Boy matches series that have no announced air date, which the API gives
+an empty first_air_date.
+"""
 
 
 # TODO: Validate

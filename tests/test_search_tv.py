@@ -16,6 +16,7 @@ NO_MATCHES_QUERY = "1234567890qwertyuiopasdfghjklzxcvbnm"
 
 QUERIES = [
     pytest.param("Breaking Bad", id="breaking bad"),
+    pytest.param("Astro Boy", id="a series with no announced air date"),
     pytest.param(NO_MATCHES_QUERY, id="query nothing matches"),
 ]
 

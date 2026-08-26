@@ -12,8 +12,12 @@ from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
 from generate.utils import download_if_missing
 from tminidb import TMiniDB
 
-QUERIES = ["Breaking Bad", "1234567890qwertyuiopasdfghjklzxcvbnm"]
-"""The queries the model is built from. Nothing matches the last one."""
+QUERIES = ["Breaking Bad", "Astro Boy", "1234567890qwertyuiopasdfghjklzxcvbnm"]
+"""The queries the model is built from. Nothing matches the last one.
+
+Astro Boy matches series that have no announced air date, which the API gives
+an empty first_air_date.
+"""
 
 
 # TODO: Validate
