@@ -40,7 +40,7 @@ class Result(BaseModel):
     original_language: str | None = None
     genre_ids: list[int] | None = None
     popularity: float | None = None
-    release_date: date | None = None
+    release_date: date | str | None = Field(default=None, union_mode='left_to_right')
     softcore: bool | None = None
     video: bool | None = None
     vote_average: float | None = None

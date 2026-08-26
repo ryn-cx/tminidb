@@ -16,6 +16,7 @@ QUERIES = [
     "Accidental Partners",
     "Teach You a Lesson",
     "Anoushka",
+    "GI Joe",
     "1234567890qwertyuiopasdfghjklzxcvbnm",
 ]
 """The queries the model is built from. Nothing matches the last one."""
