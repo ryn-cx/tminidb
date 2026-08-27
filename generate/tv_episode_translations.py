@@ -25,7 +25,7 @@ def generate_tv_episode_translations(client: TMiniDB) -> None:
             "TvEpisodeTranslationsModel",
             f"{series_id}_{season_number}_{episode_number}",
             lambda episode=(series_id, season_number, episode_number): (
-                client.tv_episode_translations.download(*episode)
+                client.tv_episode.translations.download(*episode)
             ),
         )
 

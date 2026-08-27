@@ -24,7 +24,7 @@ def generate_search_movie(client: TMiniDB) -> None:
             FILES_PATH,
             "SearchMovieModel",
             query,
-            lambda query=query: client.search_movie.download(query),
+            lambda query=query: client.search.movie.download(query),
         )
 
     generate_model(FILES_PATH, TMINIDB_PATH, "SearchMovieModel")

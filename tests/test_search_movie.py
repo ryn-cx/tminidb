@@ -28,19 +28,19 @@ class SearchMovieTest(RecordedEndpoint):
 # TODO: Validate
 @pytest.mark.parametrize("query", QUERIES)
 def test_download(client: TMiniDB, query: str) -> None:
-    SearchMovieTest.download_test(query, lambda: client.search_movie.download(query))
+    SearchMovieTest.download_test(query, lambda: client.search.movie.download(query))
 
 
 # TODO: Validate
 @pytest.mark.parametrize("query", QUERIES)
 def test_parse(client: TMiniDB, query: str) -> None:
-    results = client.search_movie.load(SearchMovieTest.recorded_content(query))
+    results = client.search.movie.load(SearchMovieTest.recorded_content(query))
     assert results.page == 1
 
 
 # TODO: Validate
 def test_parse_no_matches(client: TMiniDB) -> None:
-    results = client.search_movie.load(
+    results = client.search.movie.load(
         SearchMovieTest.recorded_content(NO_MATCHES_QUERY),
     )
     assert results.total_results == 0

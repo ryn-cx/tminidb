@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 import pytest
 
 from tests.utils import RecordedEndpoint
-from tminidb.changes.tv_season.models import TvSeasonChangesModel
+from tminidb.tv_season.changes.models import TvSeasonChangesModel
 
 if TYPE_CHECKING:
     from datetime import date
@@ -50,8 +50,8 @@ def download_change_log(
 ) -> str:
     """Download the change log the way the range asked for needs it downloaded."""
     if start_date is not None and end_date is not None:
-        return client.tv_season_changes.download_merged(season_id, start_date, end_date)
-    return client.tv_season_changes.download(season_id, start_date=start_date)
+        return client.tv_season.changes.download_merged(season_id, start_date, end_date)
+    return client.tv_season.changes.download(season_id, start_date=start_date)
 
 
 # TODO: Validate
@@ -75,7 +75,7 @@ def test_download(
 # TODO: Validate
 @pytest.mark.parametrize("name", RECORDED_NAMES)
 def test_parse(client: TMiniDB, name: str) -> None:
-    change_log = client.tv_season_changes.load(
+    change_log = client.tv_season.changes.load(
         TvSeasonChangesTest.recorded_content(name),
     )
     assert change_log.changes is not None

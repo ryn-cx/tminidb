@@ -28,7 +28,7 @@ def generate_search_tv(client: TMiniDB) -> None:
             FILES_PATH,
             "SearchTvModel",
             query,
-            lambda query=query: client.search_tv.download(query),
+            lambda query=query: client.search.tv.download(query),
         )
 
     generate_model(FILES_PATH, TMINIDB_PATH, "SearchTvModel")

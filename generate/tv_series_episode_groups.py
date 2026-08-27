@@ -24,7 +24,7 @@ def generate_tv_series_episode_groups(client: TMiniDB) -> None:
             FILES_PATH,
             "TvSeriesEpisodeGroupsModel",
             series_id,
-            lambda series_id=series_id: client.tv_series_episode_groups.download(
+            lambda series_id=series_id: client.tv_series.episode_groups.download(
                 series_id,
             ),
         )

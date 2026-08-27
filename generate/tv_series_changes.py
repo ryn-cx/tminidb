@@ -35,8 +35,8 @@ def download_change_log(
 ) -> str:
     """Download the change log the way the range asked for needs it downloaded."""
     if start_date is not None and end_date is not None:
-        return client.tv_series_changes.download_merged(series_id, start_date, end_date)
-    return client.tv_series_changes.download(series_id, start_date=start_date)
+        return client.tv_series.changes.download_merged(series_id, start_date, end_date)
+    return client.tv_series.changes.download(series_id, start_date=start_date)
 
 
 # TODO: Validate

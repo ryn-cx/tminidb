@@ -29,7 +29,7 @@ def test_download_with_invalid_token() -> None:
     client = TMiniDB("not-a-real-token")
 
     with pytest.raises(HTTPError) as error:
-        client.movie.download(MOVIE_ID)
+        client.movie.details.download(MOVIE_ID)
 
     assert error.value.status_code == UNAUTHORIZED
     body = json.loads(error.value.response or "")

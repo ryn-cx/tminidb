@@ -5,7 +5,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict
 
 class KnownForItem(BaseModel):
-    model_config = ConfigDict(extra='ignore')
+    model_config = ConfigDict(extra='ignore', defer_build=True)
     adult: bool | None = None
     backdrop_path: str | None = None
     id: int | None = None
@@ -28,7 +28,7 @@ class KnownForItem(BaseModel):
     origin_country: list[str] | None = None
 
 class Result(BaseModel):
-    model_config = ConfigDict(extra='ignore')
+    model_config = ConfigDict(extra='ignore', defer_build=True)
     adult: bool | None = None
     backdrop_path: str | None = None
     id: int | None = None
@@ -55,7 +55,7 @@ class Result(BaseModel):
     origin_country: list[str] | None = None
 
 class SearchMultiModel(BaseModel):
-    model_config = ConfigDict(extra='ignore')
+    model_config = ConfigDict(extra='ignore', defer_build=True)
     page: int | None = None
     results: list[Result] | None = None
     total_pages: int | None = None

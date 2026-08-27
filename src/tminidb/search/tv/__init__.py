@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from logging import NullHandler, getLogger
 
-from tminidb.search.base import BaseSearch
+from tminidb.base_search import BaseSearch
 from tminidb.search.tv.models import SearchTvModel, model_validate_json
 
 logger = getLogger(__name__)

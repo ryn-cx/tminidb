@@ -24,7 +24,7 @@ def generate_tv_series_watch_providers(client: TMiniDB) -> None:
             FILES_PATH,
             "TvSeriesWatchProvidersModel",
             series_id,
-            lambda series_id=series_id: client.tv_series_watch_providers.download(
+            lambda series_id=series_id: client.tv_series.watch_providers.download(
                 series_id,
             ),
         )

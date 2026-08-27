@@ -27,7 +27,7 @@ def generate_tv_episode_changes(client: TMiniDB) -> None:
             FILES_PATH,
             "TvEpisodeChangesModel",
             name,
-            lambda episode_id=episode_id: client.tv_episode_changes.download(
+            lambda episode_id=episode_id: client.tv_episode.changes.download(
                 episode_id,
             ),
         )

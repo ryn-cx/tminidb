@@ -5,7 +5,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict
 
 class Result(BaseModel):
-    model_config = ConfigDict(extra='ignore')
+    model_config = ConfigDict(extra='ignore', defer_build=True)
     adult: bool | None = None
     backdrop_path: str | None = None
     genre_ids: list[int] | None = None
@@ -23,7 +23,7 @@ class Result(BaseModel):
     vote_count: int | None = None
 
 class SearchMovieModel(BaseModel):
-    model_config = ConfigDict(extra='ignore')
+    model_config = ConfigDict(extra='ignore', defer_build=True)
     page: int | None = None
     results: list[Result] | None = None
     total_pages: int | None = None

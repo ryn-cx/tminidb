@@ -35,7 +35,7 @@ def generate_search_multi(client: TMiniDB) -> None:
             FILES_PATH,
             "SearchMultiModel",
             query,
-            lambda query=query: client.search_multi.download(query),
+            lambda query=query: client.search.multi.download(query),
         )
 
     generate_model(FILES_PATH, TMINIDB_PATH, "SearchMultiModel")

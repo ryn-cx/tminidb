@@ -1,10 +1,12 @@
 from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import Field
+from pydantic import ConfigDict
 from datetime import date
 from pydantic import BaseModel
 
 class KnownForItem(BaseModel):
+    model_config = ConfigDict(defer_build=True)
     adult: bool
     backdrop_path: str | None
     id: int
@@ -27,6 +29,7 @@ class KnownForItem(BaseModel):
     origin_country: list[str] | None = None
 
 class Result(BaseModel):
+    model_config = ConfigDict(defer_build=True)
     adult: bool
     backdrop_path: str | None = None
     id: int
@@ -53,6 +56,7 @@ class Result(BaseModel):
     origin_country: list[str] | None = None
 
 class SearchMultiModel(BaseModel):
+    model_config = ConfigDict(defer_build=True)
     page: int
     results: list[Result]
     total_pages: int

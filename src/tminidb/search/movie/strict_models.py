@@ -1,10 +1,12 @@
 from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import Field
+from pydantic import ConfigDict
 from datetime import date
 from pydantic import BaseModel
 
 class Result(BaseModel):
+    model_config = ConfigDict(defer_build=True)
     adult: bool
     backdrop_path: str | None
     genre_ids: list[int]
@@ -22,6 +24,7 @@ class Result(BaseModel):
     vote_count: int
 
 class SearchMovieModel(BaseModel):
+    model_config = ConfigDict(defer_build=True)
     page: int
     results: list[Result]
     total_pages: int

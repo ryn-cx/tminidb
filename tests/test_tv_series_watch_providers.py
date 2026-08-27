@@ -7,7 +7,7 @@ import pytest
 
 from tests.utils import RecordedEndpoint
 from tminidb.exceptions import SeriesNotFoundError
-from tminidb.watch_providers.tv_series.models import TvSeriesWatchProvidersModel
+from tminidb.tv_series.watch_providers.models import TvSeriesWatchProvidersModel
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
@@ -27,14 +27,14 @@ class TvSeriesWatchProvidersTest(RecordedEndpoint):
 def test_download(client: TMiniDB, series_id: int) -> None:
     TvSeriesWatchProvidersTest.download_test(
         series_id,
-        lambda: client.tv_series_watch_providers.download(series_id),
+        lambda: client.tv_series.watch_providers.download(series_id),
     )
 
 
 # TODO: Validate
 @pytest.mark.parametrize("series_id", SERIES_IDS)
 def test_parse(client: TMiniDB, series_id: int) -> None:
-    providers = client.tv_series_watch_providers.load(
+    providers = client.tv_series.watch_providers.load(
         TvSeriesWatchProvidersTest.recorded_content(series_id),
     )
     assert providers.id == series_id
@@ -48,6 +48,6 @@ def test_parse(client: TMiniDB, series_id: int) -> None:
 def test_download_invalid(client: TMiniDB, series_id: int) -> None:
     TvSeriesWatchProvidersTest.error_test(
         series_id,
-        lambda: client.tv_series_watch_providers.download(series_id),
+        lambda: client.tv_series.watch_providers.download(series_id),
         SeriesNotFoundError,
     )

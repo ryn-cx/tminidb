@@ -7,7 +7,7 @@ import pytest
 
 from tests.utils import RecordedEndpoint
 from tminidb.exceptions import EpisodeNotFoundError
-from tminidb.tv_episode_translations.models import TvEpisodeTranslationsModel
+from tminidb.tv_episode.translations.models import TvEpisodeTranslationsModel
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
@@ -30,7 +30,7 @@ def test_download(
 ) -> None:
     TvEpisodeTranslationsTest.download_test(
         f"{series_id}_{season_number}_{episode_number}",
-        lambda: client.tv_episode_translations.download(
+        lambda: client.tv_episode.translations.download(
             series_id,
             season_number,
             episode_number,
@@ -46,7 +46,7 @@ def test_parse(
     season_number: int,
     episode_number: int,
 ) -> None:
-    translations = client.tv_episode_translations.load(
+    translations = client.tv_episode.translations.load(
         TvEpisodeTranslationsTest.recorded_content(
             f"{series_id}_{season_number}_{episode_number}",
         ),
@@ -67,7 +67,7 @@ def test_download_invalid(
 ) -> None:
     TvEpisodeTranslationsTest.error_test(
         f"{series_id}_{season_number}_{episode_number}",
-        lambda: client.tv_episode_translations.download(
+        lambda: client.tv_episode.translations.download(
             series_id,
             season_number,
             episode_number,

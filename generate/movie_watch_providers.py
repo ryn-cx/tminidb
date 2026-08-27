@@ -24,7 +24,7 @@ def generate_movie_watch_providers(client: TMiniDB) -> None:
             FILES_PATH,
             "MovieWatchProvidersModel",
             movie_id,
-            lambda movie_id=movie_id: client.movie_watch_providers.download(movie_id),
+            lambda movie_id=movie_id: client.movie.watch_providers.download(movie_id),
         )
 
     generate_model(FILES_PATH, TMINIDB_PATH, "MovieWatchProvidersModel")

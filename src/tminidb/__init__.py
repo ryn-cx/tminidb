@@ -11,23 +11,13 @@ from typing import Any
 
 from get_around import GetAround
 
-from tminidb.changes.movie import MovieChanges
-from tminidb.changes.tv_episode import TvEpisodeChanges
-from tminidb.changes.tv_season import TvSeasonChanges
-from tminidb.changes.tv_series import TvSeriesChanges
-from tminidb.details.movie import Movie
-from tminidb.details.tv_episode import TvEpisode
-from tminidb.details.tv_season import TvSeason
-from tminidb.details.tv_series import TvSeries
 from tminidb.exceptions import HTTPError, ResourceNotFoundError
-from tminidb.search.movie import SearchMovie
-from tminidb.search.multi import SearchMulti
-from tminidb.search.tv import SearchTv
-from tminidb.tv_episode_group import TvEpisodeGroup
-from tminidb.tv_episode_translations import TvEpisodeTranslations
-from tminidb.tv_series_episode_groups import TvSeriesEpisodeGroups
-from tminidb.watch_providers.movie import MovieWatchProviders
-from tminidb.watch_providers.tv_series import TvSeriesWatchProviders
+from tminidb.movie import MovieEndpoints
+from tminidb.search import SearchEndpoints
+from tminidb.tv_episode import TvEpisodeEndpoints
+from tminidb.tv_episode_group import TvEpisodeGroupEndpoints
+from tminidb.tv_season import TvSeasonEndpoints
+from tminidb.tv_series import TvSeriesEndpoints
 
 logger = getLogger(__name__)
 logger.addHandler(NullHandler())
@@ -51,9 +41,11 @@ class TMiniDB:
     ) -> None:
         """Initialize the TMiniDB client.
 
-        The client holds one attribute per endpoint, so `client.movie(603)` looks
-        a movie up and `client.movie.download(603)` and `client.movie.load(data)`
-        are the halves of it.
+        The client holds one attribute per category TMDB lists its endpoints
+        under, and each of those holds one attribute per endpoint, so
+        `client.movie.details(603)` looks a movie up, and
+        `client.movie.details.download(603)` and
+        `client.movie.details.load(data)` are the halves of it.
 
         Args:
             access_token: TMDB API Read Access Token. Available at
@@ -73,22 +65,12 @@ class TMiniDB:
         self.language = language
         self.get_around_client = get_around_client or GetAround()
 
-        self.movie = Movie(self)
-        self.tv_series = TvSeries(self)
-        self.tv_season = TvSeason(self)
-        self.tv_episode = TvEpisode(self)
-        self.tv_episode_group = TvEpisodeGroup(self)
-        self.tv_episode_translations = TvEpisodeTranslations(self)
-        self.tv_series_episode_groups = TvSeriesEpisodeGroups(self)
-        self.movie_changes = MovieChanges(self)
-        self.tv_series_changes = TvSeriesChanges(self)
-        self.tv_season_changes = TvSeasonChanges(self)
-        self.tv_episode_changes = TvEpisodeChanges(self)
-        self.movie_watch_providers = MovieWatchProviders(self)
-        self.tv_series_watch_providers = TvSeriesWatchProviders(self)
-        self.search_movie = SearchMovie(self)
-        self.search_multi = SearchMulti(self)
-        self.search_tv = SearchTv(self)
+        self.movie = MovieEndpoints(self)
+        self.tv_series = TvSeriesEndpoints(self)
+        self.tv_season = TvSeasonEndpoints(self)
+        self.tv_episode = TvEpisodeEndpoints(self)
+        self.tv_episode_group = TvEpisodeGroupEndpoints(self)
+        self.search = SearchEndpoints(self)
 
     # TODO: Validate
     def download(

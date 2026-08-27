@@ -29,18 +29,18 @@ class SearchTvTest(RecordedEndpoint):
 # TODO: Validate
 @pytest.mark.parametrize("query", QUERIES)
 def test_download(client: TMiniDB, query: str) -> None:
-    SearchTvTest.download_test(query, lambda: client.search_tv.download(query))
+    SearchTvTest.download_test(query, lambda: client.search.tv.download(query))
 
 
 # TODO: Validate
 @pytest.mark.parametrize("query", QUERIES)
 def test_parse(client: TMiniDB, query: str) -> None:
-    results = client.search_tv.load(SearchTvTest.recorded_content(query))
+    results = client.search.tv.load(SearchTvTest.recorded_content(query))
     assert results.page == 1
 
 
 # TODO: Validate
 def test_parse_no_matches(client: TMiniDB) -> None:
-    results = client.search_tv.load(SearchTvTest.recorded_content(NO_MATCHES_QUERY))
+    results = client.search.tv.load(SearchTvTest.recorded_content(NO_MATCHES_QUERY))
     assert results.total_results == 0
     assert results.results == []
