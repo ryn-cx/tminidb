@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the TvEpisodeDetails class."""
+"""Query the details of a TV episode.
+
+Source: https://developer.themoviedb.org/reference/tv-episode-details
+"""
 
 from __future__ import annotations
 
@@ -20,17 +23,12 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class TvEpisodeDetails(BaseDetails[TvEpisodeDetailsModel]):
-    """Manage the TV episode details file.
+    """Query the details of a TV episode.
 
-    Source: https://www.themoviedb.org/tv/{series_id}/season/{season_number}/episode/{episode_number}
+    This method supports using `append_to_response`. Read more about this at
+    https://developer.themoviedb.org/docs/append-to-response
 
-    Example request:
-        - GET /3/tv/{series_id}/season/{season_number}/episode/{episode_number}?
-            - language=en-US
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/tv-episode-details
     """
 
     MODEL = TvEpisodeDetailsModel
@@ -46,7 +44,10 @@ class TvEpisodeDetails(BaseDetails[TvEpisodeDetailsModel]):
         append_to_response: str | None = None,
         language: str | None = None,
     ) -> TvEpisodeDetailsModel:
-        """Look the TV episode up and return the model it is read into."""
+        """Query the details of a TV episode.
+
+        Source: https://developer.themoviedb.org/reference/tv-episode-details
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(
             self.download(

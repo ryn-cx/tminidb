@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the SearchMulti class."""
+"""Search for movies, TV shows and people in a single request.
+
+Source: https://developer.themoviedb.org/reference/search-multi
+"""
 
 from __future__ import annotations
 
@@ -14,22 +17,9 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class SearchMulti(BaseSearch[SearchMultiModel]):
-    """Manage the multi search file.
+    """Search for movies, TV shows and people in a single request.
 
-    Searches movies, TV shows and people in a single request.
-
-    Source: https://www.themoviedb.org/search?query={query}
-
-    Example request:
-        - GET /3/search/multi?
-            - query={query}&
-            - include_adult=false&
-            - language=en-US&
-            - page=1
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/search-multi
     """
 
     MODEL = SearchMultiModel
@@ -44,7 +34,10 @@ class SearchMulti(BaseSearch[SearchMultiModel]):
         language: str | None = None,
         page: int = 1,
     ) -> SearchMultiModel:
-        """Run the multi search and return the model it is read into."""
+        """Search for movies, TV shows and people in a single request.
+
+        Source: https://developer.themoviedb.org/reference/search-multi
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(
             self.download(

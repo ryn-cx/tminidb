@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the TvSeriesWatchProviders class."""
+"""Get the list of streaming providers we have for a TV show.
+
+Source: https://developer.themoviedb.org/reference/tv-series-watch-providers
+"""
 
 from __future__ import annotations
 
@@ -18,15 +21,22 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class TvSeriesWatchProviders(BaseWatchProviders[TvSeriesWatchProvidersModel]):
-    """Manage the TV series watch providers file.
+    """Get the list of streaming providers we have for a TV show.
 
-    Source: https://www.themoviedb.org/tv/{series_id}/watch
+    Powered by our partnership with JustWatch, you can query this method to get a list
+    of the streaming/rental/purchase availabilities per country by provider.
 
-    Example request:
-        - GET /3/tv/{series_id}/watch/providers HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    This is *not* going to return full deep links, but rather, it's just enough
+    information to display what's available where.
+
+    You can link to the provided TMDB URL to help support TMDB and provide the actual
+    deep links to the content.
+
+    JustWatch attribution required: in order to use this data you must attribute the
+    source of the data as JustWatch. If we find any usage not complying with these terms
+    we will revoke access to the API.
+
+    Source: https://developer.themoviedb.org/reference/tv-series-watch-providers
     """
 
     MODEL = TvSeriesWatchProvidersModel
@@ -34,7 +44,10 @@ class TvSeriesWatchProviders(BaseWatchProviders[TvSeriesWatchProvidersModel]):
 
     # TODO: Validate
     def __call__(self, series_id: int) -> TvSeriesWatchProvidersModel:
-        """Look the series' watch providers up and return the model."""
+        """Get the list of streaming providers we have for a TV show.
+
+        Source: https://developer.themoviedb.org/reference/tv-series-watch-providers
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(self.download(series_id), log_id)
 

@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the TvEpisodeGroupDetails class."""
+"""Get the details of a TV episode group.
+
+Source: https://developer.themoviedb.org/reference/tv-episode-group-details
+"""
 
 from __future__ import annotations
 
@@ -23,23 +26,27 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class TvEpisodeGroupDetails(BaseEndpoint):
-    """Manage the TV episode group file.
+    """Get the details of a TV episode group.
 
-    A group is one of seven types: original air date, absolute, DVD, digital,
-    story arc, production or TV.
+    Groups support 7 different types which are enumerated as the following:
 
-    Source: https://www.themoviedb.org/tv/episode_group/{episode_group_id}
+    1. Original air date
+    2. Absolute
+    3. DVD
+    4. Digital
+    5. Story arc
+    6. Production
+    7. TV
 
-    Example request:
-        - GET /3/tv/episode_group/{episode_group_id} HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/tv-episode-group-details
     """
 
     # TODO: Validate
     def __call__(self, episode_group_id: str) -> TvEpisodeGroupDetailsModel:
-        """Look the episode group up and return the model it is read into."""
+        """Get the details of a TV episode group.
+
+        Source: https://developer.themoviedb.org/reference/tv-episode-group-details
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(self.download(episode_group_id), log_id)
 

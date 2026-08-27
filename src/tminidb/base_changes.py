@@ -46,16 +46,6 @@ class BaseChanges[T: BaseModel](BaseEndpoint):
     path it is under and the model it is read with.
 
     Source: https://developer.themoviedb.org/reference/movie-changes
-
-    Example request:
-        - GET /3/{path}?
-            - start_date=2026-08-18&
-            - end_date=2026-08-19&
-            - page=1
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
     """
 
     MODEL: type[T]

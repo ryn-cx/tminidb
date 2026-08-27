@@ -27,12 +27,6 @@ class BaseWatchProviders[T: BaseModel](BaseEndpoint):
     attributing JustWatch as its source.
 
     Source: https://developer.themoviedb.org/reference/movie-watch-providers
-
-    Example request:
-        - GET /3/{path}/watch/providers HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
     """
 
     MODEL: type[T]

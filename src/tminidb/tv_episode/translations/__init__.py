@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the TvEpisodeTranslations class."""
+"""Get the translations that have been added to a TV episode.
+
+Source: https://developer.themoviedb.org/reference/tv-episode-translations
+"""
 
 from __future__ import annotations
 
@@ -18,16 +21,12 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class TvEpisodeTranslations(BaseEndpoint):
-    """Manage the translations file of a TV episode.
+    """Get the translations that have been added to a TV episode.
+
+    Take a read through TMDB's language documentation for more information about
+    languages on TMDB: https://developer.themoviedb.org/docs/languages
 
     Source: https://developer.themoviedb.org/reference/tv-episode-translations
-
-    Example request:
-        - GET /3/tv/{series_id}/season/{season_number}/episode/
-          {episode_number}/translations HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
     """
 
     # TODO: Validate
@@ -37,7 +36,10 @@ class TvEpisodeTranslations(BaseEndpoint):
         season_number: int,
         episode_number: int,
     ) -> TvEpisodeTranslationsModel:
-        """Look the episode's translations up and return the model."""
+        """Get the translations that have been added to a TV episode.
+
+        Source: https://developer.themoviedb.org/reference/tv-episode-translations
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(
             self.download(series_id, season_number, episode_number),

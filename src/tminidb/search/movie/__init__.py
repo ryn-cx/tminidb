@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the SearchMovie class."""
+"""Search for movies by their original, translated and alternative titles.
+
+Source: https://developer.themoviedb.org/reference/search-movie
+"""
 
 from __future__ import annotations
 
@@ -14,22 +17,9 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class SearchMovie(BaseSearch[SearchMovieModel]):
-    """Manage the movie search file.
+    """Search for movies by their original, translated and alternative titles.
 
-    Searches movies by their original, translated and alternative titles.
-
-    Source: https://www.themoviedb.org/search/movie?query={query}
-
-    Example request:
-        - GET /3/search/movie?
-            - query={query}&
-            - include_adult=false&
-            - language=en-US&
-            - page=1
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/search-movie
     """
 
     MODEL = SearchMovieModel
@@ -47,7 +37,10 @@ class SearchMovie(BaseSearch[SearchMovieModel]):
         year: str | None = None,
         page: int = 1,
     ) -> SearchMovieModel:
-        """Run the movie search and return the model it is read into."""
+        """Search for movies by their original, translated and alternative titles.
+
+        Source: https://developer.themoviedb.org/reference/search-movie
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(
             self.download(

@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the TvSeriesEpisodeGroups class."""
+"""Get the episode groups that have been added to a TV show.
+
+Source: https://developer.themoviedb.org/reference/tv-series-episode-groups
+"""
 
 from __future__ import annotations
 
@@ -23,22 +26,19 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class TvSeriesEpisodeGroups(BaseEndpoint):
-    """Manage the file listing the episode groups a TV series has.
+    """Get the episode groups that have been added to a TV show.
 
-    A group id from here is what `TvEpisodeGroupDetails` is looked up with.
+    With a group ID you can call the get TV episode group details method.
 
-    Source: https://www.themoviedb.org/tv/{series_id}/episode_groups
-
-    Example request:
-        - GET /3/tv/{series_id}/episode_groups HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/tv-series-episode-groups
     """
 
     # TODO: Validate
     def __call__(self, series_id: int) -> TvSeriesEpisodeGroupsModel:
-        """Look the series' episode groups up and return the model."""
+        """Get the episode groups that have been added to a TV show.
+
+        Source: https://developer.themoviedb.org/reference/tv-series-episode-groups
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(self.download(series_id), log_id)
 

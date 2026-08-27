@@ -28,17 +28,6 @@ class BaseSearch[T: BaseModel](BaseEndpoint):
     with.
 
     Source: https://developer.themoviedb.org/reference/search-movie
-
-    Example request:
-        - GET /3/search/{type}?
-            - query={query}&
-            - include_adult=false&
-            - language=en-US&
-            - page=1
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
     """
 
     MODEL: type[T]

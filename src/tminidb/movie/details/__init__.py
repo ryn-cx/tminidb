@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the MovieDetails class."""
+"""Get the top level details of a movie by ID.
+
+Source: https://developer.themoviedb.org/reference/movie-details
+"""
 
 from __future__ import annotations
 
@@ -20,17 +23,12 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class MovieDetails(BaseDetails[MovieDetailsModel]):
-    """Manage the movie details file.
+    """Get the top level details of a movie by ID.
 
-    Source: https://www.themoviedb.org/movie/{movie_id}
+    This method supports using `append_to_response`. Read more about this at
+    https://developer.themoviedb.org/docs/append-to-response
 
-    Example request:
-        - GET /3/movie/{movie_id}?
-            - language=en-US
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/movie-details
     """
 
     MODEL = MovieDetailsModel
@@ -44,7 +42,10 @@ class MovieDetails(BaseDetails[MovieDetailsModel]):
         append_to_response: str | None = None,
         language: str | None = None,
     ) -> MovieDetailsModel:
-        """Look the movie up and return the model it is read into."""
+        """Get the top level details of a movie by ID.
+
+        Source: https://developer.themoviedb.org/reference/movie-details
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(
             self.download(

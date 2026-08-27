@@ -25,14 +25,6 @@ class BaseDetails[T: BaseModel](BaseEndpoint):
     path it is under and the model it is read with.
 
     Source: https://developer.themoviedb.org/reference/movie-details
-
-    Example request:
-        - GET /3/{path}?
-            - language=en-US
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
     """
 
     MODEL: type[T]

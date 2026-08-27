@@ -1,5 +1,8 @@
 # TODO: Validate
-"""Contains the SearchTv class."""
+"""Search for TV shows by their original, translated and also known as names.
+
+Source: https://developer.themoviedb.org/reference/search-tv
+"""
 
 from __future__ import annotations
 
@@ -14,22 +17,9 @@ logger.addHandler(NullHandler())
 
 # TODO: Validate
 class SearchTv(BaseSearch[SearchTvModel]):
-    """Manage the TV search file.
+    """Search for TV shows by their original, translated and also known as names.
 
-    Searches TV shows by their original, translated and also known as names.
-
-    Source: https://www.themoviedb.org/search/tv?query={query}
-
-    Example request:
-        - GET /3/search/tv?
-            - query={query}&
-            - include_adult=false&
-            - language=en-US&
-            - page=1
-            - HTTP/2
-        - Host: api.themoviedb.org
-        - Accept: application/json
-        - Authorization: Bearer __REDACTED__
+    Source: https://developer.themoviedb.org/reference/search-tv
     """
 
     MODEL = SearchTvModel
@@ -46,7 +36,10 @@ class SearchTv(BaseSearch[SearchTvModel]):
         year: int | None = None,
         page: int = 1,
     ) -> SearchTvModel:
-        """Run the TV search and return the model it is read into."""
+        """Search for TV shows by their original, translated and also known as names.
+
+        Source: https://developer.themoviedb.org/reference/search-tv
+        """
         log_id = self.get_log_id(self.__call__, locals())
         return self.load(
             self.download(
