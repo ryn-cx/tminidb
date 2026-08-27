@@ -32,9 +32,9 @@ class SearchMovie(BaseSearch[SearchMovieModel]):
         *,
         include_adult: bool = False,
         language: str | None = None,
-        primary_release_year: str | None = None,
+        primary_release_year: int | str | None = None,
         region: str | None = None,
-        year: str | None = None,
+        year: int | str | None = None,
         page: int = 1,
     ) -> SearchMovieModel:
         """Search for movies by their original, translated and alternative titles.
@@ -62,9 +62,9 @@ class SearchMovie(BaseSearch[SearchMovieModel]):
         *,
         include_adult: bool = False,
         language: str | None = None,
-        primary_release_year: str | None = None,
+        primary_release_year: int | str | None = None,
         region: str | None = None,
-        year: str | None = None,
+        year: int | str | None = None,
         page: int = 1,
     ) -> str:
         """Download one page of movie search results."""

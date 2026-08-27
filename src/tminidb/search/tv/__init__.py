@@ -30,10 +30,10 @@ class SearchTv(BaseSearch[SearchTvModel]):
         self,
         query: str,
         *,
-        first_air_date_year: int | None = None,
+        first_air_date_year: int | str | None = None,
         include_adult: bool = False,
         language: str | None = None,
-        year: int | None = None,
+        year: int | str | None = None,
         page: int = 1,
     ) -> SearchTvModel:
         """Search for TV shows by their original, translated and also known as names.
@@ -58,10 +58,10 @@ class SearchTv(BaseSearch[SearchTvModel]):
         self,
         query: str,
         *,
-        first_air_date_year: int | None = None,
+        first_air_date_year: int | str | None = None,
         include_adult: bool = False,
         language: str | None = None,
-        year: int | None = None,
+        year: int | str | None = None,
         page: int = 1,
     ) -> str:
         """Download one page of TV search results."""
