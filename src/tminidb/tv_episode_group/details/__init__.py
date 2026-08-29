@@ -86,4 +86,4 @@ class TvEpisodeGroupDetails(BaseEndpoint):
     # TODO: Validate
     def load(self, data: str, log_id: str = "") -> TvEpisodeGroupDetailsModel:
         """Read a downloaded TV episode group file into its model."""
-        return model_validate_json(data, log_id or type(self).__name__)
+        return model_validate_json(data, log_id or self.default_log_id)
