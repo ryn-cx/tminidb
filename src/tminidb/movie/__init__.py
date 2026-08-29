@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 from tminidb.movie.changes import MovieChanges
 from tminidb.movie.details import MovieDetails
+from tminidb.movie.translations import MovieTranslations
 from tminidb.movie.watch_providers import MovieWatchProviders
 
 if TYPE_CHECKING:
@@ -26,3 +27,4 @@ class MovieEndpoints:
         self.details = MovieDetails(client)
         self.changes = MovieChanges(client)
         self.watch_providers = MovieWatchProviders(client)
+        self.translations = MovieTranslations(client)
