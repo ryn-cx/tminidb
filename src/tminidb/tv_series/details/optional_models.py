@@ -1,5 +1,6 @@
 from typing import Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import Field
 from pydantic import BaseModel, ConfigDict
 from datetime import date
 from typing import Any
@@ -76,7 +77,7 @@ class TvSeriesDetailsModel(BaseModel):
     backdrop_path: str | None = None
     created_by: list[CreatedByItem] | None = None
     episode_run_time: list[int] | None = None
-    first_air_date: date | None = None
+    first_air_date: date | str | None = Field(default=None, union_mode='left_to_right')
     genres: list[Genre] | None = None
     homepage: str | None = None
     id: int | None = None

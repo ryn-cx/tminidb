@@ -232,11 +232,19 @@ class Fj(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
+class Ad1(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    logo_path: str | None = None
+    provider_id: int | None = None
+    provider_name: str | None = None
+    display_priority: int | None = None
+
 class Fr(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad1] | None = None
 
 class Gb(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -547,13 +555,6 @@ class Rs(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-
-class Ad1(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    logo_path: str | None = None
-    provider_id: int | None = None
-    provider_name: str | None = None
-    display_priority: int | None = None
 
 class Ru(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)

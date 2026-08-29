@@ -41,7 +41,7 @@ class Episode(BaseModel):
     name: str
     overview: str
     production_code: str
-    runtime: int
+    runtime: int | None
     season_number: int
     show_id: int
     still_path: str | None
