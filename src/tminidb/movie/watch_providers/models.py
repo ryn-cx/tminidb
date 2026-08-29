@@ -16,7 +16,8 @@ from .strict_models import MovieWatchProvidersModel as StrictModel
 if TYPE_CHECKING:
     from .strict_models import (
         Ad,
-        Ad1,
+        Ad3,
+        Ad4,
         Ae,
         Ag,
         Ao,
@@ -58,6 +59,7 @@ if TYPE_CHECKING:
         Gf,
         Gg,
         Gi,
+        Gr,
         Gt,
         Gy,
         Hk,
@@ -136,7 +138,8 @@ if TYPE_CHECKING:
 else:
     from .optional_models import (
         Ad,
-        Ad1,
+        Ad3,
+        Ad4,
         Ae,
         Ag,
         Ao,
@@ -178,6 +181,7 @@ else:
         Gf,
         Gg,
         Gi,
+        Gr,
         Gt,
         Gy,
         Hk,
@@ -256,7 +260,8 @@ else:
 
 __all__ = [
     "Ad",
-    "Ad1",
+    "Ad3",
+    "Ad4",
     "Ae",
     "Ag",
     "Ao",
@@ -298,6 +303,7 @@ __all__ = [
     "Gf",
     "Gg",
     "Gi",
+    "Gr",
     "Gt",
     "Gy",
     "Hk",

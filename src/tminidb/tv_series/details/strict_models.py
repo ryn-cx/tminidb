@@ -32,7 +32,7 @@ class LastEpisodeToAir(BaseModel):
     runtime: int
     season_number: int
     show_id: int
-    still_path: str
+    still_path: str | None
 
 class Network(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -73,7 +73,7 @@ class SpokenLanguage(BaseModel):
 class TvSeriesDetailsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     adult: bool
-    backdrop_path: str
+    backdrop_path: str | None
     created_by: list[CreatedByItem]
     episode_run_time: list[int]
     first_air_date: date

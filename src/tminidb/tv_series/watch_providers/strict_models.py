@@ -751,7 +751,7 @@ class Results(BaseModel):
     it: It | None = Field(None, alias='IT')
     jm: Jm | None = Field(None, alias='JM')
     jo: Jo | None = Field(None, alias='JO')
-    jp: Jp = Field(..., alias='JP')
+    jp: Jp | None = Field(None, alias='JP')
     ke: Ke | None = Field(None, alias='KE')
     kr: Kr | None = Field(None, alias='KR')
     kw: Kw | None = Field(None, alias='KW')

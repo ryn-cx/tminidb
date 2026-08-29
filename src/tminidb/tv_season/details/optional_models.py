@@ -1,7 +1,8 @@
-from typing import Any, Self
+from typing import Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import BaseModel, ConfigDict, Field
 from datetime import date
+from typing import Any
 
 class CrewItem(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -59,7 +60,7 @@ class Network(BaseModel):
 class TvSeasonDetailsModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     field_id: str | None = Field(None, alias='_id')
-    air_date: date | None = None
+    air_date: Any | date | None = None
     episodes: list[Episode] | None = None
     name: str | None = None
     networks: list[Network] | None = None

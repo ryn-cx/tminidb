@@ -60,7 +60,7 @@ class Network(BaseModel):
 class TvSeasonDetailsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     field_id: str = Field(..., alias='_id')
-    air_date: date
+    air_date: date | None
     episodes: list[Episode]
     name: str
     networks: list[Network]
