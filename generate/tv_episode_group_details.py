@@ -6,16 +6,12 @@ from __future__ import annotations
 import logging
 
 from get_around import build_client_automatically, get_credential
-from good_ass_pydantic_integrator import generate_model
 
 from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
-from generate.utils import download_if_missing
+from generate.utils import download_if_missing, load_ids, rebuild_model
 from tminidb import TMiniDB
 
-EPISODE_GROUP_IDS = [
-    "5e9077d2e640d600151f32bd",
-    "69f50757054263b7bc87e32a",
-]
+EPISODE_GROUP_IDS = load_ids("TvEpisodeGroupDetailsModel")
 """The episode groups the model is built from."""
 
 
@@ -34,7 +30,7 @@ def generate_tv_episode_group_details(client: TMiniDB) -> None:
             ),
         )
 
-    generate_model(FILES_PATH, TMINIDB_PATH, "TvEpisodeGroupDetailsModel")
+    rebuild_model(FILES_PATH, TMINIDB_PATH, "TvEpisodeGroupDetailsModel")
 
 
 if __name__ == "__main__":

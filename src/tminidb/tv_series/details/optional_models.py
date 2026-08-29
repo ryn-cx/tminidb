@@ -55,7 +55,7 @@ class ProductionCountry(BaseModel):
 
 class Season(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    air_date: date | None = None
+    air_date: Any | date | None = None
     episode_count: int | None = None
     id: int | None = None
     name: str | None = None

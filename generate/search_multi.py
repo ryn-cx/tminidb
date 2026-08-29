@@ -6,20 +6,12 @@ from __future__ import annotations
 import logging
 
 from get_around import build_client_automatically, get_credential
-from good_ass_pydantic_integrator import generate_model
 
 from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
-from generate.utils import download_if_missing
+from generate.utils import download_if_missing, load_ids, rebuild_model
 from tminidb import TMiniDB
 
-QUERIES = [
-    "Accidental Partners",
-    "Teach You a Lesson",
-    "Anoushka",
-    "GI Joe",
-    "Astro Boy",
-    "1234567890qwertyuiopasdfghjklzxcvbnm",
-]
+QUERIES = load_ids("SearchMultiModel")
 """The queries the model is built from. Nothing matches the last one.
 
 Astro Boy matches series that have no announced air date, which the API gives
@@ -38,7 +30,7 @@ def generate_search_multi(client: TMiniDB) -> None:
             lambda query=query: client.search.multi.download(query),
         )
 
-    generate_model(FILES_PATH, TMINIDB_PATH, "SearchMultiModel")
+    rebuild_model(FILES_PATH, TMINIDB_PATH, "SearchMultiModel")
 
 
 if __name__ == "__main__":

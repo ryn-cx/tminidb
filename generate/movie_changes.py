@@ -7,17 +7,21 @@ import logging
 from datetime import date
 
 from get_around import build_client_automatically, get_credential
-from good_ass_pydantic_integrator import generate_model
 
 from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
-from generate.utils import download_if_missing
+from generate.utils import download_if_missing, load_ids, rebuild_model
 from tminidb import TMiniDB
 
+
+# TODO: Validate
+def parsed_date(value: str | None) -> date | None:
+    """Return the date an id gives, which the file holds as text."""
+    return None if value is None else date.fromisoformat(value)
+
+
 CHANGE_LOGS = [
-    ("969681_with_changes", 969681, date(2026, 8, 18), None),
-    ("969681_merged", 969681, date(2026, 7, 22), date(2026, 8, 18)),
-    ("969681_without_changes", 969681, date(2026, 1, 1), date(2026, 1, 1)),
-    ("2147483647", 2147483647, None, None),
+    (name, movie_id, parsed_date(start_date), parsed_date(end_date))
+    for name, movie_id, start_date, end_date in load_ids("MovieChangesModel")
 ]
 """The name each change log is recorded under, the movie id, and the range asked for.
 
@@ -51,7 +55,12 @@ def generate_movie_changes(client: TMiniDB) -> None:
                 download_change_log(client, movie_id, start_date, end_date)
             ),
         )
-    generate_model(FILES_PATH, TMINIDB_PATH, "MovieChangesModel")
+    rebuild_model(
+        FILES_PATH,
+        TMINIDB_PATH,
+        "MovieChangesModel",
+        name_of=lambda change_log: change_log[0],
+    )
 
 
 if __name__ == "__main__":

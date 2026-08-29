@@ -6,13 +6,12 @@ from __future__ import annotations
 import logging
 
 from get_around import build_client_automatically, get_credential
-from good_ass_pydantic_integrator import generate_model
 
 from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
-from generate.utils import download_if_missing
+from generate.utils import download_if_missing, load_ids, rebuild_model
 from tminidb import TMiniDB
 
-SEASONS = [(1396, 1)]
+SEASONS = load_ids("TvSeasonDetailsModel")
 """The series id and season number of each season the model is built from."""
 
 
@@ -28,7 +27,12 @@ def generate_tv_season_details(client: TMiniDB) -> None:
                 client.tv_season.details.download(series_id, season_number)
             ),
         )
-    generate_model(FILES_PATH, TMINIDB_PATH, "TvSeasonDetailsModel")
+    rebuild_model(
+        FILES_PATH,
+        TMINIDB_PATH,
+        "TvSeasonDetailsModel",
+        name_of=lambda season: f"{season[0]}_{season[1]}",
+    )
 
 
 if __name__ == "__main__":

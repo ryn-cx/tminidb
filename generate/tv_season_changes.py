@@ -6,16 +6,12 @@ from __future__ import annotations
 import logging
 
 from get_around import build_client_automatically, get_credential
-from good_ass_pydantic_integrator import generate_model
 
 from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
-from generate.utils import download_if_missing
+from generate.utils import download_if_missing, load_ids, rebuild_model
 from tminidb import TMiniDB
 
-CHANGE_LOGS = [
-    ("364732", 364732),
-    ("unknown_999999999", 999999999),
-]
+CHANGE_LOGS = load_ids("TvSeasonChangesModel")
 """The name each change log is recorded under and the season id it is for."""
 
 
@@ -29,7 +25,12 @@ def generate_tv_season_changes(client: TMiniDB) -> None:
             name,
             lambda season_id=season_id: client.tv_season.changes.download(season_id),
         )
-    generate_model(FILES_PATH, TMINIDB_PATH, "TvSeasonChangesModel")
+    rebuild_model(
+        FILES_PATH,
+        TMINIDB_PATH,
+        "TvSeasonChangesModel",
+        name_of=lambda change_log: change_log[0],
+    )
 
 
 if __name__ == "__main__":

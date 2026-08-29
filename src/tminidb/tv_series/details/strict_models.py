@@ -55,12 +55,12 @@ class ProductionCountry(BaseModel):
 
 class Season(BaseModel):
     model_config = ConfigDict(defer_build=True)
-    air_date: date
+    air_date: date | None
     episode_count: int
     id: int
     name: str
     overview: str
-    poster_path: str
+    poster_path: str | None
     season_number: int
     vote_average: float
 

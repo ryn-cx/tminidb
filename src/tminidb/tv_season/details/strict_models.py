@@ -44,7 +44,7 @@ class Episode(BaseModel):
     runtime: int
     season_number: int
     show_id: int
-    still_path: str
+    still_path: str | None
     vote_average: float
     vote_count: int
     crew: list[CrewItem]
@@ -66,7 +66,7 @@ class TvSeasonDetailsModel(BaseModel):
     networks: list[Network]
     overview: str
     id: int
-    poster_path: str
+    poster_path: str | None
     season_number: int
     vote_average: float
     _raw_input: Any = PrivateAttr(default=None)

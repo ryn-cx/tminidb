@@ -6,13 +6,12 @@ from __future__ import annotations
 import logging
 
 from get_around import build_client_automatically, get_credential
-from good_ass_pydantic_integrator import generate_model
 
 from generate.constants import ACCESS_TOKEN_CREDENTIAL, FILES_PATH, TMINIDB_PATH
-from generate.utils import download_if_missing
+from generate.utils import download_if_missing, load_ids, rebuild_model
 from tminidb import TMiniDB
 
-MOVIE_IDS = [603, 1466882]
+MOVIE_IDS = load_ids("MovieDetailsModel")
 """The movies the model is built from."""
 
 
@@ -27,7 +26,7 @@ def generate_movie_details(client: TMiniDB) -> None:
             lambda movie_id=movie_id: client.movie.details.download(movie_id),
         )
 
-    generate_model(FILES_PATH, TMINIDB_PATH, "MovieDetailsModel")
+    rebuild_model(FILES_PATH, TMINIDB_PATH, "MovieDetailsModel")
 
 
 if __name__ == "__main__":
