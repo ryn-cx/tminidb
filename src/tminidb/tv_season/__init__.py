@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 from tminidb.tv_season.changes import TvSeasonChanges
 from tminidb.tv_season.details import TvSeasonDetails
+from tminidb.tv_season.watch_providers import TvSeasonWatchProviders
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
@@ -24,3 +25,4 @@ class TvSeasonEndpoints:
         """Build each endpoint under TV Seasons."""
         self.details = TvSeasonDetails(client)
         self.changes = TvSeasonChanges(client)
+        self.watch_providers = TvSeasonWatchProviders(client)
