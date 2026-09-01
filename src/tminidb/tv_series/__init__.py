@@ -9,6 +9,7 @@ from tminidb.tv_series.changes import TvSeriesChanges
 from tminidb.tv_series.details import TvSeriesDetails
 from tminidb.tv_series.episode_groups import TvSeriesEpisodeGroups
 from tminidb.tv_series.images import TvSeriesImages
+from tminidb.tv_series.translations import TvSeriesTranslations
 from tminidb.tv_series.watch_providers import TvSeriesWatchProviders
 
 if TYPE_CHECKING:
@@ -29,4 +30,5 @@ class TvSeriesEndpoints:
         self.changes = TvSeriesChanges(client)
         self.episode_groups = TvSeriesEpisodeGroups(client)
         self.images = TvSeriesImages(client)
+        self.translations = TvSeriesTranslations(client)
         self.watch_providers = TvSeriesWatchProviders(client)
