@@ -682,6 +682,13 @@ class Ug(BaseModel):
     rent: list[RentItem] | None = None
     flatrate: list[FlatrateItem] | None = None
 
+class FreeItem(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    logo_path: str | None = None
+    provider_id: int | None = None
+    provider_name: str | None = None
+    display_priority: int | None = None
+
 class Us(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
@@ -689,6 +696,7 @@ class Us(BaseModel):
     rent: list[RentItem] | None = None
     flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Uy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
