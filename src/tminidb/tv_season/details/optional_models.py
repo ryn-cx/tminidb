@@ -1,8 +1,8 @@
 from typing import Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import BaseModel, ConfigDict, Field
-from datetime import date
 from typing import Any
+from datetime import date
 
 class CrewItem(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -34,7 +34,7 @@ class GuestStar(BaseModel):
 
 class Episode(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    air_date: date | None = None
+    air_date: Any | date | None = None
     episode_number: int | None = None
     episode_type: str | None = None
     id: int | None = None

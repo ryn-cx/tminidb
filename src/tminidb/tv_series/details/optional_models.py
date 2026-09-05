@@ -35,6 +35,22 @@ class LastEpisodeToAir(BaseModel):
     show_id: int | None = None
     still_path: str | None = None
 
+class NextEpisodeToAir(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    id: int | None = None
+    name: str | None = None
+    overview: str | None = None
+    vote_average: float | None = None
+    vote_count: int | None = None
+    air_date: date | None = None
+    episode_number: int | None = None
+    episode_type: str | None = None
+    production_code: str | None = None
+    runtime: Any | None = None
+    season_number: int | None = None
+    show_id: int | None = None
+    still_path: Any | None = None
+
 class Network(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     id: int | None = None
@@ -86,7 +102,7 @@ class TvSeriesDetailsModel(BaseModel):
     last_air_date: date | None = None
     last_episode_to_air: LastEpisodeToAir | None = None
     name: str | None = None
-    next_episode_to_air: Any | None = None
+    next_episode_to_air: Any | NextEpisodeToAir | None = None
     networks: list[Network] | None = None
     number_of_episodes: int | None = None
     number_of_seasons: int | None = None
