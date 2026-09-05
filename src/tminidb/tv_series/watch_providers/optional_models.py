@@ -126,6 +126,7 @@ class Ca(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
+    ads: list[Ad1] | None = None
 
 class Ch(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)

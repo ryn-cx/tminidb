@@ -127,6 +127,7 @@ class Ca(BaseModel):
     link: str
     flatrate: list[FlatrateItem]
     buy: list[BuyItem] | None = None
+    ads: list[Ad1] | None = None
 
 class Ch(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -182,7 +183,7 @@ class Cz(BaseModel):
 class De(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    flatrate: list[FlatrateItem]
+    flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
     ads: list[Ad1] | None = None
 
@@ -663,7 +664,7 @@ class Ug(BaseModel):
 class Us(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    buy: list[BuyItem]
+    buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem]
     ads: list[Ad1] | None = None
     free: list[FreeItem] | None = None

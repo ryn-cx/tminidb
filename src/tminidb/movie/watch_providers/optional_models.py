@@ -724,6 +724,16 @@ class Zw(BaseModel):
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
 
+class Li(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Sm(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
 class Ad5(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
@@ -764,11 +774,6 @@ class Lb(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
-class Li(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-
 class Ly(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
@@ -790,11 +795,6 @@ class Pf(BaseModel):
     flatrate: list[FlatrateItem] | None = None
 
 class Qa(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-
-class Sm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
@@ -998,6 +998,8 @@ class Results(BaseModel):
     ve: Ve | None = Field(None, alias='VE')
     za: Za | None = Field(None, alias='ZA')
     zw: Zw | None = Field(None, alias='ZW')
+    li: Li | None = Field(None, alias='LI')
+    sm: Sm | None = Field(None, alias='SM')
     ad: Ad5 | None = Field(None, alias='AD')
     bh: Bh | None = Field(None, alias='BH')
     dz: Dz | None = Field(None, alias='DZ')
@@ -1006,13 +1008,11 @@ class Results(BaseModel):
     iq: Iq | None = Field(None, alias='IQ')
     jo: Jo | None = Field(None, alias='JO')
     lb: Lb | None = Field(None, alias='LB')
-    li: Li | None = Field(None, alias='LI')
     ly: Ly | None = Field(None, alias='LY')
     ma: Ma | None = Field(None, alias='MA')
     om: Om | None = Field(None, alias='OM')
     pf: Pf | None = Field(None, alias='PF')
     qa: Qa | None = Field(None, alias='QA')
-    sm: Sm | None = Field(None, alias='SM')
     tn: Tn | None = Field(None, alias='TN')
     va: Va | None = Field(None, alias='VA')
     bm: Bm | None = Field(None, alias='BM')
