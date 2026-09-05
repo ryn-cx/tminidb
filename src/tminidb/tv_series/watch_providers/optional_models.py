@@ -498,6 +498,7 @@ class Nz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    buy: list[BuyItem] | None = None
 
 class Om(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -663,8 +664,8 @@ class Us(BaseModel):
     link: str | None = None
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
-    free: list[FreeItem] | None = None
     ads: list[Ad1] | None = None
+    free: list[FreeItem] | None = None
 
 class Uy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -696,7 +697,37 @@ class Zw(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
+class Bm(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Gi(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
 class Hr(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Md(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Ps(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Ua(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Va(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
@@ -829,7 +860,13 @@ class Results(BaseModel):
     za: Za | None = Field(None, alias='ZA')
     zm: Zm | None = Field(None, alias='ZM')
     zw: Zw | None = Field(None, alias='ZW')
+    bm: Bm | None = Field(None, alias='BM')
+    gi: Gi | None = Field(None, alias='GI')
     hr: Hr | None = Field(None, alias='HR')
+    md: Md | None = Field(None, alias='MD')
+    ps: Ps | None = Field(None, alias='PS')
+    ua: Ua | None = Field(None, alias='UA')
+    va: Va | None = Field(None, alias='VA')
 
 class TvSeriesWatchProvidersModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)

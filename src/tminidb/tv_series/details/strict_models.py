@@ -12,7 +12,7 @@ class CreatedByItem(BaseModel):
     name: str
     original_name: str
     gender: int
-    profile_path: str
+    profile_path: str | None
 
 class Genre(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -38,7 +38,7 @@ class LastEpisodeToAir(BaseModel):
 class Network(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
-    logo_path: str
+    logo_path: str | None
     name: str
     origin_country: str
 
