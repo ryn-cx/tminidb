@@ -185,8 +185,8 @@ class Cz(BaseModel):
 class De(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    buy: list[BuyItem]
-    flatrate: list[FlatrateItem]
+    buy: list[BuyItem] | None = None
+    flatrate: list[FlatrateItem] | None = None
 
 class RentItem(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -676,6 +676,8 @@ class Us(BaseModel):
     link: str
     buy: list[BuyItem]
     flatrate: list[FlatrateItem]
+    free: list[FreeItem] | None = None
+    ads: list[Ad1] | None = None
 
 class Uy(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -782,7 +784,7 @@ class Results(BaseModel):
     al: Al | None = Field(None, alias='AL')
     ao: Ao | None = Field(None, alias='AO')
     ar: Ar | None = Field(None, alias='AR')
-    at: At = Field(..., alias='AT')
+    at: At | None = Field(None, alias='AT')
     au: Au | None = Field(None, alias='AU')
     az: Az | None = Field(None, alias='AZ')
     ba: Ba | None = Field(None, alias='BA')
@@ -795,8 +797,8 @@ class Results(BaseModel):
     bs: Bs | None = Field(None, alias='BS')
     by: By | None = Field(None, alias='BY')
     bz: Bz | None = Field(None, alias='BZ')
-    ca: Ca = Field(..., alias='CA')
-    ch: Ch = Field(..., alias='CH')
+    ca: Ca | None = Field(None, alias='CA')
+    ch: Ch | None = Field(None, alias='CH')
     ci: Ci | None = Field(None, alias='CI')
     cl: Cl | None = Field(None, alias='CL')
     cm: Cm | None = Field(None, alias='CM')
@@ -816,10 +818,10 @@ class Results(BaseModel):
     es: Es | None = Field(None, alias='ES')
     fi: Fi | None = Field(None, alias='FI')
     fj: Fj | None = Field(None, alias='FJ')
-    fr: Fr = Field(..., alias='FR')
-    gb: Gb = Field(..., alias='GB')
+    fr: Fr | None = Field(None, alias='FR')
+    gb: Gb | None = Field(None, alias='GB')
     gf: Gf | None = Field(None, alias='GF')
-    gg: Gg = Field(..., alias='GG')
+    gg: Gg | None = Field(None, alias='GG')
     gh: Gh | None = Field(None, alias='GH')
     gq: Gq | None = Field(None, alias='GQ')
     gr: Gr | None = Field(None, alias='GR')
@@ -828,7 +830,7 @@ class Results(BaseModel):
     hn: Hn | None = Field(None, alias='HN')
     hu: Hu | None = Field(None, alias='HU')
     id: Id = Field(..., alias='ID')
-    ie: Ie = Field(..., alias='IE')
+    ie: Ie | None = Field(None, alias='IE')
     il: Il | None = Field(None, alias='IL')
     in_: In = Field(..., alias='IN')
     iq: Iq | None = Field(None, alias='IQ')
@@ -836,7 +838,7 @@ class Results(BaseModel):
     it: It | None = Field(None, alias='IT')
     jm: Jm | None = Field(None, alias='JM')
     jo: Jo | None = Field(None, alias='JO')
-    jp: Jp = Field(..., alias='JP')
+    jp: Jp | None = Field(None, alias='JP')
     ke: Ke | None = Field(None, alias='KE')
     kr: Kr | None = Field(None, alias='KR')
     kw: Kw | None = Field(None, alias='KW')

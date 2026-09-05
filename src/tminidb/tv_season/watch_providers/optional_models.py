@@ -675,6 +675,8 @@ class Us(BaseModel):
     link: str | None = None
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
+    free: list[FreeItem] | None = None
+    ads: list[Ad1] | None = None
 
 class Uy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)

@@ -16,8 +16,7 @@ from .strict_models import MovieWatchProvidersModel as StrictModel
 if TYPE_CHECKING:
     from .strict_models import (
         Ad,
-        Ad3,
-        Ad4,
+        Ad5,
         Ae,
         Ag,
         Al,
@@ -162,8 +161,7 @@ if TYPE_CHECKING:
 else:
     from .optional_models import (
         Ad,
-        Ad3,
-        Ad4,
+        Ad5,
         Ae,
         Ag,
         Al,
@@ -308,8 +306,7 @@ else:
 
 __all__ = [
     "Ad",
-    "Ad3",
-    "Ad4",
+    "Ad5",
     "Ae",
     "Ag",
     "Al",
