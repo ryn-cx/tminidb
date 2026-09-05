@@ -16,7 +16,8 @@ from .strict_models import MovieWatchProvidersModel as StrictModel
 if TYPE_CHECKING:
     from .strict_models import (
         Ad,
-        Ad5,
+        Ad97,
+        Ad99,
         Ae,
         Ag,
         Al,
@@ -105,6 +106,7 @@ if TYPE_CHECKING:
         MovieWatchProvidersModel,
         Mt,
         Mu,
+        Mw,
         Mx,
         My,
         Mz,
@@ -154,6 +156,7 @@ if TYPE_CHECKING:
         Uy,
         Va,
         Ve,
+        Xk,
         Ye,
         Za,
         Zm,
@@ -162,7 +165,8 @@ if TYPE_CHECKING:
 else:
     from .optional_models import (
         Ad,
-        Ad5,
+        Ad97,
+        Ad99,
         Ae,
         Ag,
         Al,
@@ -251,6 +255,7 @@ else:
         MovieWatchProvidersModel,
         Mt,
         Mu,
+        Mw,
         Mx,
         My,
         Mz,
@@ -300,6 +305,7 @@ else:
         Uy,
         Va,
         Ve,
+        Xk,
         Ye,
         Za,
         Zm,
@@ -308,7 +314,8 @@ else:
 
 __all__ = [
     "Ad",
-    "Ad5",
+    "Ad97",
+    "Ad99",
     "Ae",
     "Ag",
     "Al",
@@ -397,6 +404,7 @@ __all__ = [
     "MovieWatchProvidersModel",
     "Mt",
     "Mu",
+    "Mw",
     "Mx",
     "My",
     "Mz",
@@ -446,6 +454,7 @@ __all__ = [
     "Uy",
     "Va",
     "Ve",
+    "Xk",
     "Ye",
     "Za",
     "Zm",

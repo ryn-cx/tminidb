@@ -25,10 +25,18 @@ class Ag(BaseModel):
     link: str
     flatrate: list[FlatrateItem]
 
+class Ad1(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    logo_path: str
+    provider_id: int
+    provider_name: str
+    display_priority: int
+
 class Al(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ao(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -41,13 +49,6 @@ class Ar(BaseModel):
     flatrate: list[FlatrateItem]
 
 class BuyItem(BaseModel):
-    model_config = ConfigDict(defer_build=True)
-    logo_path: str
-    provider_id: int
-    provider_name: str
-    display_priority: int
-
-class Ad1(BaseModel):
     model_config = ConfigDict(defer_build=True)
     logo_path: str
     provider_id: int
@@ -76,6 +77,7 @@ class Ba(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Bb(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -91,6 +93,7 @@ class Bg(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Bh(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -121,11 +124,12 @@ class Bz(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ca(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    flatrate: list[FlatrateItem]
+    flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
     ads: list[Ad1] | None = None
 
@@ -134,6 +138,7 @@ class Ch(BaseModel):
     link: str
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ci(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -179,6 +184,7 @@ class Cz(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class De(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -205,6 +211,7 @@ class Do(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Dz(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -220,11 +227,13 @@ class Ee(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Eg(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Es(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -282,31 +291,37 @@ class Gr(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Gt(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Hk(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Hn(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Hu(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Id(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ie(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -318,11 +333,20 @@ class Il(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
+
+class FreeItem(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    logo_path: str
+    provider_id: int
+    provider_name: str
+    display_priority: int
 
 class In(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    free: list[FreeItem] | None = None
 
 class Iq(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -333,6 +357,7 @@ class Is(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class It(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -348,13 +373,6 @@ class Jo(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
-
-class FreeItem(BaseModel):
-    model_config = ConfigDict(defer_build=True)
-    logo_path: str
-    provider_id: int
-    provider_name: str
-    display_priority: int
 
 class Jp(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -373,6 +391,7 @@ class Kr(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Kw(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -398,16 +417,19 @@ class Lt(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Lu(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Lv(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ly(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -428,6 +450,7 @@ class Me(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Mg(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -438,6 +461,7 @@ class Mk(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ml(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -473,6 +497,7 @@ class Ne(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ng(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -511,6 +536,7 @@ class Pa(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Pe(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -578,6 +604,7 @@ class Sc(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Se(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -590,16 +617,19 @@ class Sg(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Si(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Sk(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Sm(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -630,6 +660,7 @@ class Th(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Tn(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -640,6 +671,7 @@ class Tr(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Tt(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -649,7 +681,8 @@ class Tt(BaseModel):
 class Tw(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    flatrate: list[FlatrateItem]
+    flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad1] | None = None
 
 class Tz(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -673,6 +706,7 @@ class Uy(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
+    ads: list[Ad1] | None = None
 
 class Ve(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -730,6 +764,31 @@ class Ua(BaseModel):
     flatrate: list[FlatrateItem]
 
 class Va(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    link: str
+    flatrate: list[FlatrateItem]
+
+class Gy(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    link: str
+    flatrate: list[FlatrateItem]
+
+class Pg(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    link: str
+    flatrate: list[FlatrateItem]
+
+class Bf(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    link: str
+    flatrate: list[FlatrateItem]
+
+class Cd(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    link: str
+    flatrate: list[FlatrateItem]
+
+class Xk(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
     flatrate: list[FlatrateItem]
@@ -869,6 +928,11 @@ class Results(BaseModel):
     ps: Ps | None = Field(None, alias='PS')
     ua: Ua | None = Field(None, alias='UA')
     va: Va | None = Field(None, alias='VA')
+    gy: Gy | None = Field(None, alias='GY')
+    pg: Pg | None = Field(None, alias='PG')
+    bf: Bf | None = Field(None, alias='BF')
+    cd: Cd | None = Field(None, alias='CD')
+    xk: Xk | None = Field(None, alias='XK')
 
 class TvSeriesWatchProvidersModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
