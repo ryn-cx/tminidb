@@ -13,10 +13,10 @@ class Episode(BaseModel):
     name: str
     overview: str
     production_code: str
-    runtime: int
+    runtime: int | None
     season_number: int
     show_id: int
-    still_path: str
+    still_path: str | None
     vote_average: float
     vote_count: int
     order: int
@@ -27,7 +27,7 @@ class Group(BaseModel):
     name: str
     order: int
     episodes: list[Episode]
-    locked: bool
+    locked: bool | None = None
 
 class Network(BaseModel):
     model_config = ConfigDict(defer_build=True)

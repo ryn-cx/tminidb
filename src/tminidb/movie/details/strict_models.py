@@ -10,7 +10,7 @@ class BelongsToCollection(BaseModel):
     id: int
     name: str
     poster_path: str
-    backdrop_path: str
+    backdrop_path: str | None
 
 class Genre(BaseModel):
     model_config = ConfigDict(defer_build=True)

@@ -2,6 +2,13 @@ from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import BaseModel, ConfigDict, Field
 
+class BuyItem(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    logo_path: str | None = None
+    provider_id: int | None = None
+    provider_name: str | None = None
+    display_priority: int | None = None
+
 class FlatrateItem(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     logo_path: str | None = None
@@ -10,6 +17,76 @@ class FlatrateItem(BaseModel):
     display_priority: int | None = None
 
 class Ad(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    logo_path: str | None = None
+    provider_id: int | None = None
+    provider_name: str | None = None
+    display_priority: int | None = None
+
+class At(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    buy: list[BuyItem] | None = None
+    flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad] | None = None
+
+class Au(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    ads: list[Ad] | None = None
+    buy: list[BuyItem] | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Ca(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+    buy: list[BuyItem] | None = None
+    ads: list[Ad] | None = None
+
+class De(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    buy: list[BuyItem] | None = None
+    flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad] | None = None
+
+class FreeItem(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    logo_path: str | None = None
+    provider_id: int | None = None
+    provider_name: str | None = None
+    display_priority: int | None = None
+
+class Gb(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    buy: list[BuyItem] | None = None
+    flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad] | None = None
+    free: list[FreeItem] | None = None
+
+class Gg(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    buy: list[BuyItem] | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Kr(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad] | None = None
+
+class Us(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+    buy: list[BuyItem] | None = None
+    ads: list[Ad] | None = None
+    free: list[FreeItem] | None = None
+
+class Ad7(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
@@ -24,7 +101,7 @@ class Ag(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
-class Ad1(BaseModel):
+class Ad8(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     logo_path: str | None = None
     provider_id: int | None = None
@@ -35,7 +112,7 @@ class Al(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ao(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -47,26 +124,6 @@ class Ar(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
-class BuyItem(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    logo_path: str | None = None
-    provider_id: int | None = None
-    provider_name: str | None = None
-    display_priority: int | None = None
-
-class At(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-    buy: list[BuyItem] | None = None
-    ads: list[Ad1] | None = None
-
-class Au(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-    buy: list[BuyItem] | None = None
-
 class Az(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
@@ -76,7 +133,7 @@ class Ba(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Bb(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -87,12 +144,14 @@ class Be(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad8] | None = None
+    buy: list[BuyItem] | None = None
 
 class Bg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Bh(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -108,6 +167,7 @@ class Br(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Bs(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -123,21 +183,14 @@ class Bz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
-
-class Ca(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-    buy: list[BuyItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ch(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ci(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -148,6 +201,7 @@ class Cl(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Cm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -158,6 +212,7 @@ class Co(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Cr(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -183,14 +238,7 @@ class Cz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
-
-class De(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-    buy: list[BuyItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class RentItem(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -205,12 +253,13 @@ class Dk(BaseModel):
     rent: list[RentItem] | None = None
     flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Do(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Dz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -226,18 +275,21 @@ class Ee(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Eg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Es(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad8] | None = None
+    buy: list[BuyItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Fi(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -245,6 +297,7 @@ class Fi(BaseModel):
     buy: list[BuyItem] | None = None
     rent: list[RentItem] | None = None
     flatrate: list[FlatrateItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Fj(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -256,24 +309,13 @@ class Fr(BaseModel):
     link: str | None = None
     buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
-
-class Gb(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    buy: list[BuyItem] | None = None
-    flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
+    free: list[FreeItem] | None = None
+    rent: list[RentItem] | None = None
 
 class Gf(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-
-class Gg(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    buy: list[BuyItem] | None = None
     flatrate: list[FlatrateItem] | None = None
 
 class Gh(BaseModel):
@@ -290,37 +332,37 @@ class Gr(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Gt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Hk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Hn(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Hu(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Id(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ie(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -332,14 +374,7 @@ class Il(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
-
-class FreeItem(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    logo_path: str | None = None
-    provider_id: int | None = None
-    provider_name: str | None = None
-    display_priority: int | None = None
+    ads: list[Ad8] | None = None
 
 class In(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -356,12 +391,14 @@ class Is(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class It(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    buy: list[BuyItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Jm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -385,12 +422,6 @@ class Ke(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-
-class Kr(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
 
 class Kw(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -416,19 +447,19 @@ class Lt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Lu(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Lv(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ly(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -449,7 +480,7 @@ class Me(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Mg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -460,7 +491,7 @@ class Mk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ml(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -481,6 +512,8 @@ class Mx(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad8] | None = None
+    free: list[FreeItem] | None = None
 
 class My(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -496,7 +529,7 @@ class Ne(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ng(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -512,6 +545,7 @@ class Nl(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    buy: list[BuyItem] | None = None
 
 class No(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -525,6 +559,7 @@ class Nz(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
+    ads: list[Ad8] | None = None
 
 class Om(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -535,7 +570,7 @@ class Pa(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Pe(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -561,11 +596,14 @@ class Pl(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    buy: list[BuyItem] | None = None
 
 class Pt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
+    ads: list[Ad8] | None = None
+    buy: list[BuyItem] | None = None
 
 class Py(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -590,7 +628,7 @@ class Rs(BaseModel):
 class Ru(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
     flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
 
@@ -603,7 +641,7 @@ class Sc(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Se(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -611,24 +649,25 @@ class Se(BaseModel):
     buy: list[BuyItem] | None = None
     rent: list[RentItem] | None = None
     flatrate: list[FlatrateItem] | None = None
+    free: list[FreeItem] | None = None
 
 class Sg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Si(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Sk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Sm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -659,7 +698,7 @@ class Th(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Tn(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -670,7 +709,7 @@ class Tr(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Tt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -681,7 +720,7 @@ class Tw(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Tz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -693,19 +732,11 @@ class Ug(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
-class Us(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    buy: list[BuyItem] | None = None
-    flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
-    free: list[FreeItem] | None = None
-
 class Uy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
-    ads: list[Ad1] | None = None
+    ads: list[Ad8] | None = None
 
 class Ve(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -767,22 +798,27 @@ class Va(BaseModel):
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
-class Gy(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-
-class Pg(BaseModel):
-    model_config = ConfigDict(extra='ignore', defer_build=True)
-    link: str | None = None
-    flatrate: list[FlatrateItem] | None = None
-
 class Bf(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
 
 class Cd(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Gy(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Mw(BaseModel):
+    model_config = ConfigDict(extra='ignore', defer_build=True)
+    link: str | None = None
+    flatrate: list[FlatrateItem] | None = None
+
+class Pg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | None = None
     flatrate: list[FlatrateItem] | None = None
@@ -794,14 +830,20 @@ class Xk(BaseModel):
 
 class Results(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    ad: Ad | None = Field(None, alias='AD')
+    at: At | None = Field(None, alias='AT')
+    au: Au | None = Field(None, alias='AU')
+    ca: Ca | None = Field(None, alias='CA')
+    de: De | None = Field(None, alias='DE')
+    gb: Gb | None = Field(None, alias='GB')
+    gg: Gg | None = Field(None, alias='GG')
+    kr: Kr | None = Field(None, alias='KR')
+    us: Us | None = Field(None, alias='US')
+    ad: Ad7 | None = Field(None, alias='AD')
     ae: Ae | None = Field(None, alias='AE')
     ag: Ag | None = Field(None, alias='AG')
     al: Al | None = Field(None, alias='AL')
     ao: Ao | None = Field(None, alias='AO')
     ar: Ar | None = Field(None, alias='AR')
-    at: At | None = Field(None, alias='AT')
-    au: Au | None = Field(None, alias='AU')
     az: Az | None = Field(None, alias='AZ')
     ba: Ba | None = Field(None, alias='BA')
     bb: Bb | None = Field(None, alias='BB')
@@ -813,7 +855,6 @@ class Results(BaseModel):
     bs: Bs | None = Field(None, alias='BS')
     by: By | None = Field(None, alias='BY')
     bz: Bz | None = Field(None, alias='BZ')
-    ca: Ca | None = Field(None, alias='CA')
     ch: Ch | None = Field(None, alias='CH')
     ci: Ci | None = Field(None, alias='CI')
     cl: Cl | None = Field(None, alias='CL')
@@ -824,7 +865,6 @@ class Results(BaseModel):
     cv: Cv | None = Field(None, alias='CV')
     cy: Cy | None = Field(None, alias='CY')
     cz: Cz | None = Field(None, alias='CZ')
-    de: De | None = Field(None, alias='DE')
     dk: Dk | None = Field(None, alias='DK')
     do: Do | None = Field(None, alias='DO')
     dz: Dz | None = Field(None, alias='DZ')
@@ -835,9 +875,7 @@ class Results(BaseModel):
     fi: Fi | None = Field(None, alias='FI')
     fj: Fj | None = Field(None, alias='FJ')
     fr: Fr | None = Field(None, alias='FR')
-    gb: Gb | None = Field(None, alias='GB')
     gf: Gf | None = Field(None, alias='GF')
-    gg: Gg | None = Field(None, alias='GG')
     gh: Gh | None = Field(None, alias='GH')
     gq: Gq | None = Field(None, alias='GQ')
     gr: Gr | None = Field(None, alias='GR')
@@ -856,7 +894,6 @@ class Results(BaseModel):
     jo: Jo | None = Field(None, alias='JO')
     jp: Jp | None = Field(None, alias='JP')
     ke: Ke | None = Field(None, alias='KE')
-    kr: Kr | None = Field(None, alias='KR')
     kw: Kw | None = Field(None, alias='KW')
     lb: Lb | None = Field(None, alias='LB')
     lc: Lc | None = Field(None, alias='LC')
@@ -913,7 +950,6 @@ class Results(BaseModel):
     tw: Tw | None = Field(None, alias='TW')
     tz: Tz | None = Field(None, alias='TZ')
     ug: Ug | None = Field(None, alias='UG')
-    us: Us | None = Field(None, alias='US')
     uy: Uy | None = Field(None, alias='UY')
     ve: Ve | None = Field(None, alias='VE')
     ye: Ye | None = Field(None, alias='YE')
@@ -927,10 +963,11 @@ class Results(BaseModel):
     ps: Ps | None = Field(None, alias='PS')
     ua: Ua | None = Field(None, alias='UA')
     va: Va | None = Field(None, alias='VA')
-    gy: Gy | None = Field(None, alias='GY')
-    pg: Pg | None = Field(None, alias='PG')
     bf: Bf | None = Field(None, alias='BF')
     cd: Cd | None = Field(None, alias='CD')
+    gy: Gy | None = Field(None, alias='GY')
+    mw: Mw | None = Field(None, alias='MW')
+    pg: Pg | None = Field(None, alias='PG')
     xk: Xk | None = Field(None, alias='XK')
 
 class TvSeriesWatchProvidersModel(BaseModel):

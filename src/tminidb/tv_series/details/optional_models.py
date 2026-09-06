@@ -46,7 +46,7 @@ class NextEpisodeToAir(BaseModel):
     episode_number: int | None = None
     episode_type: str | None = None
     production_code: str | None = None
-    runtime: Any | None = None
+    runtime: int | None = None
     season_number: int | None = None
     show_id: int | None = None
     still_path: Any | None = None

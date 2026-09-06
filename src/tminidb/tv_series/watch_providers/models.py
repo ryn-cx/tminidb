@@ -16,7 +16,8 @@ from .strict_models import TvSeriesWatchProvidersModel as StrictModel
 if TYPE_CHECKING:
     from .strict_models import (
         Ad,
-        Ad1,
+        Ad7,
+        Ad8,
         Ae,
         Ag,
         Al,
@@ -105,6 +106,7 @@ if TYPE_CHECKING:
         Ml,
         Mt,
         Mu,
+        Mw,
         Mx,
         My,
         Mz,
@@ -164,7 +166,8 @@ if TYPE_CHECKING:
 else:
     from .optional_models import (
         Ad,
-        Ad1,
+        Ad7,
+        Ad8,
         Ae,
         Ag,
         Al,
@@ -253,6 +256,7 @@ else:
         Ml,
         Mt,
         Mu,
+        Mw,
         Mx,
         My,
         Mz,
@@ -312,7 +316,8 @@ else:
 
 __all__ = [
     "Ad",
-    "Ad1",
+    "Ad7",
+    "Ad8",
     "Ae",
     "Ag",
     "Al",
@@ -401,6 +406,7 @@ __all__ = [
     "Ml",
     "Mt",
     "Mu",
+    "Mw",
     "Mx",
     "My",
     "Mz",
