@@ -9,7 +9,7 @@ class BelongsToCollection(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
     name: str
-    poster_path: str
+    poster_path: str | None
     backdrop_path: str | None
 
 class Genre(BaseModel):
@@ -50,7 +50,7 @@ class MovieDetailsModel(BaseModel):
     original_title: str
     overview: str
     popularity: float
-    poster_path: str
+    poster_path: str | None
     production_companies: list[ProductionCompany]
     production_countries: list[ProductionCountry]
     release_date: date | str = Field(union_mode='left_to_right')

@@ -344,7 +344,7 @@ class Gt(BaseModel):
 class Hk(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    flatrate: list[FlatrateItem]
+    flatrate: list[FlatrateItem] | None = None
     ads: list[Ad8] | None = None
 
 class Hn(BaseModel):
@@ -512,7 +512,7 @@ class Mu(BaseModel):
 class Mx(BaseModel):
     model_config = ConfigDict(defer_build=True)
     link: str
-    flatrate: list[FlatrateItem]
+    flatrate: list[FlatrateItem] | None = None
     ads: list[Ad8] | None = None
     free: list[FreeItem] | None = None
 

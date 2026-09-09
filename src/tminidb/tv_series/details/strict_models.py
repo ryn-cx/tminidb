@@ -49,7 +49,7 @@ class NextEpisodeToAir(BaseModel):
     runtime: int | None
     season_number: int
     show_id: int
-    still_path: None
+    still_path: str | None
 
 class Network(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -99,8 +99,8 @@ class TvSeriesDetailsModel(BaseModel):
     id: int
     in_production: bool
     languages: list[str]
-    last_air_date: date
-    last_episode_to_air: LastEpisodeToAir
+    last_air_date: date | None
+    last_episode_to_air: LastEpisodeToAir | None
     name: str
     next_episode_to_air: NextEpisodeToAir | None
     networks: list[Network]
@@ -111,7 +111,7 @@ class TvSeriesDetailsModel(BaseModel):
     original_name: str
     overview: str
     popularity: float
-    poster_path: str
+    poster_path: str | None
     production_companies: list[ProductionCompany]
     production_countries: list[ProductionCountry]
     seasons: list[Season]
