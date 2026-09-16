@@ -48,5 +48,5 @@ class BaseWatchProviders[T: BaseModel](BaseEndpoint):
 
     # TODO: Validate
     def load(self, data: str, log_id: str = "") -> T:
-        """Read a downloaded watch providers file into its model."""
+        """Load a watch providers file into its model."""
         return type(self).LOAD(data, log_id or self.default_log_id)

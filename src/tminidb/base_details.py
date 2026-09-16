@@ -53,5 +53,5 @@ class BaseDetails[T: BaseModel](BaseEndpoint):
 
     # TODO: Validate
     def load(self, data: str, log_id: str = "") -> T:
-        """Read a downloaded details file into its model."""
+        """Load a details file into its model."""
         return type(self).LOAD(data, log_id or self.default_log_id)

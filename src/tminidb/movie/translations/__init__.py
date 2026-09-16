@@ -61,5 +61,5 @@ class MovieTranslations(BaseEndpoint):
 
     # TODO: Validate
     def load(self, data: str, log_id: str = "") -> MovieTranslationsModel:
-        """Read a downloaded movie translations file into its model."""
+        """Load a movie translations file into its model."""
         return model_validate_json(data, log_id or self.default_log_id)

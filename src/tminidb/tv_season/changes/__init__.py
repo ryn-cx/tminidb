@@ -97,6 +97,36 @@ class TvSeasonChanges(BaseChanges[TvSeasonChangesModel]):
             ) from err
 
     # TODO: Validate
+    def download_all(
+        self,
+        season_id: int,
+        start_date: date,
+        end_date: date,
+        *,
+        page: int = 1,
+    ) -> list[str]:
+        """Download the whole range, one file per 14 day window.
+
+        Raises:
+            SeasonChangesNotFoundError: If nothing is under that id.
+        """
+        log_id = self.get_log_id(self.download_all, locals())
+        try:
+            return self._download_all(
+                f"tv/season/{season_id}/changes",
+                start_date=start_date,
+                end_date=end_date,
+                page=page,
+                log_id=log_id,
+            )
+        except ResourceNotFoundError as err:
+            raise SeasonChangesNotFoundError(
+                season_id,
+                err.status_code,
+                err.response,
+            ) from err
+
+    # TODO: Validate
     def download_merged(
         self,
         season_id: int,

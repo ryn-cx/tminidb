@@ -5,9 +5,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import RecordedEndpoint
 from tminidb.exceptions import EpisodeGroupNotFoundError
-from tminidb.tv_episode_group.details.models import TvEpisodeGroupDetailsModel
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
@@ -19,36 +17,13 @@ EPISODE_GROUP_IDS = [
 
 
 # TODO: Validate
-class TvEpisodeGroupDetailsTest(RecordedEndpoint):
-    MODEL = TvEpisodeGroupDetailsModel
-
-
-# TODO: Validate
 @pytest.mark.parametrize("episode_group_id", EPISODE_GROUP_IDS)
 def test_download(client: TMiniDB, episode_group_id: str) -> None:
-    TvEpisodeGroupDetailsTest.download_test(
-        episode_group_id,
-        lambda: client.tv_episode_group.details.download(episode_group_id),
-    )
-
-
-# TODO: Validate
-@pytest.mark.parametrize("episode_group_id", EPISODE_GROUP_IDS)
-def test_parse(client: TMiniDB, episode_group_id: str) -> None:
-    episode_group = client.tv_episode_group.details.load(
-        TvEpisodeGroupDetailsTest.recorded_content(episode_group_id),
-    )
+    episode_group = client.tv_episode_group.details(episode_group_id)
     assert episode_group.id == episode_group_id
 
 
 # TODO: Validate
-@pytest.mark.parametrize(
-    "episode_group_id",
-    [pytest.param("000000000000000000000000", id="episode group that does not exist")],
-)
-def test_download_invalid(client: TMiniDB, episode_group_id: str) -> None:
-    TvEpisodeGroupDetailsTest.error_test(
-        episode_group_id,
-        lambda: client.tv_episode_group.details.download(episode_group_id),
-        EpisodeGroupNotFoundError,
-    )
+def test_download_invalid(client: TMiniDB) -> None:
+    with pytest.raises(EpisodeGroupNotFoundError):
+        client.tv_episode_group.details.download("000000000000000000000000")

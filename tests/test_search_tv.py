@@ -5,9 +5,6 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import RecordedEndpoint
-from tminidb.search.tv.models import SearchTvModel
-
 if TYPE_CHECKING:
     from tminidb import TMiniDB
 
@@ -22,25 +19,13 @@ QUERIES = [
 
 
 # TODO: Validate
-class SearchTvTest(RecordedEndpoint):
-    MODEL = SearchTvModel
-
-
-# TODO: Validate
 @pytest.mark.parametrize("query", QUERIES)
 def test_download(client: TMiniDB, query: str) -> None:
-    SearchTvTest.download_test(query, lambda: client.search.tv.download(query))
+    assert client.search.tv(query).page == 1
 
 
 # TODO: Validate
-@pytest.mark.parametrize("query", QUERIES)
-def test_parse(client: TMiniDB, query: str) -> None:
-    results = client.search.tv.load(SearchTvTest.recorded_content(query))
-    assert results.page == 1
-
-
-# TODO: Validate
-def test_parse_no_matches(client: TMiniDB) -> None:
-    results = client.search.tv.load(SearchTvTest.recorded_content(NO_MATCHES_QUERY))
+def test_download_no_matches(client: TMiniDB) -> None:
+    results = client.search.tv(NO_MATCHES_QUERY)
     assert results.total_results == 0
     assert results.results == []

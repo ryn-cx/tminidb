@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 from tminidb.movie.changes import MovieChanges
 from tminidb.movie.details import MovieDetails
+from tminidb.movie.similar import MovieSimilar
 from tminidb.movie.translations import MovieTranslations
 from tminidb.movie.watch_providers import MovieWatchProviders
 
@@ -28,3 +29,4 @@ class MovieEndpoints:
         self.changes = MovieChanges(client)
         self.watch_providers = MovieWatchProviders(client)
         self.translations = MovieTranslations(client)
+        self.similar = MovieSimilar(client)

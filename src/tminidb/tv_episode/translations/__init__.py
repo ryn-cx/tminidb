@@ -77,5 +77,5 @@ class TvEpisodeTranslations(BaseEndpoint):
 
     # TODO: Validate
     def load(self, data: str, log_id: str = "") -> TvEpisodeTranslationsModel:
-        """Read a downloaded TV episode translations file into its model."""
+        """Load a TV episode translations file into its model."""
         return model_validate_json(data, log_id or self.default_log_id)

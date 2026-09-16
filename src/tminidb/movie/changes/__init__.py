@@ -88,6 +88,32 @@ class MovieChanges(BaseChanges[MovieChangesModel]):
             raise MovieNotFoundError(movie_id, err.status_code, err.response) from err
 
     # TODO: Validate
+    def download_all(
+        self,
+        movie_id: int,
+        start_date: date,
+        end_date: date,
+        *,
+        page: int = 1,
+    ) -> list[str]:
+        """Download the whole range, one file per 14 day window.
+
+        Raises:
+            MovieNotFoundError: If nothing is under that id.
+        """
+        log_id = self.get_log_id(self.download_all, locals())
+        try:
+            return self._download_all(
+                f"movie/{movie_id}/changes",
+                start_date=start_date,
+                end_date=end_date,
+                page=page,
+                log_id=log_id,
+            )
+        except ResourceNotFoundError as err:
+            raise MovieNotFoundError(movie_id, err.status_code, err.response) from err
+
+    # TODO: Validate
     def download_merged(
         self,
         movie_id: int,

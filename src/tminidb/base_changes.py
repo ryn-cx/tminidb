@@ -75,6 +75,28 @@ class BaseChanges[T: BaseModel](BaseEndpoint):
         )
 
     # TODO: Validate
+    def _download_all(
+        self,
+        endpoint: str,
+        *,
+        start_date: date,
+        end_date: date,
+        page: int,
+        log_id: str,
+    ) -> list[str]:
+        """Download every 14 day window of the range, one file per window."""
+        return [
+            self._download(
+                endpoint,
+                start_date=chunk_start,
+                end_date=chunk_end,
+                page=page,
+                log_id=log_id,
+            )
+            for chunk_start, chunk_end in date_chunks(start_date, end_date)
+        ]
+
+    # TODO: Validate
     def _download_merged(
         self,
         endpoint: str,
@@ -86,14 +108,14 @@ class BaseChanges[T: BaseModel](BaseEndpoint):
     ) -> str:
         """Download every 14 day window of the range and merge them into one file."""
         merged: dict[str, list[dict[str, Any]]] = {}
-        for chunk_start, chunk_end in date_chunks(start_date, end_date):
-            window = self._download(
-                endpoint,
-                start_date=chunk_start,
-                end_date=chunk_end,
-                page=page,
-                log_id=log_id,
-            )
+        windows = self._download_all(
+            endpoint,
+            start_date=start_date,
+            end_date=end_date,
+            page=page,
+            log_id=log_id,
+        )
+        for window in windows:
             for change in json.loads(window)["changes"]:
                 merged.setdefault(change["key"], []).extend(change["items"])
         changes = [{"key": key, "items": items} for key, items in merged.items()]
@@ -101,5 +123,5 @@ class BaseChanges[T: BaseModel](BaseEndpoint):
 
     # TODO: Validate
     def load(self, data: str, log_id: str = "") -> T:
-        """Read a downloaded change log file into its model."""
+        """Load a change log file into its model."""
         return type(self).LOAD(data, log_id or self.default_log_id)

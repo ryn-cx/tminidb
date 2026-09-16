@@ -5,9 +5,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from tests.utils import RecordedEndpoint
 from tminidb.exceptions import MovieNotFoundError
-from tminidb.movie.watch_providers.models import MovieWatchProvidersModel
 
 if TYPE_CHECKING:
     from tminidb import TMiniDB
@@ -18,36 +16,13 @@ MOVIE_IDS = [
 
 
 # TODO: Validate
-class MovieWatchProvidersTest(RecordedEndpoint):
-    MODEL = MovieWatchProvidersModel
-
-
-# TODO: Validate
 @pytest.mark.parametrize("movie_id", MOVIE_IDS)
 def test_download(client: TMiniDB, movie_id: int) -> None:
-    MovieWatchProvidersTest.download_test(
-        movie_id,
-        lambda: client.movie.watch_providers.download(movie_id),
-    )
-
-
-# TODO: Validate
-@pytest.mark.parametrize("movie_id", MOVIE_IDS)
-def test_parse(client: TMiniDB, movie_id: int) -> None:
-    providers = client.movie.watch_providers.load(
-        MovieWatchProvidersTest.recorded_content(movie_id),
-    )
+    providers = client.movie.watch_providers(movie_id)
     assert providers.id == movie_id
 
 
 # TODO: Validate
-@pytest.mark.parametrize(
-    "movie_id",
-    [pytest.param(999999999, id="movie that does not exist")],
-)
-def test_download_invalid(client: TMiniDB, movie_id: int) -> None:
-    MovieWatchProvidersTest.error_test(
-        movie_id,
-        lambda: client.movie.watch_providers.download(movie_id),
-        MovieNotFoundError,
-    )
+def test_download_invalid(client: TMiniDB) -> None:
+    with pytest.raises(MovieNotFoundError):
+        client.movie.watch_providers.download(999999999)

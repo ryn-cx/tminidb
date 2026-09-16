@@ -3,14 +3,14 @@
 
 from pathlib import Path
 
-FILES_PATH = Path(__file__).parent / "_files"
-"""Where the recorded responses live."""
+from good_ass_pydantic_integrator.recordings import GeneratorPaths
 
-IDS_PATH = Path(__file__).parent / "ids"
-"""Where the ids each model's responses are recorded for live."""
-
-TMINIDB_PATH = Path(__file__).parent.parent / "src" / "tminidb"
-"""The package the models are written into."""
+GENERATOR_PATHS = GeneratorPaths(
+    files_path=Path(__file__).parent / "_files",
+    ids_path=Path(__file__).parent / "ids",
+    package_path=Path(__file__).parent.parent / "src" / "",
+)
+"""Where the recordings, the ids they came from, and the models live."""
 
 ACCESS_TOKEN_CREDENTIAL = "TMDB_ACCESS_TOKEN"  # noqa: S105
 """The credential holding the TMDB API read access token."""
