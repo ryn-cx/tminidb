@@ -9,6 +9,7 @@ from tminidb.tv_series.changes import TvSeriesChanges
 from tminidb.tv_series.details import TvSeriesDetails
 from tminidb.tv_series.episode_groups import TvSeriesEpisodeGroups
 from tminidb.tv_series.images import TvSeriesImages
+from tminidb.tv_series.recommendations import TvSeriesRecommendations
 from tminidb.tv_series.similar import TvSeriesSimilar
 from tminidb.tv_series.translations import TvSeriesTranslations
 from tminidb.tv_series.watch_providers import TvSeriesWatchProviders
@@ -34,3 +35,4 @@ class TvSeriesEndpoints:
         self.translations = TvSeriesTranslations(client)
         self.watch_providers = TvSeriesWatchProviders(client)
         self.similar = TvSeriesSimilar(client)
+        self.recommendations = TvSeriesRecommendations(client)
