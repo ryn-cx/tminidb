@@ -7,8 +7,8 @@ class Backdrop(BaseModel):
     model_config = ConfigDict(defer_build=True)
     aspect_ratio: float
     height: int
-    iso_3166_1: str
-    iso_639_1: str
+    iso_3166_1: str | None
+    iso_639_1: str | None
     file_path: str
     vote_average: float
     vote_count: int
@@ -29,8 +29,8 @@ class Poster(BaseModel):
     model_config = ConfigDict(defer_build=True)
     aspect_ratio: float
     height: int
-    iso_3166_1: str
-    iso_639_1: str
+    iso_3166_1: str | None
+    iso_639_1: str | None
     file_path: str
     vote_average: float
     vote_count: int

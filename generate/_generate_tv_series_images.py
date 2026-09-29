@@ -22,7 +22,10 @@ class TvSeriesImagesId(RecordingId[TMiniDB]):
 
     # TODO: Validate
     def download(self, client: TMiniDB) -> str:
-        return client.tv_series.images.download(self.series_id)
+        return client.tv_series.images.download(
+            self.series_id,
+            include_image_language="en,null",
+        )
 
 
 SERIES_IDS = load_ids(GENERATOR_PATHS, MODEL_NAME, TvSeriesImagesId)
