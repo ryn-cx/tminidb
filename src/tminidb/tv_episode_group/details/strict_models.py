@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 class Episode(BaseModel):
     model_config = ConfigDict(defer_build=True)
-    air_date: date
+    air_date: date | None
     episode_number: int
     episode_type: str
     id: int
