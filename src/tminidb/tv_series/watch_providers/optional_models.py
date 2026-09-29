@@ -103,6 +103,7 @@ class Bh(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cz(BaseModel):
@@ -117,8 +118,8 @@ class Eg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
     ads: list[Ad] | Any = Field(default=None, union_mode='left_to_right')
+    free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ie(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
@@ -176,22 +177,24 @@ class Qa(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Sa(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
-class Ad17(BaseModel):
+class Ad20(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     ads: list[Ad] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
-class Ad19(BaseModel):
+class Ad22(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     logo_path: str | Any = Field(default=None, union_mode='left_to_right')
     provider_id: int | Any = Field(default=None, union_mode='left_to_right')
@@ -202,21 +205,21 @@ class Ag(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Al(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ao(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ar(BaseModel):
@@ -224,28 +227,28 @@ class Ar(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Az(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ba(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bb(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Be(BaseModel):
@@ -253,7 +256,7 @@ class Be(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bg(BaseModel):
@@ -261,14 +264,14 @@ class Bg(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bo(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Br(BaseModel):
@@ -276,27 +279,27 @@ class Br(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bs(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class By(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ch(BaseModel):
@@ -304,14 +307,14 @@ class Ch(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ci(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cl(BaseModel):
@@ -319,14 +322,14 @@ class Cl(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Co(BaseModel):
@@ -334,14 +337,14 @@ class Co(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cr(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cu(BaseModel):
@@ -354,14 +357,14 @@ class Cv(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class RentItem(BaseModel):
@@ -378,27 +381,27 @@ class Dk(BaseModel):
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Do(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Dz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ec(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ee(BaseModel):
@@ -406,7 +409,7 @@ class Ee(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Es(BaseModel):
@@ -414,7 +417,7 @@ class Es(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Fi(BaseModel):
@@ -423,14 +426,14 @@ class Fi(BaseModel):
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Fj(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Fr(BaseModel):
@@ -438,7 +441,7 @@ class Fr(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
 
@@ -446,21 +449,21 @@ class Gf(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Gh(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Gq(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Gr(BaseModel):
@@ -468,21 +471,21 @@ class Gr(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Gt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Hk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
 
@@ -490,7 +493,7 @@ class Hn(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Hu(BaseModel):
@@ -498,28 +501,28 @@ class Hu(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Id(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Il(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Iq(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Is(BaseModel):
@@ -527,7 +530,7 @@ class Is(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
 
@@ -536,14 +539,14 @@ class It(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Jm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Jp(BaseModel):
@@ -553,42 +556,42 @@ class Jp(BaseModel):
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ke(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Kw(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Lc(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Li(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
 
 class Lt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Lu(BaseModel):
@@ -596,110 +599,110 @@ class Lu(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Lv(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ly(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ma(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mc(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Me(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ml(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mu(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class My(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ne(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ng(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ni(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class No(BaseModel):
@@ -708,7 +711,7 @@ class No(BaseModel):
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Nz(BaseModel):
@@ -716,42 +719,42 @@ class Nz(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pa(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pe(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pf(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ph(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pl(BaseModel):
@@ -759,7 +762,7 @@ class Pl(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pt(BaseModel):
@@ -767,14 +770,14 @@ class Pt(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Py(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ro(BaseModel):
@@ -782,20 +785,20 @@ class Ro(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Rs(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ru(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
 
@@ -803,7 +806,7 @@ class Sc(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Se(BaseModel):
@@ -812,21 +815,21 @@ class Se(BaseModel):
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Sg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Si(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Sk(BaseModel):
@@ -834,7 +837,7 @@ class Sk(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
 
@@ -842,49 +845,49 @@ class Sm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Sn(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Sv(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Tc(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Td(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Th(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Tn(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Tr(BaseModel):
@@ -893,20 +896,20 @@ class Tr(BaseModel):
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Tt(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Tw(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
     rent: list[RentItem] | Any = Field(default=None, union_mode='left_to_right')
 
@@ -914,35 +917,35 @@ class Tz(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ug(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Uy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ve(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ye(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Za(BaseModel):
@@ -955,28 +958,28 @@ class Zm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Zw(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bm(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Gi(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Hr(BaseModel):
@@ -984,41 +987,41 @@ class Hr(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Md(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ps(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Ua(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Va(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Bf(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Cd(BaseModel):
@@ -1031,27 +1034,27 @@ class Gy(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Mw(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Pg(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Xk(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
     link: str | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad19] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
 
 class Results(BaseModel):
@@ -1077,7 +1080,7 @@ class Results(BaseModel):
     om: Om | Any = Field(None, alias='OM', union_mode='left_to_right')
     qa: Qa | Any = Field(None, alias='QA', union_mode='left_to_right')
     sa: Sa | Any = Field(None, alias='SA', union_mode='left_to_right')
-    ad: Ad17 | Any = Field(None, alias='AD', union_mode='left_to_right')
+    ad: Ad20 | Any = Field(None, alias='AD', union_mode='left_to_right')
     ag: Ag | Any = Field(None, alias='AG', union_mode='left_to_right')
     al: Al | Any = Field(None, alias='AL', union_mode='left_to_right')
     ao: Ao | Any = Field(None, alias='AO', union_mode='left_to_right')
