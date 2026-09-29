@@ -1180,7 +1180,7 @@ class Cu(BaseModel):
 
 class Results(BaseModel):
     model_config = ConfigDict(defer_build=True)
-    us: Us = Field(..., alias='US')
+    us: Us | None = Field(None, alias='US')
     ae: Ae | None = Field(None, alias='AE')
     ag: Ag | None = Field(None, alias='AG')
     al: Al | None = Field(None, alias='AL')

@@ -1,51 +1,51 @@
-from typing import Self
+from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import Field
 from datetime import date
 from pydantic import BaseModel, ConfigDict
-from typing import Any
 
 class Episode(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    air_date: date | None = None
-    episode_number: int | None = None
-    episode_type: str | None = None
-    id: int | None = None
-    name: str | None = None
-    overview: str | None = None
-    production_code: str | None = None
-    runtime: int | None = None
-    season_number: int | None = None
-    show_id: int | None = None
-    still_path: str | None = None
-    vote_average: float | None = None
-    vote_count: int | None = None
-    order: int | None = None
+    air_date: date | Any = Field(default=None, union_mode='left_to_right')
+    episode_number: int | Any = Field(default=None, union_mode='left_to_right')
+    episode_type: str | Any = Field(default=None, union_mode='left_to_right')
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    overview: str | Any = Field(default=None, union_mode='left_to_right')
+    production_code: str | Any = Field(default=None, union_mode='left_to_right')
+    runtime: int | Any = Field(default=None, union_mode='left_to_right')
+    season_number: int | Any = Field(default=None, union_mode='left_to_right')
+    show_id: int | Any = Field(default=None, union_mode='left_to_right')
+    still_path: str | Any = Field(default=None, union_mode='left_to_right')
+    vote_average: float | Any = Field(default=None, union_mode='left_to_right')
+    vote_count: int | Any = Field(default=None, union_mode='left_to_right')
+    order: int | Any = Field(default=None, union_mode='left_to_right')
 
 class Group(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    id: str | None = None
-    name: str | None = None
-    order: int | None = None
-    episodes: list[Episode] | None = None
-    locked: bool | None = None
+    id: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    order: int | float | Any = Field(default=None, union_mode='left_to_right')
+    episodes: list[Episode] | Any = Field(default=None, union_mode='left_to_right')
+    locked: bool | Any = Field(default=None, union_mode='left_to_right')
 
 class Network(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    id: int | None = None
-    logo_path: str | None = None
-    name: str | None = None
-    origin_country: str | None = None
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    logo_path: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    origin_country: str | Any = Field(default=None, union_mode='left_to_right')
 
 class TvEpisodeGroupDetailsModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    description: str | None = None
-    episode_count: int | None = None
-    group_count: int | None = None
-    groups: list[Group] | None = None
-    id: str | None = None
-    name: str | None = None
-    network: Any | Network | None = None
-    type: int | None = None
+    description: str | Any = Field(default=None, union_mode='left_to_right')
+    episode_count: int | Any = Field(default=None, union_mode='left_to_right')
+    group_count: int | Any = Field(default=None, union_mode='left_to_right')
+    groups: list[Group] | Any = Field(default=None, union_mode='left_to_right')
+    id: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    network: Network | Any = Field(default=None, union_mode='left_to_right')
+    type: int | Any = Field(default=None, union_mode='left_to_right')
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode='wrap')

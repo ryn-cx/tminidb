@@ -18,6 +18,7 @@ from tminidb.tv_episode import TvEpisodeEndpoints
 from tminidb.tv_episode_group import TvEpisodeGroupEndpoints
 from tminidb.tv_season import TvSeasonEndpoints
 from tminidb.tv_series import TvSeriesEndpoints
+from tminidb.watch_providers import WatchProvidersEndpoints
 
 logger = getLogger(__name__)
 logger.addHandler(NullHandler())
@@ -71,6 +72,7 @@ class TMiniDB:
         self.tv_episode = TvEpisodeEndpoints(self)
         self.tv_episode_group = TvEpisodeGroupEndpoints(self)
         self.search = SearchEndpoints(self)
+        self.watch_providers = WatchProvidersEndpoints(self)
 
     # TODO: Validate
     def download(

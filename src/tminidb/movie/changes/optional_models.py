@@ -1,102 +1,103 @@
 from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import Field
 from pydantic import BaseModel, ConfigDict
 from datetime import date
 
 class Backdrop(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    file_path: str | None = None
-    iso_639_1: str | None = None
-    iso_3166_1: str | None = None
+    file_path: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
 
 class Poster(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    file_path: str | None = None
-    iso_639_1: str | None = None
-    iso_3166_1: str | None = None
+    file_path: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
 
 class TitleLogo(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    file_path: str | None = None
-    iso_639_1: str | None = None
-    iso_3166_1: str | None = None
+    file_path: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
 
 class Value(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    name: str | None = None
-    id: int | str | None = None
-    key: str | None = None
-    size: int | None = None
-    site: str | None = None
-    type: int | str | None = None
-    person_id: int | None = None
-    department: str | None = None
-    job: str | None = None
-    cast_id: int | None = None
-    credit_id: str | None = None
-    backdrop: Backdrop | None = None
-    poster: Poster | None = None
-    title_logo: TitleLogo | None = None
-    primary: bool | None = None
-    tagline: str | None = None
-    character: str | None = None
-    order: int | None = None
-    group: str | None = None
-    title: str | None = None
-    iso_3166_1: str | None = None
-    certification: str | None = None
-    descriptors: list[str] | None = None
-    iso_639_1: str | None = None
-    note: str | None = None
-    release_date: date | None = None
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    id: int | str | Any = Field(default=None, union_mode='left_to_right')
+    key: str | Any = Field(default=None, union_mode='left_to_right')
+    size: int | Any = Field(default=None, union_mode='left_to_right')
+    site: str | Any = Field(default=None, union_mode='left_to_right')
+    type: int | str | Any = Field(default=None, union_mode='left_to_right')
+    person_id: int | Any = Field(default=None, union_mode='left_to_right')
+    department: str | Any = Field(default=None, union_mode='left_to_right')
+    job: str | Any = Field(default=None, union_mode='left_to_right')
+    cast_id: int | Any = Field(default=None, union_mode='left_to_right')
+    credit_id: str | Any = Field(default=None, union_mode='left_to_right')
+    backdrop: Backdrop | Any = Field(default=None, union_mode='left_to_right')
+    poster: Poster | Any = Field(default=None, union_mode='left_to_right')
+    title_logo: TitleLogo | Any = Field(default=None, union_mode='left_to_right')
+    primary: bool | Any = Field(default=None, union_mode='left_to_right')
+    tagline: str | Any = Field(default=None, union_mode='left_to_right')
+    character: str | Any = Field(default=None, union_mode='left_to_right')
+    order: int | Any = Field(default=None, union_mode='left_to_right')
+    group: str | Any = Field(default=None, union_mode='left_to_right')
+    title: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
+    certification: str | Any = Field(default=None, union_mode='left_to_right')
+    descriptors: list[str] | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    note: str | Any = Field(default=None, union_mode='left_to_right')
+    release_date: date | Any = Field(default=None, union_mode='left_to_right')
 
 class OriginalValue(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    name: str | None = None
-    id: int | str | None = None
-    key: str | None = None
-    size: int | None = None
-    site: str | None = None
-    type: int | str | None = None
-    job: str | None = None
-    department: str | None = None
-    person_id: int | None = None
-    cast_id: int | None = None
-    credit_id: str | None = None
-    backdrop: Backdrop | None = None
-    poster: Poster | None = None
-    title_logo: TitleLogo | None = None
-    primary: bool | None = None
-    tagline: str | None = None
-    character: str | None = None
-    order: int | None = None
-    group: str | None = None
-    title: str | None = None
-    iso_3166_1: str | None = None
-    certification: str | None = None
-    descriptors: list[str] | None = None
-    iso_639_1: str | None = None
-    note: str | None = None
-    release_date: date | None = None
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    id: int | str | Any = Field(default=None, union_mode='left_to_right')
+    key: str | Any = Field(default=None, union_mode='left_to_right')
+    size: int | Any = Field(default=None, union_mode='left_to_right')
+    site: str | Any = Field(default=None, union_mode='left_to_right')
+    type: int | str | Any = Field(default=None, union_mode='left_to_right')
+    job: str | Any = Field(default=None, union_mode='left_to_right')
+    department: str | Any = Field(default=None, union_mode='left_to_right')
+    person_id: int | Any = Field(default=None, union_mode='left_to_right')
+    cast_id: int | Any = Field(default=None, union_mode='left_to_right')
+    credit_id: str | Any = Field(default=None, union_mode='left_to_right')
+    backdrop: Backdrop | Any = Field(default=None, union_mode='left_to_right')
+    poster: Poster | Any = Field(default=None, union_mode='left_to_right')
+    title_logo: TitleLogo | Any = Field(default=None, union_mode='left_to_right')
+    primary: bool | Any = Field(default=None, union_mode='left_to_right')
+    tagline: str | Any = Field(default=None, union_mode='left_to_right')
+    character: str | Any = Field(default=None, union_mode='left_to_right')
+    order: int | Any = Field(default=None, union_mode='left_to_right')
+    group: str | Any = Field(default=None, union_mode='left_to_right')
+    title: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
+    certification: str | Any = Field(default=None, union_mode='left_to_right')
+    descriptors: list[str] | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    note: str | Any = Field(default=None, union_mode='left_to_right')
+    release_date: date | Any = Field(default=None, union_mode='left_to_right')
 
 class Item(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    id: str | None = None
-    action: str | None = None
-    time: str | None = None
-    iso_639_1: str | None = None
-    iso_3166_1: str | None = None
-    value: int | str | Value | list[str] | None = None
-    original_value: int | str | OriginalValue | list[str] | None = None
+    id: str | Any = Field(default=None, union_mode='left_to_right')
+    action: str | Any = Field(default=None, union_mode='left_to_right')
+    time: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
+    value: int | str | Value | list[str] | Any = Field(default=None, union_mode='left_to_right')
+    original_value: int | str | OriginalValue | list[str] | Any = Field(default=None, union_mode='left_to_right')
 
 class Change(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    key: str | None = None
-    items: list[Item] | None = None
+    key: str | Any = Field(default=None, union_mode='left_to_right')
+    items: list[Item] | Any = Field(default=None, union_mode='left_to_right')
 
 class MovieChangesModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    changes: list[Change] | None = None
+    changes: list[Change] | Any = Field(default=None, union_mode='left_to_right')
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode='wrap')

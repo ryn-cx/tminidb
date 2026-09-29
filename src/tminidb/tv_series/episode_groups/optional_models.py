@@ -1,29 +1,29 @@
-from typing import Self
+from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import Field
 from pydantic import BaseModel, ConfigDict
-from typing import Any
 
 class Network(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    id: int | None = None
-    logo_path: str | None = None
-    name: str | None = None
-    origin_country: str | None = None
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    logo_path: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    origin_country: str | Any = Field(default=None, union_mode='left_to_right')
 
 class Result(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    description: str | None = None
-    episode_count: int | None = None
-    group_count: int | None = None
-    id: str | None = None
-    name: str | None = None
-    network: Any | Network | None = None
-    type: int | None = None
+    description: str | Any = Field(default=None, union_mode='left_to_right')
+    episode_count: int | Any = Field(default=None, union_mode='left_to_right')
+    group_count: int | Any = Field(default=None, union_mode='left_to_right')
+    id: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    network: Network | Any = Field(default=None, union_mode='left_to_right')
+    type: int | Any = Field(default=None, union_mode='left_to_right')
 
 class TvSeriesEpisodeGroupsModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    results: list[Result] | None = None
-    id: int | None = None
+    results: list[Result] | Any = Field(default=None, union_mode='left_to_right')
+    id: int | Any = Field(default=None, union_mode='left_to_right')
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode='wrap')

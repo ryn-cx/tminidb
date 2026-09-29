@@ -25,7 +25,7 @@ class Group(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: str
     name: str
-    order: int
+    order: int | float
     episodes: list[Episode]
     locked: bool | None = None
 

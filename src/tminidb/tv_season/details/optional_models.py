@@ -1,74 +1,73 @@
-from typing import Self
+from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any
 from datetime import date
 
 class CrewItem(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    department: str | None = None
-    job: str | None = None
-    credit_id: str | None = None
-    adult: bool | None = None
-    gender: int | None = None
-    id: int | None = None
-    known_for_department: str | None = None
-    name: str | None = None
-    original_name: str | None = None
-    popularity: float | None = None
-    profile_path: str | None = None
+    department: str | Any = Field(default=None, union_mode='left_to_right')
+    job: str | Any = Field(default=None, union_mode='left_to_right')
+    credit_id: str | Any = Field(default=None, union_mode='left_to_right')
+    adult: bool | Any = Field(default=None, union_mode='left_to_right')
+    gender: int | Any = Field(default=None, union_mode='left_to_right')
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    known_for_department: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    original_name: str | Any = Field(default=None, union_mode='left_to_right')
+    popularity: float | Any = Field(default=None, union_mode='left_to_right')
+    profile_path: str | Any = Field(default=None, union_mode='left_to_right')
 
 class GuestStar(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    character: str | None = None
-    credit_id: str | None = None
-    order: int | None = None
-    adult: bool | None = None
-    gender: int | None = None
-    id: int | None = None
-    known_for_department: str | None = None
-    name: str | None = None
-    original_name: str | None = None
-    popularity: float | None = None
-    profile_path: str | None = None
+    character: str | Any = Field(default=None, union_mode='left_to_right')
+    credit_id: str | Any = Field(default=None, union_mode='left_to_right')
+    order: int | Any = Field(default=None, union_mode='left_to_right')
+    adult: bool | Any = Field(default=None, union_mode='left_to_right')
+    gender: int | Any = Field(default=None, union_mode='left_to_right')
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    known_for_department: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    original_name: str | Any = Field(default=None, union_mode='left_to_right')
+    popularity: float | Any = Field(default=None, union_mode='left_to_right')
+    profile_path: str | Any = Field(default=None, union_mode='left_to_right')
 
 class Episode(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    air_date: Any | date | None = None
-    episode_number: int | None = None
-    episode_type: str | None = None
-    id: int | None = None
-    name: str | None = None
-    overview: str | None = None
-    production_code: str | None = None
-    runtime: int | None = None
-    season_number: int | None = None
-    show_id: int | None = None
-    still_path: str | None = None
-    vote_average: float | None = None
-    vote_count: int | None = None
-    crew: list[CrewItem] | None = None
-    guest_stars: list[GuestStar] | None = None
+    air_date: date | Any = Field(default=None, union_mode='left_to_right')
+    episode_number: int | Any = Field(default=None, union_mode='left_to_right')
+    episode_type: str | Any = Field(default=None, union_mode='left_to_right')
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    overview: str | Any = Field(default=None, union_mode='left_to_right')
+    production_code: str | Any = Field(default=None, union_mode='left_to_right')
+    runtime: int | Any = Field(default=None, union_mode='left_to_right')
+    season_number: int | Any = Field(default=None, union_mode='left_to_right')
+    show_id: int | Any = Field(default=None, union_mode='left_to_right')
+    still_path: str | Any = Field(default=None, union_mode='left_to_right')
+    vote_average: float | Any = Field(default=None, union_mode='left_to_right')
+    vote_count: int | Any = Field(default=None, union_mode='left_to_right')
+    crew: list[CrewItem] | Any = Field(default=None, union_mode='left_to_right')
+    guest_stars: list[GuestStar] | Any = Field(default=None, union_mode='left_to_right')
 
 class Network(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    id: int | None = None
-    logo_path: str | None = None
-    name: str | None = None
-    origin_country: str | None = None
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    logo_path: str | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    origin_country: str | Any = Field(default=None, union_mode='left_to_right')
 
 class TvSeasonDetailsModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    field_id: str | None = Field(None, alias='_id')
-    air_date: Any | date | None = None
-    episodes: list[Episode] | None = None
-    name: str | None = None
-    networks: list[Network] | None = None
-    overview: str | None = None
-    id: int | None = None
-    poster_path: str | None = None
-    season_number: int | None = None
-    vote_average: float | None = None
+    field_id: str | Any = Field(None, alias='_id', union_mode='left_to_right')
+    air_date: date | Any = Field(default=None, union_mode='left_to_right')
+    episodes: list[Episode] | Any = Field(default=None, union_mode='left_to_right')
+    name: str | Any = Field(default=None, union_mode='left_to_right')
+    networks: list[Network] | Any = Field(default=None, union_mode='left_to_right')
+    overview: str | Any = Field(default=None, union_mode='left_to_right')
+    id: int | Any = Field(default=None, union_mode='left_to_right')
+    poster_path: str | Any = Field(default=None, union_mode='left_to_right')
+    season_number: int | Any = Field(default=None, union_mode='left_to_right')
+    vote_average: float | Any = Field(default=None, union_mode='left_to_right')
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode='wrap')

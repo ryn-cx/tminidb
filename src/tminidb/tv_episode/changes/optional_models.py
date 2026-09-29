@@ -1,39 +1,40 @@
 from typing import Any, Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import Field
 from pydantic import BaseModel, ConfigDict
 
 class OriginalValue(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    person_id: int | None = None
-    character: str | None = None
-    order: int | None = None
-    credit_id: str | None = None
+    person_id: int | Any = Field(default=None, union_mode='left_to_right')
+    character: str | Any = Field(default=None, union_mode='left_to_right')
+    order: int | Any = Field(default=None, union_mode='left_to_right')
+    credit_id: str | Any = Field(default=None, union_mode='left_to_right')
 
 class Value(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    person_id: int | None = None
-    character: str | None = None
-    order: int | None = None
-    credit_id: str | None = None
+    person_id: int | Any = Field(default=None, union_mode='left_to_right')
+    character: str | Any = Field(default=None, union_mode='left_to_right')
+    order: int | Any = Field(default=None, union_mode='left_to_right')
+    credit_id: str | Any = Field(default=None, union_mode='left_to_right')
 
 class Item(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    id: str | None = None
-    action: str | None = None
-    time: str | None = None
-    iso_639_1: str | None = None
-    iso_3166_1: str | None = None
-    original_value: OriginalValue | None = None
-    value: Value | None = None
+    id: str | Any = Field(default=None, union_mode='left_to_right')
+    action: str | Any = Field(default=None, union_mode='left_to_right')
+    time: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_639_1: str | Any = Field(default=None, union_mode='left_to_right')
+    iso_3166_1: str | Any = Field(default=None, union_mode='left_to_right')
+    original_value: OriginalValue | Any = Field(default=None, union_mode='left_to_right')
+    value: Value | Any = Field(default=None, union_mode='left_to_right')
 
 class Change(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    key: str | None = None
-    items: list[Item] | None = None
+    key: str | Any = Field(default=None, union_mode='left_to_right')
+    items: list[Item] | Any = Field(default=None, union_mode='left_to_right')
 
 class TvEpisodeChangesModel(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
-    changes: list[Change] | None = None
+    changes: list[Change] | Any = Field(default=None, union_mode='left_to_right')
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode='wrap')
