@@ -9,8 +9,8 @@ from .strict_models import TvSeriesWatchProvidersModel as StrictModel
 if TYPE_CHECKING:
     from .strict_models import (
         Ad,
-        Ad20,
-        Ad22,
+        Ad21,
+        Ad23,
         Ae,
         Ag,
         Al,
@@ -159,8 +159,8 @@ if TYPE_CHECKING:
 else:
     from .optional_models import (
         Ad,
-        Ad20,
-        Ad22,
+        Ad21,
+        Ad23,
         Ae,
         Ag,
         Al,
@@ -309,8 +309,8 @@ else:
 
 __all__ = [
     "Ad",
-    "Ad20",
-    "Ad22",
+    "Ad21",
+    "Ad23",
     "Ae",
     "Ag",
     "Al",
