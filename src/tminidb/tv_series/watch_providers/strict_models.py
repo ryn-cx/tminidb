@@ -228,8 +228,8 @@ class Ar(BaseModel):
     link: str
     flatrate: list[FlatrateItem] | None = None
     buy: list[BuyItem] | None = None
-    ads: list[Ad22] | None = None
     free: list[FreeItem] | None = None
+    ads: list[Ad22] | None = None
 
 class Az(BaseModel):
     model_config = ConfigDict(defer_build=True)

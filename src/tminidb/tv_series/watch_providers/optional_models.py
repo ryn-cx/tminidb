@@ -227,8 +227,8 @@ class Ar(BaseModel):
     link: str | Any = Field(default=None, union_mode='left_to_right')
     flatrate: list[FlatrateItem] | Any = Field(default=None, union_mode='left_to_right')
     buy: list[BuyItem] | Any = Field(default=None, union_mode='left_to_right')
-    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
     free: list[FreeItem] | Any = Field(default=None, union_mode='left_to_right')
+    ads: list[Ad22] | Any = Field(default=None, union_mode='left_to_right')
 
 class Az(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)
