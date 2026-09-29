@@ -1,0 +1,31 @@
+from typing import Any, Self
+from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
+from pydantic import ConfigDict
+from pydantic import BaseModel
+
+class Result(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    id: int
+    adult: bool | None
+    softcore: bool | None
+
+class ChangesTvListModel(BaseModel):
+    model_config = ConfigDict(defer_build=True)
+    results: list[Result]
+    page: int
+    total_pages: int
+    total_results: int
+    _raw_input: Any = PrivateAttr(default=None)
+
+    @model_validator(mode='wrap')
+    @classmethod
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
+        """Validate the model and keep the input it was built from."""
+        model = handler(data)
+        model._raw_input = data
+        return model
+
+    @property
+    def raw_input(self) -> Any:
+        """The input this model was validated from, as it was handed over."""
+        return self._raw_input

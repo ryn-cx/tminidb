@@ -11,6 +11,7 @@ from typing import Any
 
 from get_around import GetAround
 
+from tminidb.changes import ChangesEndpoints
 from tminidb.exceptions import HTTPError, ResourceNotFoundError
 from tminidb.movie import MovieEndpoints
 from tminidb.search import SearchEndpoints
@@ -73,6 +74,7 @@ class TMiniDB:
         self.tv_episode_group = TvEpisodeGroupEndpoints(self)
         self.search = SearchEndpoints(self)
         self.watch_providers = WatchProvidersEndpoints(self)
+        self.changes = ChangesEndpoints(self)
 
     # TODO: Validate
     def download(
