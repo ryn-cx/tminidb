@@ -13,6 +13,7 @@ from get_around import GetAround
 
 from tminidb.changes import ChangesEndpoints
 from tminidb.exceptions import HTTPError, ResourceNotFoundError
+from tminidb.find import FindEndpoints
 from tminidb.movie import MovieEndpoints
 from tminidb.search import SearchEndpoints
 from tminidb.tv_episode import TvEpisodeEndpoints
@@ -73,6 +74,7 @@ class TMiniDB:
         self.tv_episode = TvEpisodeEndpoints(self)
         self.tv_episode_group = TvEpisodeGroupEndpoints(self)
         self.search = SearchEndpoints(self)
+        self.find = FindEndpoints(self)
         self.watch_providers = WatchProvidersEndpoints(self)
         self.changes = ChangesEndpoints(self)
 
