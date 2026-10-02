@@ -3,6 +3,7 @@ from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import ConfigDict
 from pydantic import BaseModel
 
+
 class Backdrop(BaseModel):
     model_config = ConfigDict(defer_build=True)
     aspect_ratio: float
@@ -13,6 +14,7 @@ class Backdrop(BaseModel):
     vote_average: float
     vote_count: int
     width: int
+
 
 class Logo(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -25,6 +27,7 @@ class Logo(BaseModel):
     vote_count: int
     width: int
 
+
 class Poster(BaseModel):
     model_config = ConfigDict(defer_build=True)
     aspect_ratio: float
@@ -36,6 +39,7 @@ class Poster(BaseModel):
     vote_count: int
     width: int
 
+
 class TvSeriesImagesModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     backdrops: list[Backdrop]
@@ -44,9 +48,11 @@ class TvSeriesImagesModel(BaseModel):
     posters: list[Poster]
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode='wrap')
+    @model_validator(mode="wrap")
     @classmethod
-    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
+    def _capture_raw_input(
+        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
+    ) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data

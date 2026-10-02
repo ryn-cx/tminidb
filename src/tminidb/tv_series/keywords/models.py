@@ -24,6 +24,8 @@ __all__ = [
 ]
 
 
-def model_validate_json(data: str | bytes | object, log_id: str) -> TvSeriesKeywordsModel:
+def model_validate_json(
+    data: str | bytes | object, log_id: str
+) -> TvSeriesKeywordsModel:
     """Read a downloaded file into TvSeriesKeywordsModel."""
     return load.model_validate_json(StrictModel, OptionalModel, data, log_id)

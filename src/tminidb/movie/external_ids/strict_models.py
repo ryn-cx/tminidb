@@ -4,16 +4,14 @@ from pydantic import ConfigDict
 from pydantic import BaseModel
 
 
-class Result(BaseModel):
-    model_config = ConfigDict(defer_build=True)
-    name: str
-    id: int
-
-
-class TvSeriesKeywordsModel(BaseModel):
+class MovieExternalIdsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
-    results: list[Result]
+    imdb_id: str
+    wikidata_id: str
+    facebook_id: str | None
+    instagram_id: None
+    twitter_id: None
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode="wrap")

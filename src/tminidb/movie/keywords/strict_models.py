@@ -3,10 +3,12 @@ from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import ConfigDict
 from pydantic import BaseModel
 
+
 class Keyword(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
     name: str
+
 
 class MovieKeywordsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -14,9 +16,11 @@ class MovieKeywordsModel(BaseModel):
     keywords: list[Keyword]
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode='wrap')
+    @model_validator(mode="wrap")
     @classmethod
-    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
+    def _capture_raw_input(
+        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
+    ) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data

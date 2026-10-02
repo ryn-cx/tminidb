@@ -4,16 +4,18 @@ from pydantic import Field
 from pydantic import BaseModel, ConfigDict
 
 
-class Keyword(BaseModel):
+class TvSeriesExternalIdsModel(BaseModel):
     model_config = ConfigDict(extra="ignore", defer_build=True)
     id: int | Any = Field(default=None, union_mode="left_to_right")
-    name: str | Any = Field(default=None, union_mode="left_to_right")
-
-
-class MovieKeywordsModel(BaseModel):
-    model_config = ConfigDict(extra="ignore", defer_build=True)
-    id: int | Any = Field(default=None, union_mode="left_to_right")
-    keywords: list[Keyword] | Any = Field(default=None, union_mode="left_to_right")
+    imdb_id: str | Any = Field(default=None, union_mode="left_to_right")
+    freebase_mid: str | Any = Field(default=None, union_mode="left_to_right")
+    freebase_id: str | Any = Field(default=None, union_mode="left_to_right")
+    tvdb_id: int | Any = Field(default=None, union_mode="left_to_right")
+    tvrage_id: int | Any = Field(default=None, union_mode="left_to_right")
+    wikidata_id: str | Any = Field(default=None, union_mode="left_to_right")
+    facebook_id: str | Any = Field(default=None, union_mode="left_to_right")
+    instagram_id: str | Any = Field(default=None, union_mode="left_to_right")
+    twitter_id: str | Any = Field(default=None, union_mode="left_to_right")
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode="wrap")

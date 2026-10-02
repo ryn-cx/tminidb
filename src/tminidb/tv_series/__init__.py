@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from tminidb.tv_series.changes import TvSeriesChanges
 from tminidb.tv_series.details import TvSeriesDetails
 from tminidb.tv_series.episode_groups import TvSeriesEpisodeGroups
+from tminidb.tv_series.external_ids import TvSeriesExternalIds
 from tminidb.tv_series.images import TvSeriesImages
 from tminidb.tv_series.keywords import TvSeriesKeywords
 from tminidb.tv_series.recommendations import TvSeriesRecommendations
@@ -38,3 +39,4 @@ class TvSeriesEndpoints:
         self.similar = TvSeriesSimilar(client)
         self.recommendations = TvSeriesRecommendations(client)
         self.keywords = TvSeriesKeywords(client)
+        self.external_ids = TvSeriesExternalIds(client)

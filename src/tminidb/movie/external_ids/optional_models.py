@@ -1,19 +1,18 @@
-from typing import Any, Self
+from typing import Self
 from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
-from pydantic import ConfigDict
-from pydantic import BaseModel
+from pydantic import Field
+from typing import Any
+from pydantic import BaseModel, ConfigDict
 
 
-class Result(BaseModel):
-    model_config = ConfigDict(defer_build=True)
-    name: str
-    id: int
-
-
-class TvSeriesKeywordsModel(BaseModel):
-    model_config = ConfigDict(defer_build=True)
-    id: int
-    results: list[Result]
+class MovieExternalIdsModel(BaseModel):
+    model_config = ConfigDict(extra="ignore", defer_build=True)
+    id: int | Any = Field(default=None, union_mode="left_to_right")
+    imdb_id: str | Any = Field(default=None, union_mode="left_to_right")
+    wikidata_id: str | Any = Field(default=None, union_mode="left_to_right")
+    facebook_id: str | Any = Field(default=None, union_mode="left_to_right")
+    instagram_id: Any | None = None
+    twitter_id: Any | None = None
     _raw_input: Any = PrivateAttr(default=None)
 
     @model_validator(mode="wrap")
