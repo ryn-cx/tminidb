@@ -12,6 +12,7 @@ from tminidb.movie.keywords import MovieKeywords
 from tminidb.movie.recommendations import MovieRecommendations
 from tminidb.movie.similar import MovieSimilar
 from tminidb.movie.translations import MovieTranslations
+from tminidb.movie.videos import MovieVideos
 from tminidb.movie.watch_providers import MovieWatchProviders
 
 if TYPE_CHECKING:
@@ -36,3 +37,4 @@ class MovieEndpoints:
         self.recommendations = MovieRecommendations(client)
         self.keywords = MovieKeywords(client)
         self.external_ids = MovieExternalIds(client)
+        self.videos = MovieVideos(client)

@@ -14,6 +14,7 @@ from tminidb.tv_series.keywords import TvSeriesKeywords
 from tminidb.tv_series.recommendations import TvSeriesRecommendations
 from tminidb.tv_series.similar import TvSeriesSimilar
 from tminidb.tv_series.translations import TvSeriesTranslations
+from tminidb.tv_series.videos import TvSeriesVideos
 from tminidb.tv_series.watch_providers import TvSeriesWatchProviders
 
 if TYPE_CHECKING:
@@ -40,3 +41,4 @@ class TvSeriesEndpoints:
         self.recommendations = TvSeriesRecommendations(client)
         self.keywords = TvSeriesKeywords(client)
         self.external_ids = TvSeriesExternalIds(client)
+        self.videos = TvSeriesVideos(client)
