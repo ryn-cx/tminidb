@@ -16,6 +16,7 @@ class CrewItem(BaseModel):
     original_name: str | Any = Field(default=None, union_mode='left_to_right')
     popularity: float | Any = Field(default=None, union_mode='left_to_right')
     profile_path: str | Any = Field(default=None, union_mode='left_to_right')
+    person_id: str | Any = Field(default=None, union_mode='left_to_right')
 
 class GuestStar(BaseModel):
     model_config = ConfigDict(extra='ignore', defer_build=True)

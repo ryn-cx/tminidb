@@ -5,7 +5,6 @@ from pydantic import ConfigDict
 from datetime import date
 from pydantic import BaseModel
 
-
 class Result(BaseModel):
     model_config = ConfigDict(defer_build=True)
     adult: bool
@@ -18,12 +17,11 @@ class Result(BaseModel):
     overview: str
     popularity: float
     poster_path: str | None
-    release_date: date | str = Field(union_mode="left_to_right")
+    release_date: date | str = Field(union_mode='left_to_right')
     softcore: bool
     video: bool
     vote_average: float
     vote_count: int
-
 
 class MovieSimilarModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -33,11 +31,9 @@ class MovieSimilarModel(BaseModel):
     total_results: int
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode="wrap")
+    @model_validator(mode='wrap')
     @classmethod
-    def _capture_raw_input(
-        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
-    ) -> Self:
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data

@@ -9,14 +9,15 @@ class CrewItem(BaseModel):
     department: str
     job: str
     credit_id: str
-    adult: bool
-    gender: int
-    id: int
-    known_for_department: str
-    name: str
-    original_name: str
-    popularity: float
-    profile_path: str | None
+    adult: bool | None = None
+    gender: int | None = None
+    id: int | None = None
+    known_for_department: str | None = None
+    name: str | None = None
+    original_name: str | None = None
+    popularity: float | None = None
+    profile_path: str | None = None
+    person_id: str | None = None
 
 class GuestStar(BaseModel):
     model_config = ConfigDict(defer_build=True)

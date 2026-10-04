@@ -5,7 +5,6 @@ from pydantic import ConfigDict
 from pydantic import BaseModel
 from datetime import date
 
-
 class BelongsToCollection(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
@@ -13,12 +12,10 @@ class BelongsToCollection(BaseModel):
     poster_path: str | None
     backdrop_path: str | None
 
-
 class Genre(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
     name: str
-
 
 class ProductionCompany(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -27,19 +24,16 @@ class ProductionCompany(BaseModel):
     name: str
     origin_country: str
 
-
 class ProductionCountry(BaseModel):
     model_config = ConfigDict(defer_build=True)
     iso_3166_1: str
     name: str
-
 
 class SpokenLanguage(BaseModel):
     model_config = ConfigDict(defer_build=True)
     english_name: str
     iso_639_1: str
     name: str
-
 
 class MovieDetailsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -59,7 +53,7 @@ class MovieDetailsModel(BaseModel):
     poster_path: str | None
     production_companies: list[ProductionCompany]
     production_countries: list[ProductionCountry]
-    release_date: date | str = Field(union_mode="left_to_right")
+    release_date: date | str = Field(union_mode='left_to_right')
     revenue: int
     runtime: int
     softcore: bool
@@ -72,11 +66,9 @@ class MovieDetailsModel(BaseModel):
     vote_count: int
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode="wrap")
+    @model_validator(mode='wrap')
     @classmethod
-    def _capture_raw_input(
-        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
-    ) -> Self:
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data

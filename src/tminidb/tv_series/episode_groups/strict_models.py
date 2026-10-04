@@ -3,14 +3,12 @@ from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import ConfigDict
 from pydantic import BaseModel
 
-
 class Network(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
     logo_path: str
     name: str
     origin_country: str
-
 
 class Result(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -22,18 +20,15 @@ class Result(BaseModel):
     network: Network | None
     type: int
 
-
 class TvSeriesEpisodeGroupsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     results: list[Result]
     id: int
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode="wrap")
+    @model_validator(mode='wrap')
     @classmethod
-    def _capture_raw_input(
-        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
-    ) -> Self:
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data

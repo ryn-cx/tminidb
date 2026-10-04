@@ -4,13 +4,11 @@ from pydantic import ConfigDict
 from pydantic import BaseModel
 from datetime import date
 
-
 class Backdrop(BaseModel):
     model_config = ConfigDict(defer_build=True)
     file_path: str
     iso_639_1: str | None = None
     iso_3166_1: str | None = None
-
 
 class Poster(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -18,13 +16,11 @@ class Poster(BaseModel):
     iso_639_1: str | None = None
     iso_3166_1: str | None = None
 
-
 class TitleLogo(BaseModel):
     model_config = ConfigDict(defer_build=True)
     file_path: str
     iso_639_1: str | None = None
     iso_3166_1: str | None = None
-
 
 class Value(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -55,7 +51,6 @@ class Value(BaseModel):
     note: str | None = None
     release_date: date | None = None
 
-
 class OriginalValue(BaseModel):
     model_config = ConfigDict(defer_build=True)
     name: str | None = None
@@ -85,7 +80,6 @@ class OriginalValue(BaseModel):
     note: str | None = None
     release_date: date | None = None
 
-
 class Item(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: str
@@ -96,23 +90,19 @@ class Item(BaseModel):
     value: int | str | Value | list[str] | None = None
     original_value: int | str | OriginalValue | list[str] | None = None
 
-
 class Change(BaseModel):
     model_config = ConfigDict(defer_build=True)
     key: str
     items: list[Item]
-
 
 class MovieChangesModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     changes: list[Change]
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode="wrap")
+    @model_validator(mode='wrap')
     @classmethod
-    def _capture_raw_input(
-        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
-    ) -> Self:
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data

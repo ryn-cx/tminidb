@@ -5,11 +5,10 @@ from datetime import date
 from pydantic import BaseModel
 from typing import Any
 
-
 class MovieResult(BaseModel):
     model_config = ConfigDict(defer_build=True)
     adult: bool
-    backdrop_path: str
+    backdrop_path: str | None
     id: int
     title: str
     original_title: str
@@ -24,7 +23,6 @@ class MovieResult(BaseModel):
     video: bool
     vote_average: float
     vote_count: int
-
 
 class KnownForItem(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -45,7 +43,6 @@ class KnownForItem(BaseModel):
     vote_average: float
     vote_count: int
 
-
 class PersonResult(BaseModel):
     model_config = ConfigDict(defer_build=True)
     adult: bool
@@ -59,11 +56,10 @@ class PersonResult(BaseModel):
     profile_path: str
     known_for: list[KnownForItem]
 
-
 class TvResult(BaseModel):
     model_config = ConfigDict(defer_build=True)
     adult: bool
-    backdrop_path: str
+    backdrop_path: str | None
     id: int
     name: str
     original_name: str
@@ -78,7 +74,6 @@ class TvResult(BaseModel):
     vote_average: float
     vote_count: int
     origin_country: list[str]
-
 
 class TvEpisodeResult(BaseModel):
     model_config = ConfigDict(defer_build=True)
@@ -97,7 +92,6 @@ class TvEpisodeResult(BaseModel):
     show_id: int
     still_path: str | None
 
-
 class FindByIdModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     movie_results: list[MovieResult]
@@ -107,11 +101,9 @@ class FindByIdModel(BaseModel):
     tv_season_results: list[None]
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode="wrap")
+    @model_validator(mode='wrap')
     @classmethod
-    def _capture_raw_input(
-        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
-    ) -> Self:
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data
