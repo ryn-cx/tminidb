@@ -21,8 +21,6 @@ __all__ = [
 ]
 
 
-def model_validate_json(
-    data: str | bytes | object, log_id: str
-) -> MovieExternalIdsModel:
+def model_validate_json(data: str | bytes | object, log_id: str) -> MovieExternalIdsModel:
     """Read a downloaded file into MovieExternalIdsModel."""
     return load.model_validate_json(StrictModel, OptionalModel, data, log_id)

@@ -3,26 +3,23 @@ from pydantic import ModelWrapValidatorHandler, PrivateAttr, model_validator
 from pydantic import ConfigDict
 from pydantic import BaseModel
 
-
 class TvSeriesExternalIdsModel(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
-    imdb_id: str
-    freebase_mid: str
-    freebase_id: str
-    tvdb_id: int
-    tvrage_id: int
-    wikidata_id: str
-    facebook_id: str
-    instagram_id: str
-    twitter_id: str
+    imdb_id: str | None
+    freebase_mid: str | None
+    freebase_id: str | None
+    tvdb_id: int | None
+    tvrage_id: int | None
+    wikidata_id: str | None
+    facebook_id: str | None
+    instagram_id: str | None
+    twitter_id: str | None
     _raw_input: Any = PrivateAttr(default=None)
 
-    @model_validator(mode="wrap")
+    @model_validator(mode='wrap')
     @classmethod
-    def _capture_raw_input(
-        cls, data: Any, handler: ModelWrapValidatorHandler[Self]
-    ) -> Self:
+    def _capture_raw_input(cls, data: Any, handler: ModelWrapValidatorHandler[Self]) -> Self:
         """Validate the model and keep the input it was built from."""
         model = handler(data)
         model._raw_input = data
