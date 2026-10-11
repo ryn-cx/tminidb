@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .strict_models import (
         Ad,
         Ad1,
+        Ad2,
         Ae,
         Ag,
         Al,
@@ -149,6 +150,7 @@ if TYPE_CHECKING:
         Uy,
         Va,
         Ve,
+        Xk,
         Ye,
         Za,
         Zm,
@@ -158,6 +160,7 @@ else:
     from .optional_models import (
         Ad,
         Ad1,
+        Ad2,
         Ae,
         Ag,
         Al,
@@ -297,6 +300,7 @@ else:
         Uy,
         Va,
         Ve,
+        Xk,
         Ye,
         Za,
         Zm,
@@ -306,6 +310,7 @@ else:
 __all__ = [
     "Ad",
     "Ad1",
+    "Ad2",
     "Ae",
     "Ag",
     "Al",
@@ -445,6 +450,7 @@ __all__ = [
     "Uy",
     "Va",
     "Ve",
+    "Xk",
     "Ye",
     "Za",
     "Zm",

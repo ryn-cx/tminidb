@@ -46,7 +46,7 @@ class Episode(BaseModel):
     production_code: str
     runtime: int | None
     season_number: int
-    show_id: int
+    show_id: int | None = None
     still_path: str | None
     vote_average: float
     vote_count: int

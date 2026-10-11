@@ -24,7 +24,7 @@ class KnownForItem(BaseModel):
     vote_count: int | Any = Field(default=None, union_mode='left_to_right')
     name: str | Any = Field(default=None, union_mode='left_to_right')
     original_name: str | Any = Field(default=None, union_mode='left_to_right')
-    first_air_date: date | Any = Field(default=None, union_mode='left_to_right')
+    first_air_date: date | str | Any = Field(default=None, union_mode='left_to_right')
     origin_country: list[str] | Any = Field(default=None, union_mode='left_to_right')
 
 class Result(BaseModel):

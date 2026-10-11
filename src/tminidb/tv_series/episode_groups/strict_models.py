@@ -6,7 +6,7 @@ from pydantic import BaseModel
 class Network(BaseModel):
     model_config = ConfigDict(defer_build=True)
     id: int
-    logo_path: str
+    logo_path: str | None
     name: str
     origin_country: str
 

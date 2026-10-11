@@ -9,19 +9,19 @@ class Result(BaseModel):
     model_config = ConfigDict(defer_build=True)
     adult: bool
     backdrop_path: str | None
-    genre_ids: list[int]
+    genre_ids: list[int] | None = None
     id: int
     title: str
     original_language: str
     original_title: str
     overview: str
-    popularity: float
+    popularity: float | None = None
     poster_path: str | None
-    release_date: date | str = Field(union_mode='left_to_right')
-    softcore: bool
-    video: bool
-    vote_average: float
-    vote_count: int
+    release_date: date | str | None = Field(default=None, union_mode='left_to_right')
+    softcore: bool | None = None
+    video: bool | None = None
+    vote_average: float | None = None
+    vote_count: int | None = None
 
 class SearchMovieModel(BaseModel):
     model_config = ConfigDict(defer_build=True)

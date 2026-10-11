@@ -13,7 +13,7 @@ class MovieResult(BaseModel):
     title: str
     original_title: str
     overview: str
-    poster_path: str
+    poster_path: str | None
     media_type: str
     original_language: str
     genre_ids: list[int]

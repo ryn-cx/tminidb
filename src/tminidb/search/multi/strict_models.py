@@ -25,7 +25,7 @@ class KnownForItem(BaseModel):
     vote_count: int
     name: str | None = None
     original_name: str | None = None
-    first_air_date: date | None = None
+    first_air_date: date | str | None = Field(default=None, union_mode='left_to_right')
     origin_country: list[str] | None = None
 
 class Result(BaseModel):
@@ -40,7 +40,7 @@ class Result(BaseModel):
     media_type: str
     original_language: str | None = None
     genre_ids: list[int] | None = None
-    popularity: float
+    popularity: float | None = None
     release_date: date | str | None = Field(default=None, union_mode='left_to_right')
     softcore: bool | None = None
     video: bool | None = None

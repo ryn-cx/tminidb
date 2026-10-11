@@ -32,7 +32,7 @@ class LastEpisodeToAir(BaseModel):
     production_code: str
     runtime: int | None
     season_number: int
-    show_id: int
+    show_id: int | None = None
     still_path: str | None
 
 class NextEpisodeToAir(BaseModel):
@@ -104,7 +104,7 @@ class TvSeriesDetailsModel(BaseModel):
     name: str
     next_episode_to_air: NextEpisodeToAir | None
     networks: list[Network]
-    number_of_episodes: int
+    number_of_episodes: int | None
     number_of_seasons: int
     origin_country: list[str]
     original_language: str
