@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from tminidb.tv_series.alternative_titles import TvSeriesAlternativeTitles
 from tminidb.tv_series.changes import TvSeriesChanges
 from tminidb.tv_series.details import TvSeriesDetails
 from tminidb.tv_series.episode_groups import TvSeriesEpisodeGroups
@@ -42,3 +43,4 @@ class TvSeriesEndpoints:
         self.keywords = TvSeriesKeywords(client)
         self.external_ids = TvSeriesExternalIds(client)
         self.videos = TvSeriesVideos(client)
+        self.alternative_titles = TvSeriesAlternativeTitles(client)

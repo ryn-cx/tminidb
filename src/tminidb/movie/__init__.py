@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from tminidb.movie.alternative_titles import MovieAlternativeTitles
 from tminidb.movie.changes import MovieChanges
 from tminidb.movie.details import MovieDetails
 from tminidb.movie.external_ids import MovieExternalIds
@@ -40,3 +41,4 @@ class MovieEndpoints:
         self.external_ids = MovieExternalIds(client)
         self.videos = MovieVideos(client)
         self.images = MovieImages(client)
+        self.alternative_titles = MovieAlternativeTitles(client)
