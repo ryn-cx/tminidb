@@ -9,7 +9,7 @@ from http import HTTPStatus
 from logging import NullHandler, getLogger
 from typing import Any
 
-from get_around import GetAround
+from get_around import GetAround, RateLimit
 
 from tminidb.changes import ChangesEndpoints
 from tminidb.exceptions import HTTPError, ResourceNotFoundError
@@ -41,6 +41,7 @@ class TMiniDB:
         access_token: str,
         get_around_client: GetAround | None = None,
         language: str = "en-US",
+        rate_limit: RateLimit | None = RateLimit(requests=40, period=1),  # noqa: B008
     ) -> None:
         """Initialize the TMiniDB client.
 
@@ -66,7 +67,7 @@ class TMiniDB:
 
         self.access_token = access_token
         self.language = language
-        self.get_around_client = get_around_client or GetAround()
+        self.get_around_client = get_around_client or GetAround(rate_limit=rate_limit)
 
         self.movie = MovieEndpoints(self)
         self.tv_series = TvSeriesEndpoints(self)
